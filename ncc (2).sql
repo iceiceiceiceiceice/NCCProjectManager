@@ -100,8 +100,8 @@ INSERT INTO `ncc`.`user` (`id`, `role`, `email`, `password`) VALUES ('2', '0', '
 INSERT INTO `ncc`.`user` (`id`, `role`, `email`, `password`) VALUES ('3', '0', 'user2@gmail.com', '12345678');
 INSERT INTO `ncc`.`user` (`id`, `role`, `email`, `password`) VALUES ('4', '0', 'user3@gmail.com', '12345678');
 
-INSERT INTO `ncc`.`project` (`project_id`, `customer`, `PM`, `technology`, `description`) VALUES ('1', 'Mr.Bean', 'Mr.IoC', 'java', 'awesome project');
-INSERT INTO `ncc`.`project` (`project_id`, `customer`, `PM`, `technology`, `description`) VALUES ('2', 'Mr.Incredible', 'Mrs.Elastic', 'C++', 'awesome project');
+INSERT INTO `ncc`.`project` (`project_id`,`projectName` ,`customer`, `PM`, `technology`, `description`) VALUES ('1','Change the world', 'Mr.Bean', 'Mr.IoC', 'java', 'awesome project');
+INSERT INTO `ncc`.`project` (`project_id`, `projectName`,`customer`, `PM`, `technology`, `description`) VALUES ('2','XXX mission', 'Mr.Incredible', 'Mrs.Elastic', 'C++', 'awesome project');
 
 INSERT INTO `ncc`.`relation` (`id`,`user_id`, `project_id`) VALUES ('1','2', '1');
 INSERT INTO `ncc`.`relation` (`id`,`user_id`, `project_id`) VALUES ('2','3', '1');
