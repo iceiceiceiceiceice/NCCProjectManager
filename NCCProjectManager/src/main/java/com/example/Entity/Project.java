@@ -1,73 +1,125 @@
-package com.example.Entity;
+package com.example.entities;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import java.io.Serializable;
+import javax.persistence.*;
+import java.util.List;
 
+
+/**
+ * The persistent class for the project database table.
+ * 
+ */
 @Entity
-@Table(name="project")
-public class Project {
+@Table(name = "project")
+public class Project implements Serializable {
+	private static final long serialVersionUID = 1L;
+
 	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="project_id")
-	private int id;
-	@Column(name="projectName")
-	private String projectName;
-	@Column(name = "customer")
-	private String customerName;
-	@Column(name = "PM")
-	private String PM;
-	@Column(name = "technology")
-	private String technology;
-	@Column(name = "description")
+	private int projectId;
+
+	private String customer;
+
 	private String description;
-	public Project(int id, String projectName, String customerName, String pM, String technology, String description) {
-		super();
-		this.id = id;
-		this.projectName = projectName;
-		this.customerName = customerName;
-		PM = pM;
-		this.technology = technology;
-		this.description = description;
-	}
+
+	private String pm;
+
+	private String technology;
+
+	//bi-directional many-to-one association to Log_time_sheet
+	@OneToMany(mappedBy="project")
+	private List<Log_time_sheet> logTimeSheets;
+
+	//bi-directional many-to-one association to Relation
+	@OneToMany(mappedBy="project")
+	private List<Relation> relations;
+
 	public Project() {
-		
 	}
-	public int getId() {
-		return id;
+
+	public int getProjectId() {
+		return this.projectId;
 	}
-	public void setId(int id) {
-		this.id = id;
+
+	public void setProjectId(int projectId) {
+		this.projectId = projectId;
 	}
-	public String getProjectName() {
-		return projectName;
+
+	public String getCustomer() {
+		return this.customer;
 	}
-	public void setProjectName(String projectName) {
-		this.projectName = projectName;
+
+	public void setCustomer(String customer) {
+		this.customer = customer;
 	}
-	public String getCustomerName() {
-		return customerName;
-	}
-	public void setCustomerName(String customerName) {
-		this.customerName = customerName;
-	}
-	public String getPM() {
-		return PM;
-	}
-	public void setPM(String pM) {
-		PM = pM;
-	}
-	public String getTechnology() {
-		return technology;
-	}
-	public void setTechnology(String technology) {
-		this.technology = technology;
-	}
+
 	public String getDescription() {
-		return description;
+		return this.description;
 	}
+
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	
+
+	public String getPm() {
+		return this.pm;
+	}
+
+	public void setPm(String pm) {
+		this.pm = pm;
+	}
+
+	public String getTechnology() {
+		return this.technology;
+	}
+
+	public void setTechnology(String technology) {
+		this.technology = technology;
+	}
+
+	public List<Log_time_sheet> getLogTimeSheets() {
+		return this.logTimeSheets;
+	}
+
+	public void setLogTimeSheets(List<Log_time_sheet> logTimeSheets) {
+		this.logTimeSheets = logTimeSheets;
+	}
+
+	public Log_time_sheet addLogTimeSheet(Log_time_sheet logTimeSheet) {
+		getLogTimeSheets().add(logTimeSheet);
+		logTimeSheet.setProject(this);
+
+		return logTimeSheet;
+	}
+
+	public Log_time_sheet removeLogTimeSheet(Log_time_sheet logTimeSheet) {
+		getLogTimeSheets().remove(logTimeSheet);
+		logTimeSheet.setProject(null);
+
+		return logTimeSheet;
+	}
+
+	public List<Relation> getRelations() {
+		return this.relations;
+	}
+
+	public void setRelations(List<Relation> relations) {
+		this.relations = relations;
+	}
+
+	public Relation addRelation(Relation relation) {
+		getRelations().add(relation);
+		relation.setProject(this);
+
+		return relation;
+	}
+
+	public Relation removeRelation(Relation relation) {
+		getRelations().remove(relation);
+		relation.setProject(null);
+
+		return relation;
+	}
+
 }
