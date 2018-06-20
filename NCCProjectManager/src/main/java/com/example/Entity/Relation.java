@@ -1,4 +1,4 @@
-package com.example.entities;
+package com.example.Entity;
 
 import java.io.Serializable;
 import javax.persistence.*;
@@ -13,8 +13,6 @@ import javax.persistence.*;
 public class Relation implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	@EmbeddedId
-	private RelationPK id;
 
 	//bi-directional many-to-one association to Project
 	@ManyToOne
@@ -24,13 +22,6 @@ public class Relation implements Serializable {
 	public Relation() {
 	}
 
-	public RelationPK getId() {
-		return this.id;
-	}
-
-	public void setId(RelationPK id) {
-		this.id = id;
-	}
 
 	public Project getProject() {
 		return this.project;
