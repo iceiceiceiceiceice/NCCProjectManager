@@ -109,6 +109,7 @@ INSERT INTO `ncc`.`relation` (`id`,`user_id`, `project_id`) VALUES ('3','4', '1'
 INSERT INTO `ncc`.`relation` (`id`,`user_id`, `project_id`) VALUES ('4','3', '2');
 INSERT INTO `ncc`.`relation` (`id`,`user_id`, `project_id`) VALUES ('5','4', '2');
 
-INSERT INTO `ncc`.`log time sheet` (`id`, `project_id`, `type`, `hours`, `user_id`) VALUES ('1', '1', 'task', '8', '2');
-INSERT INTO `ncc`.`log time sheet` (`id`, `project_id`, `type`, `hours`, `user_id`) VALUES ('2', '1', 'fix bug', '8', '3');
+
+INSERT INTO `ncc`.`log time sheet` (`id`, `project_id`, `type`,`role`, `hours`, `user_id`) VALUES ('1', '1', 'task','DEV', '8', '2');
+INSERT INTO `ncc`.`log time sheet` (`id`, `project_id`, `type`,`role`, `hours`, `user_id`) VALUES ('2', '1', 'fix bug','QA', '8', '3');
 
