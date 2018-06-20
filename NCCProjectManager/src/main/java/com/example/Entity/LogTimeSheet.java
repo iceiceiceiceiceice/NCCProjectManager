@@ -1,17 +1,19 @@
 package com.example.Entity;
 
 import java.io.Serializable;
-import javax.persistence.*;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
-/**
- * The persistent class for the `log time sheet` database table.
- * 
- */
 @Entity
 @Table(name="`log time sheet`")
-public class LogTimeSheet implements Serializable {
-
+public class LogTimeSheet implements Serializable{
 	@Id
 	@Column(name ="id")
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -22,6 +24,10 @@ public class LogTimeSheet implements Serializable {
 
 	@Column
 	private String type;
+	
+	@ManyToOne
+	@JoinColumn(name="user_id")
+	private User user;
 
 	//bi-directional many-to-one association to Project
 	@ManyToOne
@@ -56,5 +62,5 @@ public class LogTimeSheet implements Serializable {
 	public void setProject(Project project) {
 		this.project = project;
 	}
-
+	
 }
