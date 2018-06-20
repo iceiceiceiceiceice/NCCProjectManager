@@ -1,4 +1,4 @@
-package com.example.entities;
+package com.example.Entity;
 
 import java.io.Serializable;
 import javax.persistence.*;
@@ -10,14 +10,17 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name="`log time sheet`")
-public class Log_time_sheet implements Serializable {
-	private static final long serialVersionUID = 1L;
+public class LogTimeSheet implements Serializable {
 
-	@EmbeddedId
-	private Log_time_sheetPK id;
-
+	@Id
+	@Column(name ="id")
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private int id;
+	
+	@Column
 	private int hours;
 
+	@Column
 	private String type;
 
 	//bi-directional many-to-one association to Project
@@ -25,16 +28,10 @@ public class Log_time_sheet implements Serializable {
 	@JoinColumn(name="project_id")
 	private Project project;
 
-	public Log_time_sheet() {
+	public LogTimeSheet() {
 	}
 
-	public Log_time_sheetPK getId() {
-		return this.id;
-	}
 
-	public void setId(Log_time_sheetPK id) {
-		this.id = id;
-	}
 
 	public int getHours() {
 		return this.hours;

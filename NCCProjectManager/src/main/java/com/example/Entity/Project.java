@@ -1,7 +1,10 @@
-package com.example.entities;
+package com.example.Entity;
 
 import java.io.Serializable;
 import javax.persistence.*;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
 import java.util.List;
 
 
@@ -28,8 +31,9 @@ public class Project implements Serializable {
 	private String technology;
 
 	//bi-directional many-to-one association to Log_time_sheet
+	
 	@OneToMany(mappedBy="project")
-	private List<Log_time_sheet> logTimeSheets;
+	private List<LogTimeSheet> logTimeSheets;
 
 	//bi-directional many-to-one association to Relation
 	@OneToMany(mappedBy="project")
@@ -78,22 +82,22 @@ public class Project implements Serializable {
 		this.technology = technology;
 	}
 
-	public List<Log_time_sheet> getLogTimeSheets() {
+	public List<LogTimeSheet> getLogTimeSheets() {
 		return this.logTimeSheets;
 	}
 
-	public void setLogTimeSheets(List<Log_time_sheet> logTimeSheets) {
+	public void setLogTimeSheets(List<LogTimeSheet> logTimeSheets) {
 		this.logTimeSheets = logTimeSheets;
 	}
 
-	public Log_time_sheet addLogTimeSheet(Log_time_sheet logTimeSheet) {
+	public LogTimeSheet addLogTimeSheet(LogTimeSheet logTimeSheet) {
 		getLogTimeSheets().add(logTimeSheet);
 		logTimeSheet.setProject(this);
 
 		return logTimeSheet;
 	}
 
-	public Log_time_sheet removeLogTimeSheet(Log_time_sheet logTimeSheet) {
+	public LogTimeSheet removeLogTimeSheet(LogTimeSheet logTimeSheet) {
 		getLogTimeSheets().remove(logTimeSheet);
 		logTimeSheet.setProject(null);
 
