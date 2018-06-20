@@ -24,6 +24,10 @@ public class LogTimeSheet implements Serializable{
 
 	@Column
 	private String type;
+	
+	@ManyToOne
+	@JoinColumn(name="user_id")
+	private User user;
 
 	//bi-directional many-to-one association to Project
 	@ManyToOne
