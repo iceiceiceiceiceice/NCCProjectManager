@@ -14,19 +14,19 @@ SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
 -- -----------------------------------------------------
 -- Schema ncc
 -- -----------------------------------------------------
-CREATE SCHEMA IF NOT EXISTS `ncc` DEFAULT CHARACTER SET utf8 ;
+CREATE DATABASE `ncc` ;
 USE `ncc` ;
 
 -- -----------------------------------------------------
 -- Table `ncc`.`project`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `ncc`.`project` (
+CREATE TABLE `ncc`.`project` (
   `project_id` INT NOT NULL AUTO_INCREMENT,
   `projectName` VARCHAR(45) NOT NULL,
   `customer` VARCHAR(45) NOT NULL,
   `PM` VARCHAR(45) NOT NULL,
   `technology` VARCHAR(45) NOT NULL,
-  `description` VARCHAR(45) CHARACTER SET 'big5' NULL,
+  `description` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`project_id`))
 ENGINE = InnoDB;
 
@@ -34,7 +34,7 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `ncc`.`user`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `ncc`.`user` (
+CREATE TABLE `ncc`.`user` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `role` TINYINT NOT NULL,
   `email` VARCHAR(45) NOT NULL,
@@ -46,7 +46,7 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `ncc`.`log time sheet`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `ncc`.`log time sheet` (
+CREATE TABLE `ncc`.`log time sheet` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `project_id` INT NOT NULL,
   `type` VARCHAR(45) NOT NULL,
@@ -71,7 +71,7 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `ncc`.`relation`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `ncc`.`relation` (
+CREATE TABLE `ncc`.`relation` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `user_id` INT NOT NULL,
   `project_id` INT NOT NULL,
