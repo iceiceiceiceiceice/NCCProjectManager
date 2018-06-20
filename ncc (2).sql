@@ -133,8 +133,9 @@ INSERT INTO `ncc`.`user` (`id`, `email`, `password`) VALUES ('2', 'user1@gmail.c
 INSERT INTO `ncc`.`user` (`id`, `email`, `password`) VALUES ('3', 'user2@gmail.com', '12345678');
 INSERT INTO `ncc`.`user` (`id`, `email`, `password`) VALUES ('4', 'user3@gmail.com', '12345678');
 
-INSERT INTO `ncc`.`role` (`role_id`,`role`) VALUES ('1','admin')
-INSERT INTO `ncc`.`role` (`role_id`,`role`) VALUES ('2','member')
+INSERT INTO `ncc`.`role` (`role_id`, `role`) VALUES ('1', 'admin');
+INSERT INTO `ncc`.`role` (`role_id`, `role`) VALUES ('2', 'user');
+
 
 INSERT INTO `ncc`.`project` (`project_id`,`projectName` ,`customer`, `PM`, `technology`, `description`) VALUES ('1','Change the world', 'Mr.Bean', 'Mr.IoC', 'java', 'awesome project');
 INSERT INTO `ncc`.`project` (`project_id`, `projectName`,`customer`, `PM`, `technology`, `description`) VALUES ('2','XXX mission', 'Mr.Incredible', 'Mrs.Elastic', 'C++', 'awesome project');
@@ -148,9 +149,7 @@ INSERT INTO `ncc`.`relation` (`id`,`user_id`, `project_id`) VALUES ('5','4', '2'
 INSERT INTO `ncc`.`log time sheet` (`id`, `project_id`, `type`,`role`, `hours`, `user_id`) VALUES ('1', '1', 'task','DEV', '8', '2');
 INSERT INTO `ncc`.`log time sheet` (`id`, `project_id`, `type`,`role`, `hours`, `user_id`) VALUES ('2', '1', 'fix bug','QA', '8', '3');
 
-INSERT INTO `ncc`.`user_role` (`role_id`,`user_id`) VALUES ('1','1')
-INSERT INTO `ncc`.`user_role` (`role_id`,`user_id`) VALUES ('2','2')
-INSERT INTO `ncc`.`user_role` (`role_id`,`user_id`) VALUES ('2','3')
-INSERT INTO `ncc`.`user_role` (`role_id`,`user_id`) VALUES ('2','4')
-
-
+INSERT INTO `ncc`.`user_role` (`user_id`, `role_id`) VALUES ('1', '1');
+INSERT INTO `ncc`.`user_role` (`user_id`, `role_id`) VALUES ('2', '2');
+INSERT INTO `ncc`.`user_role` (`user_id`, `role_id`) VALUES ('3', '2');
+INSERT INTO `ncc`.`user_role` (`user_id`, `role_id`) VALUES ('4', '2');

@@ -1,5 +1,7 @@
 package com.example.Entity;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -7,7 +9,9 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="project")
-public class Project {
+
+public class Project implements Serializable{
+	private static final long serialVersionUID = 1L;
 	@Id
 	@Column(name="project_id")
 	private int id;
@@ -22,11 +26,10 @@ public class Project {
 	@Column(name = "description")
 	private String description;
 	public Project(int id, String projectName, String customerName, String pM, String technology, String description) {
-		super();
 		this.id = id;
 		this.projectName = projectName;
 		this.customerName = customerName;
-		PM = pM;
+		this.PM = pM;
 		this.technology = technology;
 		this.description = description;
 	}
