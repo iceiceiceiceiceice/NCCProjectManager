@@ -18,10 +18,10 @@ public class Relation implements Serializable {
 	private int id;
 
 	@Column(name="project_id")
-	private int projectId;
+	private int project_id;
 
 	@Column(name="user_id")
-	private int userId;
+	private int user_id;
 
 	public Relation() {
 	}
@@ -34,20 +34,20 @@ public class Relation implements Serializable {
 		this.id = id;
 	}
 
-	public int getProjectId() {
-		return this.projectId;
+	public int getproject_id() {
+		return this.project_id;
 	}
 
-	public void setProjectId(int projectId) {
-		this.projectId = projectId;
+	public void setproject_id(int project_id) {
+		this.project_id = project_id;
 	}
 
-	public int getUserId() {
-		return this.userId;
+	public int getuser_id() {
+		return this.user_id;
 	}
 
-	public void setUserId(int userId) {
-		this.userId = userId;
+	public void setuser_id(int user_id) {
+		this.user_id = user_id;
 	}
 
 }

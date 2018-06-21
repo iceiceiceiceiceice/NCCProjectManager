@@ -10,7 +10,6 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name="`log time sheet`")
-@NamedQuery(name="Log_time_sheet.findAll", query="SELECT l FROM Log_time_sheet l")
 public class Log_time_sheet implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -18,6 +17,8 @@ public class Log_time_sheet implements Serializable {
 	private Log_time_sheetPK id;
 
 	private int hours;
+
+	private String role;
 
 	private String type;
 
@@ -38,6 +39,14 @@ public class Log_time_sheet implements Serializable {
 
 	public void setHours(int hours) {
 		this.hours = hours;
+	}
+
+	public String getRole() {
+		return this.role;
+	}
+
+	public void setRole(String role) {
+		this.role = role;
 	}
 
 	public String getType() {
