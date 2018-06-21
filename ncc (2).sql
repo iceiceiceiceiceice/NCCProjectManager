@@ -50,6 +50,7 @@ CREATE TABLE IF NOT EXISTS `ncc`.`log time sheet` (
   `project_id` INT NOT NULL,
   `type` VARCHAR(45) NOT NULL,
   `hours` INT NOT NULL,
+  `role` VARCHAR(45)  NOT NULL,
   `user_id` INT NOT NULL,
   PRIMARY KEY (`id`, `user_id`, `project_id`),
   INDEX `uer_key_idx` (`user_id` ASC),
