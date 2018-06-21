@@ -21,6 +21,8 @@ public class User implements Serializable {
 
 	private String password;
 
+	private byte role;
+
 	public User() {
 	}
 
@@ -46,6 +48,14 @@ public class User implements Serializable {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	public byte getRole() {
+		return this.role;
+	}
+
+	public void setRole(byte role) {
+		this.role = role;
 	}
 
 }
