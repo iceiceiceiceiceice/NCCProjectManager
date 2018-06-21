@@ -9,22 +9,17 @@ import javax.persistence.*;
  * 
  */
 @Entity
-@Table(name = "user")
+@NamedQuery(name="User.findAll", query="SELECT u FROM User u")
 public class User implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
 
-	@Column
 	private String email;
 
-	@Column
 	private String password;
-
-	@Column
-	private int role;
 
 	public User() {
 	}
@@ -51,14 +46,6 @@ public class User implements Serializable {
 
 	public void setPassword(String password) {
 		this.password = password;
-	}
-
-	public int getRole() {
-		return this.role;
-	}
-
-	public void setRole(int role) {
-		this.role = role;
 	}
 
 }

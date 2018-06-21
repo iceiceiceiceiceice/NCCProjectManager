@@ -13,22 +13,18 @@ import javax.persistence.*;
 public class Relation implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-
-	//bi-directional many-to-one association to Project
-	@ManyToOne
-	@JoinColumn(name="project_id")
-	private Project project;
+	@EmbeddedId
+	private RelationPK id;
 
 	public Relation() {
 	}
 
-
-	public Project getProject() {
-		return this.project;
+	public RelationPK getId() {
+		return this.id;
 	}
 
-	public void setProject(Project project) {
-		this.project = project;
+	public void setId(RelationPK id) {
+		this.id = id;
 	}
 
 }
