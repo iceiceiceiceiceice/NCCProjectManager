@@ -15,10 +15,10 @@ public class Log_time_sheetPK implements Serializable {
 	private int id;
 
 	@Column(name="user_id", insertable=false, updatable=false)
-	private int userId;
+	private int user_id;
 
 	@Column(name="project_id", insertable=false, updatable=false)
-	private int projectId;
+	private int project_id;
 
 	public Log_time_sheetPK() {
 	}
@@ -28,17 +28,17 @@ public class Log_time_sheetPK implements Serializable {
 	public void setId(int id) {
 		this.id = id;
 	}
-	public int getUserId() {
-		return this.userId;
+	public int getuser_id() {
+		return this.user_id;
 	}
-	public void setUserId(int userId) {
-		this.userId = userId;
+	public void setuser_id(int user_id) {
+		this.user_id = user_id;
 	}
-	public int getProjectId() {
-		return this.projectId;
+	public int getproject_id() {
+		return this.project_id;
 	}
-	public void setProjectId(int projectId) {
-		this.projectId = projectId;
+	public void setproject_id(int project_id) {
+		this.project_id = project_id;
 	}
 
 	public boolean equals(Object other) {
@@ -51,16 +51,16 @@ public class Log_time_sheetPK implements Serializable {
 		Log_time_sheetPK castOther = (Log_time_sheetPK)other;
 		return 
 			(this.id == castOther.id)
-			&& (this.userId == castOther.userId)
-			&& (this.projectId == castOther.projectId);
+			&& (this.user_id == castOther.user_id)
+			&& (this.project_id == castOther.project_id);
 	}
 
 	public int hashCode() {
 		final int prime = 31;
 		int hash = 17;
 		hash = hash * prime + this.id;
-		hash = hash * prime + this.userId;
-		hash = hash * prime + this.projectId;
+		hash = hash * prime + this.user_id;
+		hash = hash * prime + this.project_id;
 		
 		return hash;
 	}
