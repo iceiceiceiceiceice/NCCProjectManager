@@ -5,7 +5,10 @@ import javax.persistence.*;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 
 /**
@@ -17,31 +20,49 @@ import java.util.List;
 public class Project implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="project_id")
+	@ManyToMany(mappedBy = "projects")
+	
+	/*@OneToOne(fetch = FetchType.LAZY, mappedBy = "projectLog", cascade = CascadeType.ALL)
+	private LogTimeSheet logTimeSheet;*/
+	
 	private int projectId;
 
+	
 	private String customer;
 
+	
 	private String description;
 
+	
 	private String pm;
 
-	private String technology;
-
-	//bi-directional many-to-one association to Log_time_sheet
 	
-	@OneToMany(mappedBy="project")
-	private List<LogTimeSheet> logTimeSheets;
+	private String technology;
+	
+	private String projectName;
 
-	//bi-directional many-to-one association to Relation
-	@OneToMany(mappedBy="project")
-	private List<Relation> relations;
+	
+
 
 	public Project() {
 	}
+	
+	
 
+	public Project(int projectId, String customer,String projectName, String description, String pm, String technology) {
+		this.projectId = projectId;
+		this.customer = customer;
+		this.description = description;
+		this.pm = pm;
+		this.technology = technology;
+		this.projectName = projectName;
+	}
+
+
+
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	@Column(name="project_id",unique= true, nullable = false)
 	public int getProjectId() {
 		return this.projectId;
 	}
@@ -50,6 +71,7 @@ public class Project implements Serializable {
 		this.projectId = projectId;
 	}
 
+	@Column(name="customer")
 	public String getCustomer() {
 		return this.customer;
 	}
@@ -58,6 +80,7 @@ public class Project implements Serializable {
 		this.customer = customer;
 	}
 
+	@Column(name="description")
 	public String getDescription() {
 		return this.description;
 	}
@@ -66,6 +89,7 @@ public class Project implements Serializable {
 		this.description = description;
 	}
 
+	@Column(name="PM")
 	public String getPm() {
 		return this.pm;
 	}
@@ -74,6 +98,7 @@ public class Project implements Serializable {
 		this.pm = pm;
 	}
 
+	@Column(name="technology")
 	public String getTechnology() {
 		return this.technology;
 	}
@@ -82,48 +107,21 @@ public class Project implements Serializable {
 		this.technology = technology;
 	}
 
-	public List<LogTimeSheet> getLogTimeSheets() {
-		return this.logTimeSheets;
+
+	
+	@Column(name="projectName")
+	public String getProjectName() {
+		return projectName;
 	}
 
-	public void setLogTimeSheets(List<LogTimeSheet> logTimeSheets) {
-		this.logTimeSheets = logTimeSheets;
+
+
+	public void setProjectName(String projectName) {
+		this.projectName = projectName;
 	}
 
-	public LogTimeSheet addLogTimeSheet(LogTimeSheet logTimeSheet) {
-		getLogTimeSheets().add(logTimeSheet);
-		logTimeSheet.setProject(this);
 
-		return logTimeSheet;
-	}
 
-	public LogTimeSheet removeLogTimeSheet(LogTimeSheet logTimeSheet) {
-		getLogTimeSheets().remove(logTimeSheet);
-		logTimeSheet.setProject(null);
-
-		return logTimeSheet;
-	}
-
-	public List<Relation> getRelations() {
-		return this.relations;
-	}
-
-	public void setRelations(List<Relation> relations) {
-		this.relations = relations;
-	}
-
-	public Relation addRelation(Relation relation) {
-		getRelations().add(relation);
-		relation.setProject(this);
-
-		return relation;
-	}
-
-	public Relation removeRelation(Relation relation) {
-		getRelations().remove(relation);
-		relation.setProject(null);
-
-		return relation;
-	}
+	
 
 }
