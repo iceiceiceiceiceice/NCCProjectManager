@@ -1,4 +1,4 @@
-package com.example.Dao.impl;
+package com.example.DAO.impl;
 
 import java.util.List;
 
@@ -27,14 +27,14 @@ public class UserDaoImpl {
 	}
 	public User findById(final int id) {
 		Session session = this.sessionFactory.getCurrentSession();
-		return session.get(User.class, id);
+		return (User) session.get(User.class, id);
 	}
 	public void delete(final User user) {
 		Session session = this.sessionFactory.getCurrentSession();
-		session.remove(user);
+		session.delete(user);
 	}
 	public List<User> findAll() {
 		Session session = this.sessionFactory.getCurrentSession();
-		return session.createQuery("FROM User", User.class).getResultList();
+		return session.createQuery("FROM User").list();
 	}
 }

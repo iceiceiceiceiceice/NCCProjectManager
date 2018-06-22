@@ -1,4 +1,4 @@
-package com.example.Dao.impl;
+package com.example.DAO.impl;
 
 import java.util.List;
 
@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.example.Dao.ProjectDao;
+import com.example.DAO.ProjectDao;
 import com.example.Entity.Project;
 
 
@@ -36,20 +36,20 @@ public class ProjectDaoImpl implements ProjectDao {
 	@Override
 	public Project findById(int id) {
 		Session session = this.sessionFactory.getCurrentSession();
-	    return session.get(Project.class, id);
+	    return (Project) session.get(Project.class, id);
 	}
 
 	@Override
 	public void delete(Project project) {
 		Session session = this.sessionFactory.getCurrentSession();
-	    session.remove(project);
+	    session.delete(project);
 
 	}
 
 	@Override
 	public List<Project> findAll() {
 		Session session = this.sessionFactory.getCurrentSession();
-	    return session.createQuery("FROM Project", Project.class).getResultList();
+	    return session.createQuery("").list();
 	}
 
 }
