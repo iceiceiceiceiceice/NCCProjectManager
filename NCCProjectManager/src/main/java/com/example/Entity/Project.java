@@ -16,7 +16,7 @@ public class Project implements Serializable {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="project_id")
-	private int projectId;
+	private int project_id;
 
 	private String customer;
 
@@ -31,12 +31,12 @@ public class Project implements Serializable {
 	public Project() {
 	}
 
-	public int getProjectId() {
-		return this.projectId;
+	public int getproject_id() {
+		return this.project_id;
 	}
 
-	public void setProjectId(int projectId) {
-		this.projectId = projectId;
+	public void setproject_id(int project_id) {
+		this.project_id = project_id;
 	}
 
 	public String getCustomer() {

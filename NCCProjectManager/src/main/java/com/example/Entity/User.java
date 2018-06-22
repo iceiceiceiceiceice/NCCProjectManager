@@ -1,7 +1,16 @@
 package com.example.Entity;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.*;
+
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
 
 
 /**
@@ -9,7 +18,8 @@ import javax.persistence.*;
  * 
  */
 @Entity
-@NamedQuery(name="User.findAll", query="SELECT u FROM User u")
+@JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonIgnoreProperties(value = { "role", "authorities" })
 public class User implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -17,9 +27,11 @@ public class User implements Serializable {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
 
-	private String email;
-
 	private String password;
+
+	private String role;
+
+	private String username;
 
 	public User() {
 	}
@@ -32,20 +44,34 @@ public class User implements Serializable {
 		this.id = id;
 	}
 
-	public String getEmail() {
-		return this.email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
 	public String getPassword() {
 		return this.password;
 	}
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	public String getRole() {
+		return this.role;
+	}
+
+	public void setRole(String role) {
+		this.role = role;
+	}
+
+	public String getUsername() {
+		return this.username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+	
+	public List<GrantedAuthority> getAuthorities() {
+		List<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
+		authorities.add(new SimpleGrantedAuthority(role));
+		return authorities;
 	}
 
 }
