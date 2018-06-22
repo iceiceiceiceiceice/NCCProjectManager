@@ -3,24 +3,20 @@ package com.example.Service.impl;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.Dao.impl.UserDaoImpl;
 import com.example.Entity.User;
-import com.example.Model.LoginDTO;
 import com.example.Model.UserDTO;
 import com.example.Service.UserService;
 
 @Service
-public class UserServiceImpl implements UserService{
+public class UserServiceImpl implements UserService {
 
 	@Autowired
 	private UserDaoImpl userDao;
-	
 
-	@Override
 	public List<UserDTO> findAll() {
 		List<User> list = userDao.findAll();
 		List<UserDTO> listU = new ArrayList<UserDTO>();
@@ -52,34 +48,4 @@ public class UserServiceImpl implements UserService{
 			userDao.delete(customer);
 		}
 	}
-
-	@Override
-	public User loadUserByUsername(String username) {
-		for (User user : userDao.findAll()) {
-			if (user.getUsername().equals(username)) {
-				return user;
-			}
-		}
-		return null;
-	}
-
-	@Override
-	public boolean checkLogin(User user) {
-		for (User userExist : userDao.findAll()) {
-			if (StringUtils.equals(user.getUsername(), userExist.getUsername())
-					&& StringUtils.equals(user.getPassword(), userExist.getPassword())) {
-				return true;
-			}
-		}
-		return false;
-	}
-
-	@Override
-	public LoginDTO TokenvsProfile(String token, User profile) {
-		LoginDTO dto = new LoginDTO();
-		dto.setToken(token);
-		dto.setProfile(profile);
-		return dto;
-	}
-	
 }
