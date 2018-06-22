@@ -17,13 +17,13 @@ import com.example.Entity.LogTimeSheet;
 import com.example.Entity.Project;
 import com.example.Entity.User;
 import com.example.Service.LogTimeSheetService;
-import com.example.Service.RelationService;
 import com.example.Service.UserService;
 
 @RestController
 @EnableAutoConfiguration
 @ComponentScan(basePackages= {"com.example","com.example.Controller"})
 public class ProjectDetailController {
+	
 	
 	@Autowired
 	private LogTimeSheetService logTimeSheetService;

@@ -52,8 +52,6 @@ public class LogTimeSheet implements Serializable{
 		this.id = id;
 		this.hours = hours;
 		this.type = type;
-		/*this.projectLog = projectLog;*/
-		/*this.userLog = userLog;*/
 		this.userId = userId;
 		this.projectId = projectId;
 	}
