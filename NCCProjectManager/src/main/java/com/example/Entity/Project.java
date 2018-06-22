@@ -12,6 +12,8 @@ import javax.persistence.*;
 @NamedQuery(name="Project.findAll", query="SELECT p FROM Project p")
 public class Project implements Serializable {
 	private static final long serialVersionUID = 1L;
+	
+	/*@ManyToMany(mappedBy = "projects")*/
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)

@@ -1,7 +1,9 @@
-package com.example.Dao;
+package com.example.DAO;
 
 import java.util.List;
+import java.util.Set;
 
+import com.example.Entity.Project;
 import com.example.Entity.User;
 
 public interface UserDao {
@@ -16,5 +18,5 @@ public interface UserDao {
 	
 	public List<User> findAll();
 	
-	
+	/*public Set<Project> getProjectOfUser(int id);*/
 }

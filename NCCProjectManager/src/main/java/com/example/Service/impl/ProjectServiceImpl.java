@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.example.Dao.impl.ProjectDaoImpl;
+import com.example.DAO.impl.ProjectDaoImpl;
 import com.example.Entity.Project;
 import com.example.Service.ProjectService;
 

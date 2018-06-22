@@ -1,4 +1,4 @@
-package com.example.Dao.impl;
+package com.example.DAO.impl;
 
 import java.util.List;
 
@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.example.Dao.ProjectDao;
+import com.example.DAO.ProjectDao;
 import com.example.Entity.Project;
 
 

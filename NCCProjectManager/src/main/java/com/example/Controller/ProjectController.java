@@ -15,7 +15,6 @@ import com.example.Model.createrProject;
 import com.example.Service.impl.ProjectServiceImpl;
 
 @Controller
-
 public class ProjectController {
 	@Autowired
 	private ProjectServiceImpl projectService;

@@ -12,6 +12,10 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 
+import java.util.HashSet;
+import java.util.Set;
+
+
 
 /**
  * The persistent class for the user database table.
@@ -22,6 +26,8 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 @JsonIgnoreProperties(value = { "role", "authorities" })
 public class User implements Serializable {
 	private static final long serialVersionUID = 1L;
+	
+	/*private Set<Project> projects = new HashSet<>(0);*/
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -32,9 +38,12 @@ public class User implements Serializable {
 	private String role;
 
 	private String username;
+	
 
 	public User() {
 	}
+	
+	
 
 	public int getId() {
 		return this.id;
@@ -73,5 +82,24 @@ public class User implements Serializable {
 		authorities.add(new SimpleGrantedAuthority(role));
 		return authorities;
 	}
+	
+	
+	
+	
+	/*@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@JoinTable(name = "relation", joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id", unique= true), 
+	inverseJoinColumns = @JoinColumn(name = "project_id", referencedColumnName = "project_id"),
+	uniqueConstraints = @UniqueConstraint(columnNames="project_id"))
+	public Set<Project> getProjects() {
+		return projects;
+	}
+
+
+
+	public void setProjects(Set<Project> projects) {
+		this.projects = projects;
+	}*/
+	
+	
 
 }
