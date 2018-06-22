@@ -120,8 +120,4 @@ public class Project implements Serializable {
 		this.projectName = projectName;
 	}
 
-
-
-	
-
 }

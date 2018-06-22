@@ -1,6 +1,7 @@
 package com.example.Controller;
 
 import java.util.List;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
@@ -17,6 +18,7 @@ import com.example.Entity.Project;
 import com.example.Entity.User;
 import com.example.Service.LogTimeSheetService;
 import com.example.Service.RelationService;
+import com.example.Service.UserService;
 
 @RestController
 @EnableAutoConfiguration
@@ -27,7 +29,9 @@ public class ProjectDetailController {
 	private LogTimeSheetService logTimeSheetService;
 	
 	@Autowired
-	private RelationService relationService;
+	private UserService userService;
+	
+	
 
 	
 	@RequestMapping(value="/user/get-log-time-sheet", method = RequestMethod.GET)
@@ -50,8 +54,8 @@ public class ProjectDetailController {
 		return logTimeSheetService.deleteLogTimeSheet(id);
 	}
 	
-	@RequestMapping(value="/user/get-relation", method = RequestMethod.GET)
-	public List<User> getRelation() {
-		return relationService.findAllRelation();
+	@RequestMapping(value="/user/get-all-project/{id}", method = RequestMethod.GET)
+	public Set<Project> getAllProject(@PathVariable int id) {
+		return userService.findUserProject(id);
 	}
 }
