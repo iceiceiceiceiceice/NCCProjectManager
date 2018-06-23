@@ -84,22 +84,5 @@ public class User implements Serializable {
 	}
 	
 	
-	
-	
-	/*@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	@JoinTable(name = "relation", joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id", unique= true), 
-	inverseJoinColumns = @JoinColumn(name = "project_id", referencedColumnName = "project_id"),
-	uniqueConstraints = @UniqueConstraint(columnNames="project_id"))
-	public Set<Project> getProjects() {
-		return projects;
-	}
-
-
-
-	public void setProjects(Set<Project> projects) {
-		this.projects = projects;
-	}*/
-	
-	
 
 }

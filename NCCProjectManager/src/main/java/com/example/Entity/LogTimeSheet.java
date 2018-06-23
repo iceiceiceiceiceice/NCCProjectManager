@@ -114,5 +114,9 @@ public class LogTimeSheet implements Serializable{
 		this.user_id = user_id;
 	}
 
+	@Override
+	public String toString() {
+		return "project_id:"+getProject_id()+",role:"+getRole()+",type:"+getType()+",hours:"+getHours()+"user_id"+getUser_id();
+	}
 	
 }
