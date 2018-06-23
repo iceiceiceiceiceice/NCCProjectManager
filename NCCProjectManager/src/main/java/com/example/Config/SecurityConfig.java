@@ -43,7 +43,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception {
 		// Disable crsf cho đường dẫn /rest/**
 		http.csrf().ignoringAntMatchers("/**");
-		http.authorizeRequests().antMatchers("/login**").permitAll();
+		http.authorizeRequests().antMatchers("/login**").permitAll().antMatchers("/log-time-sheet/all").hasRole("ADMIN").and();
 		http.antMatcher("/**").httpBasic().authenticationEntryPoint(restServicesEntryPoint()).and()
 				.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and().authorizeRequests()
 				.antMatchers(HttpMethod.GET, "/**").access("hasRole('ROLE_ADMIN') or hasRole('ROLE_USER')")

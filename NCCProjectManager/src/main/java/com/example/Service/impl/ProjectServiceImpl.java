@@ -50,5 +50,9 @@ public class ProjectServiceImpl implements ProjectService {
 		// TODO Auto-generated method stub
 		return projectDaoImpl.findAll();
 	}
+	
+	public List<Project> findProjectOfUserByUserId(int user_id){
+		return projectDaoImpl.findProjectOfUser(user_id);
+	}
 
 }

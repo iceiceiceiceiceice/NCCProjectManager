@@ -6,8 +6,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.example.Entity.Project;
@@ -38,8 +41,11 @@ public class ProjectController {
 		cP.setStatus(true);
 		cP.setProjectInfo(project);
 		return cP;
-		
-		
-		
+	}
+	
+	@RequestMapping(value="/project/user/{user_id}", method = RequestMethod.GET)
+	@ResponseBody
+	public List<Project> getProjectOfUserByUserId(@PathVariable int user_id){
+		return projectService.findProjectOfUserByUserId(user_id);
 	}
 }
