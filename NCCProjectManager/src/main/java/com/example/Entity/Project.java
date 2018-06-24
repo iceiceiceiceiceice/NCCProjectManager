@@ -10,6 +10,7 @@ import javax.persistence.*;
  */
 @Entity
 @NamedQuery(name="Project.findAll", query="SELECT p FROM Project p")
+@Table(name="project")
 public class Project implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
@@ -19,15 +20,15 @@ public class Project implements Serializable {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="project_id")
 	private int project_id;
-
+	@Column(name = "customer")
 	private String customer;
-
+	@Column(name = "description")
 	private String description;
-
+	@Column(name = "PM")
 	private String pm;
-
+	@Column(name="projectName")
 	private String projectName;
-
+	@Column(name = "technology")
 	private String technology;
 
 	public Project() {
