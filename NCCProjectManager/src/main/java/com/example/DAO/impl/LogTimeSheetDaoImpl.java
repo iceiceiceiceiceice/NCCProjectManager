@@ -2,20 +2,14 @@ package com.example.DAO.impl;
 import java.util.List;
 
 import org.hibernate.HibernateException;
-import org.hibernate.JDBCException;
-import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.query.NativeQuery;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.example.DAO.LogTimeSheetDao;
 import com.example.Entity.LogTimeSheet;
-import com.example.Model.LogTimeSheetDTO;
-
-import javassist.convert.Transformer;
 
 @Repository(value="LogTimeSheetDao")
 @Transactional(rollbackFor = Exception.class)

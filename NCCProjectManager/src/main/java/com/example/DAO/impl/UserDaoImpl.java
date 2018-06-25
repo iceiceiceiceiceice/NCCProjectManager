@@ -1,7 +1,6 @@
 package com.example.DAO.impl;
 
 import java.util.List;
-import java.util.Set;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -10,7 +9,6 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.example.DAO.UserDao;
-import com.example.Entity.Project;
 import com.example.Entity.User;
 
 

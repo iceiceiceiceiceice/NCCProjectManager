@@ -39,6 +39,7 @@ public class UserServiceImpl implements UserService{
 	}
 
 	public void save(final User user) {
+		user.setRole("ROLE_USER");
 		userDao.save(user);
 	}
 
