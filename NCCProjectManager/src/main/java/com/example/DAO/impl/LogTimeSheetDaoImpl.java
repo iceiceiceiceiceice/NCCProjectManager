@@ -47,10 +47,10 @@ public class LogTimeSheetDaoImpl implements LogTimeSheetDao{
 				.setParameter(1, user_id).addEntity(LogTimeSheet.class).getResultList();
 	}
 
-	public String create(LogTimeSheet logTimeSheet) throws Exception{
+	public LogTimeSheet create(LogTimeSheet logTimeSheet) throws Exception{
 		try {
 			getSession().save(logTimeSheet);
-			return "success";
+			return logTimeSheet;
 		}catch (HibernateException e) {
 			throw new Exception("Saving the log time sheet failed, a cay", e);
 		}

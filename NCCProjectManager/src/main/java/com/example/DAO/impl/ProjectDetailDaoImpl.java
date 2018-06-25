@@ -19,7 +19,7 @@ import com.example.Entity.User;
 import com.example.Entity.UserDTOProjectDetail;
 
 
-@Repository(value="ProjectDao")
+@Repository(value="ProjectDetailDao")
 @Transactional(rollbackFor = Exception.class)
 public class ProjectDetailDaoImpl implements ProjectDetailDao {
 

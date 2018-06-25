@@ -44,9 +44,9 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `ncc`.`log time sheet`
+-- Table `ncc`.`log_time_sheet`
 -- -----------------------------------------------------
-CREATE TABLE `ncc`.`log time sheet` (
+CREATE TABLE `ncc`.`log_time_sheet` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `project_id` INT NOT NULL,
   `type` VARCHAR(45) NOT NULL,
@@ -54,13 +54,13 @@ CREATE TABLE `ncc`.`log time sheet` (
   `user_id` INT NOT NULL,
   PRIMARY KEY (`id`, `user_id`, `project_id`),
   INDEX `uer_key_idx` (`user_id` ASC),
-  INDEX `fk_log time sheet_project1_idx` (`project_id` ASC),
+  INDEX `fk_log_time_sheet_project1_idx` (`project_id` ASC),
   CONSTRAINT `uer_key`
     FOREIGN KEY (`user_id`)
     REFERENCES `ncc`.`user` (`id`)
     ON DELETE NO ACTION
     ON UPDATE CASCADE,
-  CONSTRAINT `fk_log time sheet_project1`
+  CONSTRAINT `fk_log_time_sheet_project1`
     FOREIGN KEY (`project_id`)
     REFERENCES `ncc`.`project` (`project_id`)
     ON DELETE NO ACTION
@@ -110,6 +110,6 @@ INSERT INTO `ncc`.`relation` (`id`,`user_id`, `project_id`) VALUES ('4','3', '2'
 INSERT INTO `ncc`.`relation` (`id`,`user_id`, `project_id`) VALUES ('5','4', '2');
 
 
-INSERT INTO `ncc`.`log time sheet` (`id`, `project_id`, `type`,`role`, `hours`, `user_id`) VALUES ('1', '1', 'task','DEV', '8', '2');
-INSERT INTO `ncc`.`log time sheet` (`id`, `project_id`, `type`,`role`, `hours`, `user_id`) VALUES ('2', '1', 'fix bug','QA', '8', '3');
+INSERT INTO `ncc`.`log_time_sheet` (`id`, `project_id`, `type`,`role`, `hours`, `user_id`) VALUES ('1', '1', 'task','DEV', '8', '2');
+INSERT INTO `ncc`.`log_time_sheet` (`id`, `project_id`, `type`,`role`, `hours`, `user_id`) VALUES ('2', '1', 'fix bug','QA', '8', '3');
 
