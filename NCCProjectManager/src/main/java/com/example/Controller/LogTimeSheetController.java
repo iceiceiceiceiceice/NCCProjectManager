@@ -34,7 +34,7 @@ public class LogTimeSheetController {
 	}
 	
 	@PostMapping("/create")
-	public String createLogTimeSheet(@RequestBody LogTimeSheet logTimeSheet) throws Exception {
+	public LogTimeSheet createLogTimeSheet(@RequestBody LogTimeSheet logTimeSheet) throws Exception {
 		return logTimeSheetService.createLogTimeSheet(logTimeSheet);
 	}
 	

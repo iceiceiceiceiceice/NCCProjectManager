@@ -21,27 +21,28 @@ public class LogTimeSheetServiceImpl implements LogTimeSheetService{
 		
 		return logTimeSheetDaoImpl.findAll();
 	}
-
+	
+	@Override
 	public List<LogTimeSheet> findLogTimeSheetByUserId(int user_id) {
 		return logTimeSheetDaoImpl.findByUserId(user_id);
 	}
-	
+	@Override
 	public List<LogTimeSheet> findLogTimeSheetByUserIdAndProjectId(int userId, int projectId) {
 		return logTimeSheetDaoImpl.findByUserIdAndProjectId(userId, projectId);
 	}
-
+	@Override
 	public LogTimeSheet findLogTimeSheetById(int id) {
 		return logTimeSheetDaoImpl.findById(id);
 	}
-	
-	public String createLogTimeSheet(LogTimeSheet logTimeSheet) throws Exception {
+	@Override
+	public LogTimeSheet createLogTimeSheet(LogTimeSheet logTimeSheet) throws Exception {
 		return logTimeSheetDaoImpl.create(logTimeSheet);
 	}
-
+	@Override
 	public String updatelogTimeSheet(LogTimeSheet logTimeSheet) {
 		return logTimeSheetDaoImpl.updateLogTimeSheet(logTimeSheet);
 	}
-
+	@Override
 	public String deleteLogTimeSheet(int id) {
 		return logTimeSheetDaoImpl.deleteLogTimeSheet(id);
 	}

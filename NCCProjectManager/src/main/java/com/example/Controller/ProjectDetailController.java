@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 
-import com.example.Dao.ProjectDetailDao;
+import com.example.DAO.ProjectDetailDao;
 import com.example.Entity.Project;
 import com.example.Entity.ProjectDetailRequest;
 import com.example.Entity.ProjectDetailResponse;
