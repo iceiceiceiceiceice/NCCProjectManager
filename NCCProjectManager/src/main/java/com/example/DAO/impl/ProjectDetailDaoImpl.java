@@ -8,19 +8,19 @@ import javax.persistence.PersistenceContext;
 import org.hibernate.query.Query;
 
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
+
 
 
 import com.example.DAO.ProjectDetailDao;
 import com.example.Entity.Project;
 import com.example.Entity.Relation;
 
-import com.example.Entity.User;
-import com.example.Entity.UserDTOProjectDetail;
+
+import com.example.Model.UserDTOProjectDetail;
 
 
-@Repository(value="ProjectDetailDao")
-@Transactional(rollbackFor = Exception.class)
+@Repository
+
 public class ProjectDetailDaoImpl implements ProjectDetailDao {
 
 
