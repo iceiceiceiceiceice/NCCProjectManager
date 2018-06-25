@@ -15,7 +15,7 @@ import com.example.Entity.Project;
 import com.example.Entity.ProjectDetailRequest;
 import com.example.Entity.ProjectDetailResponse;
 //import com.example.Entity.User;
-import com.example.Entity.UserDTOProjectDetail;
+import com.example.Model.UserDTOProjectDetail;
 
 
 

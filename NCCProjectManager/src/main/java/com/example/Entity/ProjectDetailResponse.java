@@ -1,7 +1,7 @@
 package com.example.Entity;
 
 import java.util.List;
-
+import com.example.Model.UserDTOProjectDetail;
 public class ProjectDetailResponse {
 	private Project project;
 	private List<UserDTOProjectDetail> list_user;
