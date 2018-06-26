@@ -26,4 +26,10 @@ public class Relation implements Serializable {
 		this.id = id;
 	}
 
+	public int getuser_id() {
+		// TODO Auto-generated method stub
+		return id.getUserId();
+	}
+	
+
 }

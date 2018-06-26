@@ -7,7 +7,7 @@ import java.util.List;
 
 import com.example.Entity.Project;
 //import com.example.Entity.User;
-import com.example.Model.UserDTOProjectDetail;
+import com.example.Entity.UserDTOProjectDetail;
 
 
 public interface ProjectDetailDao  {

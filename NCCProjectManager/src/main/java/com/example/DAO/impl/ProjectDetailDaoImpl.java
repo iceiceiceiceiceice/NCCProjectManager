@@ -16,7 +16,7 @@ import com.example.Entity.Project;
 import com.example.Entity.Relation;
 
 
-import com.example.Model.UserDTOProjectDetail;
+import com.example.Entity.UserDTOProjectDetail;
 
 
 @Repository

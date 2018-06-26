@@ -4,6 +4,7 @@ import java.util.List;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
@@ -15,10 +16,10 @@ import com.example.Entity.Project;
 import com.example.Entity.ProjectDetailRequest;
 import com.example.Entity.ProjectDetailResponse;
 //import com.example.Entity.User;
-import com.example.Model.UserDTOProjectDetail;
+import com.example.Entity.UserDTOProjectDetail;
 
 
-
+@CrossOrigin
 @RestController
 public class ProjectDetailController {
 //	 
