@@ -67,7 +67,7 @@ public class UserController {
 				u = userService.loadUserByUsername(user.getUsername());
 				httpStatus = HttpStatus.OK;
 			} else {
-				result = "Wrong userId and password";
+				result = null;
 				httpStatus = HttpStatus.BAD_REQUEST;
 			}
 		} catch (Exception ex) {

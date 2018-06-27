@@ -8,6 +8,7 @@ import javax.persistence.*;
  * 
  */
 @Embeddable
+@Table(name="relation")
 public class RelationPK implements Serializable {
 	//default serial version id, required for serializable classes.
 	private static final long serialVersionUID = 1L;

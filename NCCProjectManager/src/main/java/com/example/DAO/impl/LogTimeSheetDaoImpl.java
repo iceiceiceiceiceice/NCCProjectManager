@@ -46,28 +46,29 @@ public class LogTimeSheetDaoImpl implements LogTimeSheetDao{
 	}
 
 	@SuppressWarnings("unchecked")
+	@Override
 	public List<LogTimeSheet> findByUserId(int user_id) {
 		return getSession()
 				.createNativeQuery("SELECT id, project_id, role, type, hours, user_id FROM log_time_sheet   WHERE user_id = ?1")
 				.setParameter(1, user_id).addEntity(LogTimeSheet.class).getResultList();
 	}
-
-	public LogTimeSheet create(LogTimeSheet logTimeSheet) throws Exception{
+	@Override
+	public boolean create(LogTimeSheet logTimeSheet) throws Exception{
 		try {
 			getSession().save(logTimeSheet);
-			return logTimeSheet;
+			return true;
 		}catch (HibernateException e) {
 			throw new Exception("Saving the log time sheet failed, a cay", e);
 		}
 		
 	}
-
+	@Override
 	public LogTimeSheet findById(int id) {
 		return (LogTimeSheet) getSession()
 				.createNativeQuery("SELECT id, project_id, role, type, hours, user_id FROM log_time_sheet   WHERE id = ?1")
 				.setParameter(1, id).addEntity(LogTimeSheet.class).getSingleResult();
 	}
-
+	@Override
 	public List<LogTimeSheet> findByUserIdAndProjectId(int userId, int projectId) {
 		@SuppressWarnings("unchecked")
 		List<LogTimeSheet> listResult=   getSession()
@@ -78,13 +79,13 @@ public class LogTimeSheetDaoImpl implements LogTimeSheetDao{
 		}
 		return listResult;
 	}
-
+	@Override
 	public String updateLogTimeSheet(LogTimeSheet logTimeSheet) {
 			getSession().update("log_time_sheet",logTimeSheet);
 			return RESULT_OK;
 		
 	}
-
+	@Override
 	public String deleteLogTimeSheet(int id) {
 		 getSession().delete(findById(id));
 		 return RESULT_OK;
