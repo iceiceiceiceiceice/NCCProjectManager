@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.example.DAO.impl.LogTimeSheetDaoImpl;
 import com.example.Entity.LogTimeSheet;
+import com.example.Model.ProjectLogTimeSheetDTO;
 import com.example.Service.LogTimeSheetService;
 
 @Service
@@ -45,5 +46,11 @@ public class LogTimeSheetServiceImpl implements LogTimeSheetService{
 	@Override
 	public String deleteLogTimeSheet(int id) {
 		return logTimeSheetDaoImpl.deleteLogTimeSheet(id);
+	}
+
+	@Override
+	public ProjectLogTimeSheetDTO findLogTimeSheetByProjectIdWithListUser(int project_id) {
+		
+		return logTimeSheetDaoImpl.findLogTimeSheetByProjectIdWithListUser(project_id);
 	}
 }

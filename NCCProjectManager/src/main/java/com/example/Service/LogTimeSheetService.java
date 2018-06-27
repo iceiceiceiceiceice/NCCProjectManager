@@ -3,6 +3,7 @@ package com.example.Service;
 import java.util.List;
 
 import com.example.Entity.LogTimeSheet;
+import com.example.Model.ProjectLogTimeSheetDTO;
 
 public interface LogTimeSheetService {
 
@@ -13,4 +14,5 @@ public interface LogTimeSheetService {
 	public LogTimeSheet createLogTimeSheet(LogTimeSheet logTimeSheet) throws Exception;
 	public String updatelogTimeSheet(LogTimeSheet logTimeSheet);
 	public String deleteLogTimeSheet(int id);
+	public ProjectLogTimeSheetDTO findLogTimeSheetByProjectIdWithListUser(int project_id);
 }

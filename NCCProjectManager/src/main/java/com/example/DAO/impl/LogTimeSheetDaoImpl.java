@@ -1,4 +1,5 @@
 package com.example.DAO.impl;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.HibernateException;
@@ -9,7 +10,13 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.example.DAO.LogTimeSheetDao;
+import com.example.DAO.ProjectDao;
 import com.example.Entity.LogTimeSheet;
+import com.example.Entity.Project;
+import com.example.Entity.User;
+import com.example.Model.LogTimeSheetUsername;
+import com.example.Model.ProjectLogTimeSheetDTO;
+import com.example.Model.UserDTO;
 
 @Repository(value="LogTimeSheetDao")
 @Transactional(rollbackFor = Exception.class)
@@ -19,6 +26,10 @@ public class LogTimeSheetDaoImpl implements LogTimeSheetDao{
 	
 	@Autowired
 	private SessionFactory sessionFactory;
+	@Autowired
+	ProjectDaoImpl pDao;
+	@Autowired
+	UserDaoImpl uDao;
 	
 	public Session getSession() {
 		if(sessionFactory != null) {
@@ -77,6 +88,42 @@ public class LogTimeSheetDaoImpl implements LogTimeSheetDao{
 	public String deleteLogTimeSheet(int id) {
 		 getSession().delete(findById(id));
 		 return RESULT_OK;
+	}
+	
+
+	@Override
+	public ProjectLogTimeSheetDTO findLogTimeSheetByProjectIdWithListUser(int project_id) {
+		@SuppressWarnings("unchecked")
+		List<LogTimeSheet> listLogTime=  findAll();
+		List<Project> projects = pDao.findAll();
+		List<User> users = uDao.findAll();
+		Project projectResult = new Project();
+		for(int i=0;i<projects.size();i++) {
+			if(projects.get(i).getproject_id()==project_id) {
+				projectResult = projects.get(i);
+			}
+		}
+		
+		List<LogTimeSheetUsername> listLogTimeTemp = new ArrayList<>();
+		for(int j=0;j<listLogTime.size();j++) {
+			if(listLogTime.get(j).getProject_id() == project_id ) {
+				String username = "";
+				for(User user : users) {
+			        if(user.getId() ==  listLogTime.get(j).getUser_id()) {
+			        	username = user.getUsername();
+			        }
+			    }
+				//int id, int project_id, String role, String type, int hours, int user_id,String username
+				listLogTimeTemp.add(new LogTimeSheetUsername(listLogTime.get(j).getId(),
+						listLogTime.get(j).getProject_id(),
+						listLogTime.get(j).getRole(),
+						listLogTime.get(j).getType(),
+						listLogTime.get(j).getHours(),
+						listLogTime.get(j).getUser_id(),username));
+			}
+		}
+		ProjectLogTimeSheetDTO result = new ProjectLogTimeSheetDTO(project_id,projectResult.getProjectName(),listLogTimeTemp);
+		return result;
 	}
 	
 
