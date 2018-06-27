@@ -8,10 +8,13 @@ import org.springframework.stereotype.Service;
 
 import com.example.DAO.impl.LogTimeSheetDaoImpl;
 import com.example.Entity.LogTimeSheet;
+import com.example.Model.LogTimeSheetDTO;
 import com.example.Service.LogTimeSheetService;
 
 @Service
 public class LogTimeSheetServiceImpl implements LogTimeSheetService{
+	
+	Boolean status;
 
 	@Autowired
 	private LogTimeSheetDaoImpl logTimeSheetDaoImpl;
@@ -35,8 +38,8 @@ public class LogTimeSheetServiceImpl implements LogTimeSheetService{
 		return logTimeSheetDaoImpl.findById(id);
 	}
 	@Override
-	public LogTimeSheet createLogTimeSheet(LogTimeSheet logTimeSheet) throws Exception {
-		return logTimeSheetDaoImpl.create(logTimeSheet);
+	public LogTimeSheetDTO createLogTimeSheet(LogTimeSheet logTimeSheet) throws Exception {
+		 return new LogTimeSheetDTO(logTimeSheetDaoImpl.create(logTimeSheet), logTimeSheet);
 	}
 	@Override
 	public String updatelogTimeSheet(LogTimeSheet logTimeSheet) {

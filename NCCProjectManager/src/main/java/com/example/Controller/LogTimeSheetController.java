@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.Entity.LogTimeSheet;
+import com.example.Model.LogTimeSheetDTO;
+import com.example.Service.LogTimeSheetService;
 import com.example.Service.impl.LogTimeSheetServiceImpl;
 @CrossOrigin
 @RestController
@@ -21,7 +23,7 @@ import com.example.Service.impl.LogTimeSheetServiceImpl;
 public class LogTimeSheetController {
 	
 	@Autowired
-	private LogTimeSheetServiceImpl logTimeSheetService;
+	private LogTimeSheetService logTimeSheetService;
 	
 	@GetMapping("/all")
 	public List<LogTimeSheet> getAllLogTimeSheetOfAllUser() {
@@ -34,7 +36,7 @@ public class LogTimeSheetController {
 	}
 	
 	@PostMapping("/create")
-	public LogTimeSheet createLogTimeSheet(@RequestBody LogTimeSheet logTimeSheet) throws Exception {
+	public LogTimeSheetDTO createLogTimeSheet(@RequestBody LogTimeSheet logTimeSheet) throws Exception {
 		return logTimeSheetService.createLogTimeSheet(logTimeSheet);
 	}
 	
