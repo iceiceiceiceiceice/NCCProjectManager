@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.Entity.LogTimeSheet;
 import com.example.Model.LogTimeSheetDTO;
+import com.example.Service.LogTimeSheetService;
 import com.example.Service.impl.LogTimeSheetServiceImpl;
 @CrossOrigin
 @RestController
@@ -22,7 +23,7 @@ import com.example.Service.impl.LogTimeSheetServiceImpl;
 public class LogTimeSheetController {
 	
 	@Autowired
-	private LogTimeSheetServiceImpl logTimeSheetService;
+	private LogTimeSheetService logTimeSheetService;
 	
 	@GetMapping("/all")
 	public List<LogTimeSheet> getAllLogTimeSheetOfAllUser() {
