@@ -11,9 +11,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.Entity.LogTimeSheet;
+import com.example.Model.ProjectLogTimeSheetDTO;
 import com.example.Model.LogTimeSheetDTO;
 import com.example.Service.LogTimeSheetService;
 import com.example.Service.impl.LogTimeSheetServiceImpl;
@@ -53,5 +55,10 @@ public class LogTimeSheetController {
 	@GetMapping("/user/{user_id}/project/{project_id}")
 	public List<LogTimeSheet> getLogTimeSheetOfOneProjectOfOneUser(@PathVariable int user_id, @PathVariable int project_id){
 		return logTimeSheetService.findLogTimeSheetByUserIdAndProjectId(user_id, project_id);
+	}
+	
+	@PostMapping("/user/project")
+	public ProjectLogTimeSheetDTO getLogTimeSheetByProjectIdWithListUser( @RequestParam int project_id){
+		return logTimeSheetService.findLogTimeSheetByProjectIdWithListUser(project_id);
 	}
 }
