@@ -1,0 +1,68 @@
+<app-dashboard></app-dashboard>
+<div class="content-wrapper">
+    <div class="container-fluid">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+                My Dashboard
+            </li>
+            <li class="breadcrumb-item">
+                <a routerLink="/create-project"> Create Project</a>
+            </li>
+            <li class="breadcrumb-item">
+                <a routerLink="/create-note">Create Notes</a>
+            </li>
+            <li class="breadcrumb-item active">
+                <a routerLink="/add-user">Add user to the project</a>
+            </li>
+        </ol>
+        <div class="card add-user">
+            <div class="card-header text-center">
+                <h3>Project Management</h3>
+            </div>
+            <div class="card-body">
+                <div class="row justify-content-around">
+                    <table class="table table-bordered table-hover table-sm">
+                        <thead>
+                            <tr>
+                                <td scope="col">#</td>
+                                <td scope="col">Name Project</td>
+                                <td> Choose button </td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor = "let list of listProjects">
+                                <td id="{{list[1].project_id}}"></td>
+                                <td>{{list[1].projectName}}</td>
+                                <td>
+                                    <div class="row justify-content-center">
+                                        <div class="col-4 text-right">
+                                            <button 
+                                                class="btn btn-success" 
+                                                type="button"
+                                                routerLink="/project-detail/{{list[1].project_id}}"
+                                            >View project information</button>
+                                        </div>
+                                        <div class="col-4">
+                                            <button 
+                                                class="btn btn-primary" 
+                                                type="button"
+                                                routerLink="/add-user"
+                                            >Add user to the project</button>
+                                        </div>
+                                        <div class="col-4 text-left">
+                                            <button 
+                                                class="btn btn-info" 
+                                                type="button"
+                                                routerLink="/note-project/{{list[1].project_id}}"
+                                            >View notes information </button>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
