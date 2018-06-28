@@ -1,6 +1,7 @@
 package com.example.Controller;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -46,9 +47,10 @@ public class ProjectController {
 		return cP;
 	}
 	
-	@RequestMapping(value="/project/user/{user_id}", method = RequestMethod.GET)
+	@RequestMapping(value="/project/user", method = RequestMethod.POST)
 	@ResponseBody
-	public List<Project> getProjectOfUserByUserId(@PathVariable int user_id){
-		return projectService.findProjectOfUserByUserId(user_id);
+	public List<Project> getProjectOfUserByUserId(@RequestBody Map<String, Integer> map){
+		return projectService.findProjectOfUserByUserId(map.get("user_id"));
 	}
+	
 }

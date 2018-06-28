@@ -22,8 +22,8 @@ import com.fasterxml.jackson.annotation.JsonInclude;
  * 
  */
 @Entity
-@JsonInclude(JsonInclude.Include.NON_NULL)
-@JsonIgnoreProperties(value = { "role", "authorities" })
+/*@JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonIgnoreProperties(value = { "role", "authorities" })*/
 public class User implements Serializable {
 	private static final long serialVersionUID = 1L;
 	

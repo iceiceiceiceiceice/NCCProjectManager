@@ -10,6 +10,7 @@ import com.example.DAO.impl.LogTimeSheetDaoImpl;
 import com.example.Entity.LogTimeSheet;
 import com.example.Model.ProjectLogTimeSheetDTO;
 import com.example.Model.LogTimeSheetDTO;
+import com.example.Model.LogTimeSheetUserWithProjectNameDTO;
 import com.example.Service.LogTimeSheetService;
 
 @Service
@@ -27,7 +28,7 @@ public class LogTimeSheetServiceImpl implements LogTimeSheetService{
 	}
 	
 	@Override
-	public List<LogTimeSheet> findLogTimeSheetByUserId(int user_id) {
+	public List<LogTimeSheetUserWithProjectNameDTO> findLogTimeSheetByUserId(int user_id) {
 		return logTimeSheetDaoImpl.findByUserId(user_id);
 	}
 	@Override

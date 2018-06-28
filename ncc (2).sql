@@ -27,6 +27,8 @@ CREATE TABLE `ncc`.`project` (
   `PM` VARCHAR(45) NOT NULL,
   `technology` VARCHAR(45) NOT NULL,
   `description` VARCHAR(45) NOT NULL,
+  `status` VARCHAR(45) NOT NULL,
+  `notes` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`project_id`))
 ENGINE = InnoDB;
 
@@ -43,6 +45,17 @@ CREATE TABLE `ncc`.`user` (
 ENGINE = InnoDB;
 
 
+create table `ncc`.`user_info`(
+  `user_id` INT NOT NULL AUTO_INCREMENT,
+  `job` VARCHAR(45) NOT NULL,
+   PRIMARY KEY (`user_id`),
+   INDEX `user_key_idx` (`user_id` ASC),
+  CONSTRAINT `uer_key`
+    FOREIGN KEY (`user_id`)
+    REFERENCES `ncc`.`user` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE CASCADE,
+)
 -- -----------------------------------------------------
 -- Table `ncc`.`log time sheet`
 -- -----------------------------------------------------
@@ -73,10 +86,9 @@ ENGINE = InnoDB;
 -- Table `ncc`.`relation`
 -- -----------------------------------------------------
 CREATE TABLE `ncc`.`relation` (
-  `id` INT NOT NULL AUTO_INCREMENT,
   `user_id` INT NOT NULL,
   `project_id` INT NOT NULL,
-  PRIMARY KEY (`id`),
+  PRIMARY KEY (`user_id`,`project_id`),
   INDEX `proj_key_idx` (`project_id` ASC),
   CONSTRAINT `user_key`
     FOREIGN KEY (`user_id`)

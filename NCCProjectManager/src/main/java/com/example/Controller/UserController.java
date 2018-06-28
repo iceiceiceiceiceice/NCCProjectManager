@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
@@ -32,14 +33,24 @@ public class UserController {
 	private UserServiceImpl userService;
 	@Autowired
 	private JwtService jwtService;
-	
+
 	@PostMapping(value=("/register"))
 	@ResponseBody
 	public String creat_user(@RequestBody User user) {
+		List<UserDTO> ursers = userService.findAll();
+		for (UserDTO userExist : ursers) {
+			if (StringUtils.equals(userExist.getEmail(),user.getUsername()))
+			{
+				return "{\"status\":\"false\"}"; 
+			}
+		}
+		try {
+			userService.save(user);
+		} catch (Exception e) {
+			return "{\"status\":\"false\"}"; 
+		}
 
-		userService.save(user);
-		String a ="{\"status\":\"true\"}"; 
-		return a;
+		return "{\"status\":\"true\"}";
 	}
 
 	@GetMapping(value = { "/get-users" })
@@ -77,7 +88,7 @@ public class UserController {
 		return userService.TokenvsProfile(result, u);
 
 	}
-	
-	
-	
+
+
+
 }

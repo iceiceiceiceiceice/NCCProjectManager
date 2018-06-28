@@ -14,6 +14,7 @@ import com.example.DAO.ProjectDao;
 import com.example.Entity.LogTimeSheet;
 import com.example.Entity.Project;
 import com.example.Entity.User;
+import com.example.Model.LogTimeSheetUserWithProjectNameDTO;
 import com.example.Model.LogTimeSheetUsername;
 import com.example.Model.ProjectLogTimeSheetDTO;
 import com.example.Model.UserDTO;
@@ -47,10 +48,21 @@ public class LogTimeSheetDaoImpl implements LogTimeSheetDao{
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<LogTimeSheet> findByUserId(int user_id) {
-		return getSession()
-				.createNativeQuery("SELECT id, project_id, role, type, hours, user_id FROM log_time_sheet   WHERE user_id = ?1")
-				.setParameter(1, user_id).addEntity(LogTimeSheet.class).getResultList();
+	public List<LogTimeSheetUserWithProjectNameDTO> findByUserId(int user_id) {
+		List<Object[]> data = getSession()
+				.createNativeQuery("SELECT log.id, log.project_id, role, type, hours, projectName FROM log_time_sheet log INNER JOIN project ON  log.project_id = project.project_id WHERE user_id = ?1")
+				.setParameter(1, user_id).getResultList();
+		List<LogTimeSheetUserWithProjectNameDTO> listResult = new ArrayList<>();
+		for(Object[] object : data) {
+			int id = (int) object[0];
+			int project_id = (int) object[1];
+			String role = (String) object[2];
+			String type = (String) object[3];
+			int hours = (int) object[4];
+			String projectName = (String) object[5];
+			listResult.add(new LogTimeSheetUserWithProjectNameDTO(id, project_id, role, type, hours, user_id, projectName));
+		}
+		return listResult;
 	}
 	@Override
 	public boolean create(LogTimeSheet logTimeSheet) throws Exception{

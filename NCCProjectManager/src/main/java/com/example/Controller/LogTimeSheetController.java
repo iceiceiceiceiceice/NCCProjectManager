@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.Entity.LogTimeSheet;
 import com.example.Model.ProjectLogTimeSheetDTO;
 import com.example.Model.LogTimeSheetDTO;
+import com.example.Model.LogTimeSheetUserWithProjectNameDTO;
 import com.example.Service.LogTimeSheetService;
 import com.example.Service.impl.LogTimeSheetServiceImpl;
 @CrossOrigin
@@ -34,7 +35,7 @@ public class LogTimeSheetController {
 	}
 	@CrossOrigin
 	@PostMapping("/user")
-	public List<LogTimeSheet> getAllLogTimeSheetOfOneUser(@RequestBody Map<String, Integer> map){
+	public List<LogTimeSheetUserWithProjectNameDTO> getAllLogTimeSheetOfOneUser(@RequestBody Map<String, Integer> map){
 		return logTimeSheetService.findLogTimeSheetByUserId(map.get("user_id"));
 	}
 	
