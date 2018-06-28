@@ -1,6 +1,7 @@
 package com.example.Controller;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -31,10 +32,10 @@ public class LogTimeSheetController {
 	public List<LogTimeSheet> getAllLogTimeSheetOfAllUser() {
 		return logTimeSheetService.findAll();
 	}
-	
-	@GetMapping("/user/{user_id}")
-	public List<LogTimeSheet> getAllLogTimeSheetOfOneUser(@PathVariable int user_id){
-		return logTimeSheetService.findLogTimeSheetByUserId(user_id);
+	@CrossOrigin
+	@PostMapping("/user")
+	public List<LogTimeSheet> getAllLogTimeSheetOfOneUser(@RequestBody Map<String, Integer> map){
+		return logTimeSheetService.findLogTimeSheetByUserId(map.get("user_id"));
 	}
 	
 	@PostMapping("/create")
@@ -58,7 +59,7 @@ public class LogTimeSheetController {
 	}
 	
 	@PostMapping("/user/project")
-	public ProjectLogTimeSheetDTO getLogTimeSheetByProjectIdWithListUser( @RequestParam int project_id){
-		return logTimeSheetService.findLogTimeSheetByProjectIdWithListUser(project_id);
+	public ProjectLogTimeSheetDTO getLogTimeSheetByProjectIdWithListUser( @RequestBody Map<String, Integer> map){
+		return logTimeSheetService.findLogTimeSheetByProjectIdWithListUser(map.get("project_id"));
 	}
 }
