@@ -50,7 +50,7 @@ create table `ncc`.`user_info`(
   `job` VARCHAR(45) NOT NULL,
    PRIMARY KEY (`user_id`),
    INDEX `user_key_idx` (`user_id` ASC),
-  CONSTRAINT `uer_key`
+  CONSTRAINT `user_key`
     FOREIGN KEY (`user_id`)
     REFERENCES `ncc`.`user` (`id`)
     ON DELETE NO ACTION
@@ -66,6 +66,7 @@ CREATE TABLE `ncc`.`log_time_sheet` (
   `type` VARCHAR(45) NOT NULL,
   `hours` INT NOT NULL,
   `user_id` INT NOT NULL,
+  `description` INT NOT NULL,
   PRIMARY KEY (`id`, `user_id`, `project_id`),
   INDEX `uer_key_idx` (`user_id` ASC),
   INDEX `fk_log time sheet_project1_idx` (`project_id` ASC),
