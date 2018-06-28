@@ -67,6 +67,7 @@ CREATE TABLE `ncc`.`log_time_sheet` (
   `hours` INT NOT NULL,
   `user_id` INT NOT NULL,
   `description` INT NOT NULL,
+  `date` DATETIME NOT NULL,
   PRIMARY KEY (`id`, `user_id`, `project_id`),
   INDEX `uer_key_idx` (`user_id` ASC),
   INDEX `fk_log time sheet_project1_idx` (`project_id` ASC),
