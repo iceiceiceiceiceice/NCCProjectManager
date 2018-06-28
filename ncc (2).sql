@@ -121,7 +121,7 @@ INSERT INTO `ncc`.`user` (`role`, `username`, `password`) VALUES ('ROLE_USER', '
 INSERT INTO `ncc`.`user` (`role`, `username`, `password`) VALUES ('ROLE_USER', 'user7@gmail.com', '12345678');
 
 INSERT INTO `ncc`.`project` (`project_id`, `projectName`, `customer`, `PM`, `technology`, `description`, `status`, `notes`) VALUES ('1', 'Change the world ', 'Donald Trump', 'user1@gmail.com', 'Java', 'make america great again', 'running', 'make asdasda');
-INSERT INTO `ncc`.`project` (`project_id`, `projectName`, `customer`, `PM`, `technology`, `description`, `status`, `notes`) VALUES ('2', 'Impossible mission', 'Nam sida', 'user@gmail.com', 'C++', 'giup anh Thien kiem nguoi yeu', 'failed', 'too hard');
+INSERT INTO `ncc`.`project` (`project_id`, `projectName`, `customer`, `PM`, `technology`, `description`, `status`, `notes`) VALUES ('2', 'Impossible mission', 'Nam sida', 'user2@gmail.com', 'C++', 'giup anh Thien kiem nguoi yeu', 'failed', 'too hard');
 
 INSERT INTO `ncc`.`relation` (`user_id`, `project_id`) VALUES ('2', '1');
 INSERT INTO `ncc`.`relation` (`user_id`, `project_id`) VALUES ('6', '1');
