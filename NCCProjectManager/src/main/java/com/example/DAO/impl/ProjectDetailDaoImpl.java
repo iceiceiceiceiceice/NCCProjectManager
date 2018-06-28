@@ -40,7 +40,7 @@ public class ProjectDetailDaoImpl implements ProjectDetailDao {
 	
 	@SuppressWarnings("unchecked")
 	public List<UserDTOProjectDetail> findByProjectID(int project_id) {
-		Query<Relation> query = (Query<Relation>) entityManager.createQuery("SELECT r FROM Relation r WHERE r.project_id = "+project_id);
+		Query<Relation> query = (Query<Relation>) entityManager.createQuery("SELECT r FROM Relation r WHERE r.id.projectId = "+project_id);
 		List<Relation> rela = query.list();
 		Query<UserDTOProjectDetail> query2 = (Query<UserDTOProjectDetail>) entityManager.createQuery("SELECT u FROM UserDTOProjectDetail u WHERE u.id = "+ rela.get(0).getuser_id());
 		List<UserDTOProjectDetail> userlist = query2.list();
