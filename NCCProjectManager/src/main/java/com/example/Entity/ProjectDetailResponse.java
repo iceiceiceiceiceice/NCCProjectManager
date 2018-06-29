@@ -5,6 +5,7 @@ import com.example.Entity.UserDTOProjectDetail;
 public class ProjectDetailResponse {
 	private Project project;
 	private List<UserDTOProjectDetail> list_user;
+	int number;
 	public ProjectDetailResponse() {
 		
 	}

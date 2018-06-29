@@ -42,13 +42,19 @@ public class ProjectDetailDaoImpl implements ProjectDetailDao {
 	public List<UserDTOProjectDetail> findByProjectID(int project_id) {
 		Query<Relation> query = (Query<Relation>) entityManager.createQuery("SELECT r FROM Relation r WHERE r.id.projectId = "+project_id);
 		List<Relation> rela = query.list();
-		Query<UserDTOProjectDetail> query2 = (Query<UserDTOProjectDetail>) entityManager.createQuery("SELECT u FROM UserDTOProjectDetail u WHERE u.id = "+ rela.get(0).getuser_id());
-		List<UserDTOProjectDetail> userlist = query2.list();
-		for(int i = 1;i<rela.size();i++) {
-			query2 = (Query<UserDTOProjectDetail>) entityManager.createQuery("SELECT u FROM UserDTOProjectDetail u WHERE u.id = "+ rela.get(i).getuser_id());
-			userlist.addAll(query2.list());
+		if(rela.isEmpty()) return null;
+		else {
+			Query<UserDTOProjectDetail> query2 = (Query<UserDTOProjectDetail>) entityManager.createQuery("SELECT u FROM UserDTOProjectDetail u WHERE u.id = "+ rela.get(0).getuser_id());
+			List<UserDTOProjectDetail> userlist = query2.list();
+			if(rela.size()<2) return null;
+			else {
+				for(int i = 1;i<rela.size();i++) {
+					query2 = (Query<UserDTOProjectDetail>) entityManager.createQuery("SELECT u FROM UserDTOProjectDetail u WHERE u.id = "+ rela.get(i).getuser_id());
+					userlist.addAll(query2.list());
+				}
+				return userlist;
+			}
 		}
-		return userlist;
 	}
 
 

@@ -27,8 +27,8 @@ CREATE TABLE `ncc`.`project` (
   `PM` VARCHAR(45) NOT NULL,
   `technology` VARCHAR(45) NOT NULL,
   `description` VARCHAR(45) NOT NULL,
-  `status` VARCHAR(45) NOT NULL,
-  `notes` VARCHAR(45) NOT NULL,
+  `status` VARCHAR(45) NOT NULL DEFAULT 'running',
+  `notes` VARCHAR(45) NULL,
   PRIMARY KEY (`project_id`))
 ENGINE = InnoDB;
 
