@@ -55,4 +55,9 @@ public class ProjectServiceImpl implements ProjectService {
 		return projectDaoImpl.findProjectOfUser(user_id);
 	}
 
+
+	public List<Project> getProjectByIndex(int intValue) {
+		return projectDaoImpl.getProjectByIndex( intValue);
+	}
+
 }

@@ -1,5 +1,6 @@
 package com.example.Controller;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -24,13 +25,13 @@ public class ProjectController {
 	@Autowired
 	private ProjectServiceImpl projectService;
 	
-	@GetMapping(value= ("/get-projects"))
+	@PostMapping(value= ("/get-projects"))
 	@ResponseBody
-	public List<Project> listProject(Model model)
+	public List<Project> listProject(@RequestBody HashMap<String, Integer> Hmap)
 	{
 		
-		List<Project> list = projectService.findAll();
-		return list;
+		return projectService.getProjectByIndex(Hmap.get("index_of_page").intValue());
+		
 	}
 	
 	

@@ -2,6 +2,7 @@ package com.example.DAO.impl;
 
 import java.util.List;
 
+import org.hibernate.SQLQuery;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -62,6 +63,15 @@ public class ProjectDaoImpl implements ProjectDao {
 			return null;
 		}
 		return p;
+	}
+
+	public List<Project> getProjectByIndex(int intValue) {
+		Session session = this.sessionFactory.getCurrentSession();
+		String qry = "select * from project limit "+(intValue*10-10)+","+(intValue*10);
+		SQLQuery query = session.createSQLQuery(qry).addEntity(Project.class);
+		List<Project> list = query.list();
+		
+		return list;
 	}
 
 }
