@@ -35,6 +35,6 @@ public class ProjectDetailController {
 	public ProjectDetailResponse getDetail(@RequestBody ProjectDetailRequest projectdetail){
 		List<Project> project = projectdao.getProjectDetail(projectdetail.getProject_id());
 		List<UserDTOProjectDetail> listuser = projectdao.findByProjectID(projectdetail.getProject_id());
-		return new ProjectDetailResponse(project.get(0),listuser);
+		return new ProjectDetailResponse(project.get(0),listuser,listuser.size());
 	}
 }

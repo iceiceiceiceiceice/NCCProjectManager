@@ -112,8 +112,8 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 
 
 INSERT INTO `ncc`.`user` (`id`, `role`, `username`, `password`) VALUES ('1', 'ROLE_ADMIN', 'admin@gmail.com', '12345678');
-INSERT INTO `ncc`.`user` (`role`, `username`, `password`) VALUES ('ROLE_USER', 'user1@gmail.com', '12345678');
-INSERT INTO `ncc`.`user` (`role`, `username`, `password`) VALUES ('ROLE_USER', 'user2@gmail.com', '12345678');
+INSERT INTO `ncc`.`user` (`role`, `username`, `password`) VALUES ('ROLE_PM', 'pm1@gmail.com', '12345678');
+INSERT INTO `ncc`.`user` (`role`, `username`, `password`) VALUES ('ROLE_PM', 'pm2@gmail.com', '12345678');
 INSERT INTO `ncc`.`user` (`role`, `username`, `password`) VALUES ('ROLE_USER', 'user3@gmail.com', '12345678');
 INSERT INTO `ncc`.`user` (`role`, `username`, `password`) VALUES ('ROLE_USER', 'user4@gmail.com', '12345678');
 INSERT INTO `ncc`.`user` (`role`, `username`, `password`) VALUES ('ROLE_USER', 'user5@gmail.com', '12345678');
