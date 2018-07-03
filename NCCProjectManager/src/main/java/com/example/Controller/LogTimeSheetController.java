@@ -54,10 +54,10 @@ public class LogTimeSheetController {
 		return logTimeSheetService.deleteLogTimeSheet(id);
 	}
 	
-	@GetMapping("/user/{user_id}/project/{project_id}")
+	/*@GetMapping("/user/{user_id}/project/{project_id}")
 	public List<LogTimeSheet> getLogTimeSheetOfOneProjectOfOneUser(@PathVariable int user_id, @PathVariable int project_id){
 		return logTimeSheetService.findLogTimeSheetByUserIdAndProjectId(user_id, project_id);
-	}
+	}*/
 	
 	@PostMapping("/user/project")
 	public ProjectLogTimeSheetDTO getLogTimeSheetByProjectIdWithListUser( @RequestBody Map<String, Integer> map){
