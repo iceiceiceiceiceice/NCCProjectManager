@@ -1,0 +1,64 @@
+<app-dashboard></app-dashboard>
+<div class="content-wrapper">
+  <div class="container-fluid">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item">
+        <a routerLink="/my-dashboard">My dashboard</a>
+      </li>
+      <li class="breadcrumb-item">
+        <a routerLink="/create-project"> Create Project</a>
+      </li>
+      <li class="breadcrumb-item">
+        <a routerLink="/create-note">Create Notes</a>
+      </li>
+      <li class="breadcrumb-item active">
+        <a routerLink="/add-user">Add user to the project</a>
+      </li>
+      <li class="breadcrumb-item active">
+        View all notes
+      </li>
+    </ol>
+    <div class="card add-user">
+      <div class="card-header text-center">
+        <h3> Information Notes </h3>
+      </div>
+      <div class="card-body">
+        <table class="table table-bordered table-hover table-responsive-sm table-sm table-project">
+          <thead class="text-center">
+          <tr>
+            <td scope="col">#</td>
+            <td scope="col">Notes id</td>
+            <td scope="col">Name Project</td>
+            <td scope="col">Roles</td>
+            <td scope="col">Job type</td>
+            <td scope="col">Hours</td>
+            <td scope="col">Date</td>
+            <td scope="col">User create note</td>
+            <td scope="col">Description</td>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor = "let list of listAllNotes | paginate: { itemsPerPage: numberRow, currentPage: p , totalItems: counts}">
+            <td></td>
+            <td>{{list[1].log_time_sheet_id}}</td>
+            <td>{{list[1].projectName}}</td>
+            <td>{{list[1].role}}</td>
+            <td>{{list[1].type}}</td>
+            <td>{{list[1].hours}}</td>
+            <td>{{list[1].date}}</td>
+            <td>{{list[1].username}}</td>
+            <td><textarea disabled>{{list[1].description}}</textarea></td>
+          </tr>
+
+          </tbody>
+        </table>
+        <nav aria-label="Page navigation example">
+
+          <pagination-controls   class="pagination justify-content-center" (pageChange)="pageChangeds(p = $event)">
+          </pagination-controls>
+
+        </nav>
+      </div>
+    </div>
+  </div>
+</div>
