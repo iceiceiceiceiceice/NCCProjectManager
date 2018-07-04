@@ -27,10 +27,27 @@ public class ProjectController {
 	public List<Project> listProject(@RequestBody HashMap<String, Integer> Hmap)
 	{
 		
-		return projectService.getProjectByIndex(Hmap.get("index_of_page").intValue());
+		return projectService.getProjectByIndex(Hmap.get("index_of_page").intValue(),"");
 		
 	}
 	
+	@PostMapping(value="/get-project")
+	@ResponseBody
+	public List<Project> listProjectByStatus(@RequestBody HashMap<String, Integer> Hmap)
+	{
+		
+		return projectService.getProjectByIndex(Hmap.get("index_of_page").intValue(),"running");
+		
+	}
+	
+	@PostMapping(value= ("/project-filter"))
+	@ResponseBody
+	public List<Project> searchProject(@RequestBody HashMap<String, String> Hmap)
+	{
+		
+		return projectService.searhProjectByName(Hmap.get("field"), Hmap.get("name"), Hmap.get("index_of_page"));
+		
+	}
 	
 	
 	@PostMapping(value=("/create-project"))

@@ -56,8 +56,8 @@ public class ProjectServiceImpl implements ProjectService {
 	}
 
 
-	public List<Project> getProjectByIndex(int intValue) {
-		return projectDaoImpl.getProjectByIndex( intValue);
+	public List<Project> getProjectByIndex(int intValue,String status) {
+		return projectDaoImpl.getProjectByIndex( intValue,status);
 	}
 
 	@Override
@@ -66,5 +66,10 @@ public class ProjectServiceImpl implements ProjectService {
 	}
 
 	
+	@Override
+	public List<Project> searhProjectByName(String field, String name, String intValue) {
+		return projectDaoImpl.searhProjectByName(field , name, intValue);
+	}
+
 	
 }
