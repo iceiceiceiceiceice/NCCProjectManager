@@ -7,6 +7,7 @@ import java.util.List;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.transform.AliasToBeanResultTransformer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -52,22 +53,10 @@ public class LogTimeSheetDaoImpl implements LogTimeSheetDao{
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<LogTimeSheetUserWithProjectNameDTO> findByUserId(int user_id) {
-		List<Object[]> data = getSession()
-				.createNativeQuery("SELECT log.id, log.project_id, log.role, type, hours, projectName, log.date, log.description, u.username FROM log_time_sheet log INNER JOIN project ON  log.project_id = project.project_id INNER JOIN user u ON u.id = log.user_id WHERE log.user_id = ?1")
-				.setParameter(1, user_id).getResultList();
-		List<LogTimeSheetUserWithProjectNameDTO> listResult = new ArrayList<>();
-		for(Object[] object : data) {
-			int id = (int) object[0];
-			int project_id = (int) object[1];
-			String role = (String) object[2];
-			String type = (String) object[3];
-			int hours = (int) object[4];
-			String projectName = (String) object[5];
-			Timestamp date = (Timestamp) object[6];
-			String description = (String) object[7];
-			String username = (String) object[8];
-			listResult.add(new LogTimeSheetUserWithProjectNameDTO(id, project_id, role, type, hours, user_id, projectName, date, description, username));
-		}
+		@SuppressWarnings( "unchecked")
+		List<LogTimeSheetUserWithProjectNameDTO> listResult = getSession()
+				.createNativeQuery("CALL findLogTimeSheetByUserId(?1)")
+				.setParameter(1, user_id).setResultTransformer(new AliasToBeanResultTransformer(LogTimeSheetUserWithProjectNameDTO.class)).getResultList();
 		return listResult;
 	}
 	@Override
@@ -148,23 +137,12 @@ public class LogTimeSheetDaoImpl implements LogTimeSheetDao{
 
 	@Override
 	public List<UserLogTimeSheetProjectWithoutIdDTO> findDataPaging(Integer from, Integer offset) {
-		@SuppressWarnings("unchecked")
-		List<Object[]> data = getSession().createNativeQuery("SELECT log.id, log.role, log.type, log.hours, log.date, p.projectName, log.description, u.username FROM log_time_sheet log INNER JOIN project p ON  log.project_id = p.project_id INNER JOIN user u ON u.id = log.user_id LIMIT ?1, ?2")
+		@SuppressWarnings( "unchecked")
+		List<UserLogTimeSheetProjectWithoutIdDTO> resultList = getSession().createNativeQuery("CALL getDataPagingLogTimeSheet(?1, ?2)")
 											.setParameter(1, from)
-											.setParameter(2, offset)
+											.setParameter(2, offset).setResultTransformer(new AliasToBeanResultTransformer(UserLogTimeSheetProjectWithoutIdDTO.class))
 											.getResultList();
-		List<UserLogTimeSheetProjectWithoutIdDTO> resultList = new ArrayList<>();
-		for(Object[] object : data) {
-			int id = (int) object[0];
-			String role = (String) object[1];
-			String type = (String) object[2];
-			int hours = (int) object[3];
-			Timestamp date = (Timestamp) object[4];
-			String projectName = (String) object[5];
-			String description = (String) object[6];
-			String username = (String) object[7];
-			resultList.add(new UserLogTimeSheetProjectWithoutIdDTO(id, projectName, username, role, type, hours, description, date));
-		}
+		
 		return resultList;
 	}
 
@@ -172,6 +150,17 @@ public class LogTimeSheetDaoImpl implements LogTimeSheetDao{
 	public BigInteger getCountLogTimeSheet() {
 		BigInteger count = (BigInteger) getSession().createNativeQuery("SELECT COUNT(id) FROM log_time_sheet").getSingleResult();
 		return count;
+	}
+
+	@Override
+	public BigInteger test(String regx) {
+		String text = "%" + regx + "%";
+		System.out.println("MMMM: "+text);
+		BigInteger kq = (BigInteger) getSession().createNativeQuery("SELECT count(id) FROM ncc.log_time_sheet where (:field) like ?2")
+				.setParameter("field", "role")	
+				.setParameter(2, text)
+					.getSingleResult();
+		return kq;
 	}
 	
 

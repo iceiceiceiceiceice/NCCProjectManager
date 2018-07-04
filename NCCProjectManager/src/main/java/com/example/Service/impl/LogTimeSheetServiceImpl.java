@@ -70,4 +70,10 @@ public class LogTimeSheetServiceImpl implements LogTimeSheetService{
 	public BigInteger getCountLogTimeSheet() {
 		return logTimeSheetDao.getCountLogTimeSheet();
 	}
+
+	@Override
+	public BigInteger test(String regx) {
+		
+		return logTimeSheetDao.test(regx);
+	}
 }

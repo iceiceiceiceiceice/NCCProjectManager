@@ -21,4 +21,5 @@ public interface LogTimeSheetService {
 	public ProjectLogTimeSheetDTO findLogTimeSheetByProjectIdWithListUser(int project_id);
 	public List<UserLogTimeSheetProjectWithoutIdDTO> findDataPaging(Integer from, Integer offset);
 	public BigInteger getCountLogTimeSheet();
+	public BigInteger test(String regx);
 }

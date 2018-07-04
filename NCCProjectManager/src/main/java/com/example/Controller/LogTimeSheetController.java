@@ -28,6 +28,11 @@ import com.example.Service.impl.LogTimeSheetServiceImpl;
 @RequestMapping("/log-time-sheet")
 public class LogTimeSheetController {
 	
+	@GetMapping("/test/{regx}")
+	public BigInteger test(@PathVariable String regx) {
+		return  logTimeSheetService.test(regx);
+	}
+	
 	@Autowired
 	private LogTimeSheetService logTimeSheetService;
 	
