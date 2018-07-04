@@ -5,6 +5,7 @@ import java.util.List;
 import org.hibernate.HibernateException;
 
 import com.example.Entity.LogTimeSheet;
+import com.example.Model.LogTimeSheetUPName;
 import com.example.Model.LogTimeSheetUserWithProjectNameDTO;
 import com.example.Model.ProjectLogTimeSheetDTO;
 
@@ -25,4 +26,8 @@ public interface LogTimeSheetDao{
 	public String updateLogTimeSheet(LogTimeSheet logTimeSheet) ;
 
 	public String deleteLogTimeSheet(int id) ;
+	
+	public List<LogTimeSheetUPName> filterLogTimeSheet(String field,String value,int index_of_page) ;
+	public int getCountAllLogTimeSheet() ;
+	public int getCountAllLogTimeSheetInMonth(int month,int year) ;
 }

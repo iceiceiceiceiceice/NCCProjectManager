@@ -14,6 +14,7 @@ import com.example.DAO.ProjectDao;
 import com.example.Entity.LogTimeSheet;
 import com.example.Entity.Project;
 import com.example.Entity.User;
+import com.example.Model.LogTimeSheetUPName;
 import com.example.Model.LogTimeSheetUserWithProjectNameDTO;
 import com.example.Model.LogTimeSheetUsername;
 import com.example.Model.ProjectLogTimeSheetDTO;
@@ -137,6 +138,23 @@ public class LogTimeSheetDaoImpl implements LogTimeSheetDao{
 		}
 		ProjectLogTimeSheetDTO result = new ProjectLogTimeSheetDTO(project_id,projectResult.getProjectName(),listLogTimeTemp);
 		return result;
+	}
+
+	@Override
+	public List<LogTimeSheetUPName> filterLogTimeSheet(String field, String value, int index_of_page) {
+		
+		return null;
+	}
+
+	@Override
+	public int getCountAllLogTimeSheet() {
+		return 0;
+	}
+
+	@Override
+	public int getCountAllLogTimeSheetInMonth(int month, int year) {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 	
 

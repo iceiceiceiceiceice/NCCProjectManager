@@ -14,4 +14,6 @@ public interface ProjectDao {
 	public void delete(final Project project);
 	
 	public List<Project> findAll();
+	
+	public List<Project> getProjectByIndex(int intValue);
 }

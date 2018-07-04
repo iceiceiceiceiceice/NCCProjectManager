@@ -1,7 +1,14 @@
 package com.example.Entity;
 
 import java.io.Serializable;
-import javax.persistence.*;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.NamedQuery;
+import javax.persistence.Table;
 
 
 /**
@@ -13,22 +20,24 @@ import javax.persistence.*;
 @Table(name="project")
 public class Project implements Serializable {
 	private static final long serialVersionUID = 1L;
-	
+
 	/*@ManyToMany(mappedBy = "projects")*/
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="project_id")
 	private int project_id;
-	@Column(name = "customer")
+
 	private String customer;
-	@Column(name = "description")
+
 	private String description;
+
 	@Column(name = "PM")
 	private String pm;
-	@Column(name="projectName")
+
 	private String projectName;
-	@Column(name = "technology")
+
+	private String status;
+
 	private String technology;
 
 	public Project() {
@@ -80,6 +89,14 @@ public class Project implements Serializable {
 
 	public void setTechnology(String technology) {
 		this.technology = technology;
+	}
+
+	public String getStatus() {
+		return this.status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
 	}
 
 }

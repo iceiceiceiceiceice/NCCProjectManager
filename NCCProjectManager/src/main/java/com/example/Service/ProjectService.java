@@ -16,4 +16,6 @@ public interface ProjectService {
 	public List<Project> findAll();
 	
 	public List<Project> findProjectOfUserByUserId(int user_id);
+	
+	public List<Project> getProjectByIndex(int intValue);
 }
