@@ -17,9 +17,9 @@ public interface ProjectDao {
 	
 	public List<Project> getProjectByIndex(int intValue);
 
-	List<Project> getProjectByStatus(String status);
+	public List<Project> getProjectByStatus(String status);
 
-	List<Project> findProjectOfUser(int userId);
+	public List<Project> findProjectOfUser(int userId);
 	
 
 }
