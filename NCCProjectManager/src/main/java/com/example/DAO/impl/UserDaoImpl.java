@@ -1,16 +1,19 @@
 package com.example.DAO.impl;
 
+import java.math.BigInteger;
 import java.util.List;
 
 import org.hibernate.SQLQuery;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.transform.AliasToBeanResultTransformer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.example.DAO.UserDao;
-import com.example.Entity.User;
+import com.example.DAO.*;
+import com.example.Entity.*;
+import com.example.Model.UserFullInfoDTO;
 
 
 @Repository
@@ -49,6 +52,22 @@ public class UserDaoImpl implements UserDao{
 		List<User> list = query.list();
 		
 		return list;
+	}
+	
+	public List<UserFullInfoDTO> getUserDataPaging(int from, int offset) {
+		Session session = this.sessionFactory.getCurrentSession();
+		@SuppressWarnings("unchecked")
+		List<UserFullInfoDTO> resultList = session.createNativeQuery("CALL getUserDataPaging( ?1, ?2)")
+											.setResultTransformer(new AliasToBeanResultTransformer(UserFullInfoDTO.class))
+											.setParameter(1, from)
+											.setParameter(2, offset)
+											.getResultList();
+								
+		return resultList;
+	}
+	public BigInteger getCountUser() {
+		Session session = this.sessionFactory.getCurrentSession();
+		return (BigInteger) session.createNativeQuery("SELECT COUNT(id) FROM user").getSingleResult();
 	}
 	/*@Override
 	public Set<Project> getProjectOfUser(int id) {
