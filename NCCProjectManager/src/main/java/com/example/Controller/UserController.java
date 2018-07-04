@@ -1,6 +1,8 @@
 package com.example.Controller;
 
+import java.math.BigInteger;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -21,6 +23,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.example.Entity.User;
 import com.example.Model.LoginDTO;
 import com.example.Model.UserDTO;
+import com.example.Model.UserFullInfoDTO;
 import com.example.Service.JwtService;
 import com.example.Service.impl.UserServiceImpl;
 
@@ -89,6 +92,16 @@ public class UserController {
 
 	}
 
-
+	@RequestMapping(value="/user/get-data-user-paging", method = RequestMethod.POST)
+	@ResponseBody
+	public List<UserFullInfoDTO> getUserDataPaging(@RequestBody Map<String, Integer> map){
+		return userService.getUserDataPaging(map.get("from"), map.get("offset"));
+	}
+	
+	@RequestMapping(value="/user/get-count-users", method = RequestMethod.GET)
+	@ResponseBody
+	public BigInteger getCountUser() {
+		return userService.getCountUser();
+	} 
 
 }
