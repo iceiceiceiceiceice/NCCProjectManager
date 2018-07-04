@@ -1,6 +1,5 @@
 package com.example.Service.impl;
 
-import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,7 +11,6 @@ import com.example.DAO.impl.UserDaoImpl;
 import com.example.Entity.User;
 import com.example.Model.LoginDTO;
 import com.example.Model.UserDTO;
-import com.example.Model.UserFullInfoDTO;
 import com.example.Service.UserService;
 
 @Service
@@ -83,14 +81,6 @@ public class UserServiceImpl implements UserService{
 		dto.setToken(token);
 		dto.setProfile(profile);
 		return dto;
-	}
-
-	public List<UserFullInfoDTO> getUserDataPaging(int from, int offset) {
-		return userDao.getUserDataPaging( from,  offset);
-	}
-
-	public BigInteger getCountUser() {
-		return userDao.getCountUser();
 	}
 	
 }
