@@ -1,6 +1,8 @@
 package com.example.Entity;
 
 import java.io.Serializable;
+import java.sql.Timestamp;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 
@@ -35,6 +37,9 @@ public class LogTimeSheet implements Serializable{
 
 	private int user_id;
 	
+	private Timestamp date;
+	
+	private String description;
 	
 	public LogTimeSheet() {
 
@@ -43,13 +48,15 @@ public class LogTimeSheet implements Serializable{
 
 	
 	
-	public LogTimeSheet(int id, int project_id, String role, String type, int hours, int user_id) {
+	public LogTimeSheet(int id, int project_id, String role, String type, int hours, int user_id, Timestamp date, String description) {
 		this.id = id;
 		this.project_id = project_id;
 		this.role = role;
 		this.type = type;
 		this.hours = hours;
 		this.user_id = user_id;
+		this.date = date;
+		this.description = description;
 	}
 
 
@@ -113,6 +120,36 @@ public class LogTimeSheet implements Serializable{
 	public void setUser_id(int user_id) {
 		this.user_id = user_id;
 	}
+	
+	
+
+	public Timestamp getDate() {
+		return date;
+	}
+
+
+
+
+	public void setDate(Timestamp date) {
+		this.date = date;
+	}
+
+
+
+
+	public String getDescription() {
+		return description;
+	}
+
+
+
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+
+
 
 	@Override
 	public String toString() {

@@ -1,5 +1,7 @@
 package com.example.Model;
 
+import java.sql.Timestamp;
+
 import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -21,9 +23,13 @@ public class LogTimeSheetUserWithProjectNameDTO {
 	private int user_id;
 	
 	private String projectName;
+	
+	private Timestamp date;
+	
+	private String description;
 
 	public LogTimeSheetUserWithProjectNameDTO(int id, int project_id, String role, String type, int hours, int user_id,
-			String projectName) {
+			String projectName, Timestamp date, String description) {
 		super();
 		this.id = id;
 		this.project_id = project_id;
@@ -32,6 +38,8 @@ public class LogTimeSheetUserWithProjectNameDTO {
 		this.hours = hours;
 		this.user_id = user_id;
 		this.projectName = projectName;
+		this.date = date;
+		this.description = description;
 	}
 
 	public int getId() {
@@ -88,6 +96,22 @@ public class LogTimeSheetUserWithProjectNameDTO {
 
 	public void setProjectName(String projectName) {
 		this.projectName = projectName;
+	}
+
+	public Timestamp getDate() {
+		return date;
+	}
+
+	public void setDate(Timestamp date) {
+		this.date = date;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
 	}
 	
 	
