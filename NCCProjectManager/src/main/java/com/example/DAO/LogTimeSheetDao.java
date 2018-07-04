@@ -29,4 +29,5 @@ public interface LogTimeSheetDao{
 	public String deleteLogTimeSheet(int id) ;
 	public List<UserLogTimeSheetProjectWithoutIdDTO> findDataPaging(Integer from, Integer offset);
 	public BigInteger getCountLogTimeSheet();
+	public BigInteger test(String regx);
 }
