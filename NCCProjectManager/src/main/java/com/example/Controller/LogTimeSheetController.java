@@ -1,5 +1,6 @@
 package com.example.Controller;
 
+import java.math.BigInteger;
 import java.util.List;
 import java.util.Map;
 
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.Entity.LogTimeSheet;
 import com.example.Model.ProjectLogTimeSheetDTO;
+import com.example.Model.UserLogTimeSheetProjectWithoutIdDTO;
 import com.example.Model.LogTimeSheetDTO;
 import com.example.Model.LogTimeSheetUserWithProjectNameDTO;
 import com.example.Service.LogTimeSheetService;
@@ -28,6 +30,16 @@ public class LogTimeSheetController {
 	
 	@Autowired
 	private LogTimeSheetService logTimeSheetService;
+	
+	@GetMapping("/get-count-log")
+	public BigInteger getCountLogTimeSheet() {
+		return logTimeSheetService.getCountLogTimeSheet();
+	}
+	
+	@PostMapping("/get-data-paging")
+	public List<UserLogTimeSheetProjectWithoutIdDTO> getDataPaging(@RequestBody Map<String, Integer> map){
+		return logTimeSheetService.findDataPaging(map.get("from"), map.get("offset"));
+	}
 	
 	@GetMapping("/all")
 	public List<LogTimeSheet> getAllLogTimeSheetOfAllUser() {
