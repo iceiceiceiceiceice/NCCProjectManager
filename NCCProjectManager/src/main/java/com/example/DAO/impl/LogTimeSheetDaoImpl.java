@@ -1,4 +1,5 @@
 package com.example.DAO.impl;
+import java.math.BigInteger;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
@@ -19,6 +20,7 @@ import com.example.Model.LogTimeSheetUserWithProjectNameDTO;
 import com.example.Model.LogTimeSheetUsername;
 import com.example.Model.ProjectLogTimeSheetDTO;
 import com.example.Model.UserDTO;
+import com.example.Model.UserLogTimeSheetProjectWithoutIdDTO;
 
 @Repository(value="LogTimeSheetDao")
 @Transactional(rollbackFor = Exception.class)
@@ -51,7 +53,7 @@ public class LogTimeSheetDaoImpl implements LogTimeSheetDao{
 	@Override
 	public List<LogTimeSheetUserWithProjectNameDTO> findByUserId(int user_id) {
 		List<Object[]> data = getSession()
-				.createNativeQuery("SELECT log.id, log.project_id, role, type, hours, projectName, log.date, log.description FROM log_time_sheet log INNER JOIN project ON  log.project_id = project.project_id WHERE user_id = ?1")
+				.createNativeQuery("SELECT log.id, log.project_id, log.role, type, hours, projectName, log.date, log.description, u.username FROM log_time_sheet log INNER JOIN project ON  log.project_id = project.project_id INNER JOIN user u ON u.id = log.user_id WHERE log.user_id = ?1")
 				.setParameter(1, user_id).getResultList();
 		List<LogTimeSheetUserWithProjectNameDTO> listResult = new ArrayList<>();
 		for(Object[] object : data) {
@@ -63,7 +65,8 @@ public class LogTimeSheetDaoImpl implements LogTimeSheetDao{
 			String projectName = (String) object[5];
 			Timestamp date = (Timestamp) object[6];
 			String description = (String) object[7];
-			listResult.add(new LogTimeSheetUserWithProjectNameDTO(id, project_id, role, type, hours, user_id, projectName, date, description));
+			String username = (String) object[8];
+			listResult.add(new LogTimeSheetUserWithProjectNameDTO(id, project_id, role, type, hours, user_id, projectName, date, description, username));
 		}
 		return listResult;
 	}
@@ -141,6 +144,34 @@ public class LogTimeSheetDaoImpl implements LogTimeSheetDao{
 //		ProjectLogTimeSheetDTO result = new ProjectLogTimeSheetDTO(project_id,projectResult.getProjectName(),listLogTimeTemp);
 //		return result;
 		return null;
+	}
+
+	@Override
+	public List<UserLogTimeSheetProjectWithoutIdDTO> findDataPaging(Integer from, Integer offset) {
+		@SuppressWarnings("unchecked")
+		List<Object[]> data = getSession().createNativeQuery("SELECT log.id, log.role, log.type, log.hours, log.date, p.projectName, log.description, u.username FROM log_time_sheet log INNER JOIN project p ON  log.project_id = p.project_id INNER JOIN user u ON u.id = log.user_id LIMIT ?1, ?2")
+											.setParameter(1, from)
+											.setParameter(2, offset)
+											.getResultList();
+		List<UserLogTimeSheetProjectWithoutIdDTO> resultList = new ArrayList<>();
+		for(Object[] object : data) {
+			int id = (int) object[0];
+			String role = (String) object[1];
+			String type = (String) object[2];
+			int hours = (int) object[3];
+			Timestamp date = (Timestamp) object[4];
+			String projectName = (String) object[5];
+			String description = (String) object[6];
+			String username = (String) object[7];
+			resultList.add(new UserLogTimeSheetProjectWithoutIdDTO(id, projectName, username, role, type, hours, description, date));
+		}
+		return resultList;
+	}
+
+	@Override
+	public BigInteger getCountLogTimeSheet() {
+		BigInteger count = (BigInteger) getSession().createNativeQuery("SELECT COUNT(id) FROM log_time_sheet").getSingleResult();
+		return count;
 	}
 	
 
