@@ -70,9 +70,9 @@ public class ProjectDaoImpl implements ProjectDao {
 		Session session = this.sessionFactory.getCurrentSession();
 		String qry;
 		if(status.equals("running"))
-			qry = "select * from project where status='"+status+"' limit "+(intValue*10-10)+","+(intValue*10);
+			qry = "select * from project where status='"+status+"' limit "+(intValue*10-10)+","+10;
 		else
-			 qry = "select * from project limit "+(intValue*10-10)+","+(intValue*10);
+			 qry = "select * from project limit "+(intValue*10-10)+","+10;
 		SQLQuery query = session.createSQLQuery(qry).addEntity(Project.class);
 		List<Project> list = query.list();
 
