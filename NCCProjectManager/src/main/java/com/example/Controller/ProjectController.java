@@ -22,7 +22,7 @@ public class ProjectController {
 	@Autowired
 	private ProjectService projectService;
 	
-	@PostMapping(value= ("/get-projects"))
+	@PostMapping(value= ("/get-all-projects"))
 	@ResponseBody
 	public List<Project> listProject(@RequestBody HashMap<String, Integer> Hmap)
 	{

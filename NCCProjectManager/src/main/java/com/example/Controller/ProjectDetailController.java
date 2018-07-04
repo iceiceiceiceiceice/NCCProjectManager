@@ -1,6 +1,7 @@
 package com.example.Controller;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -13,6 +14,7 @@ import com.example.DAO.ProjectDetailDao;
 import com.example.Entity.Project;
 import com.example.Entity.ProjectDetailRequest;
 import com.example.Entity.ProjectDetailResponse;
+import com.example.Entity.User;
 //import com.example.Entity.User;
 import com.example.Entity.UserDTOProjectDetail;
 import com.example.Service.ProjectDetailService;
@@ -52,5 +54,13 @@ public class ProjectDetailController {
 	@GetMapping("/get-pm")
 	public List<UserDTOProjectDetail> findPM(){
 		return projectdetailservice.findPM();
+	}
+	@PostMapping("/count-project-hours")
+	public String getNumberOfHourInProject(@RequestBody Map<String,Integer> project_id) {
+		return projectdetailservice.getNumberOfHourInProject(project_id.get("project_id"));
+	}
+	@GetMapping("/user-multi-project")
+	public List<User> getmultiuser(){
+		return projectdao.getmultiuser();
 	}
 }

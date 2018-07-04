@@ -49,5 +49,10 @@ public class ProjectDetailServiceImpl implements ProjectDetailService{
 	public List<UserDTOProjectDetail> findPM() {
 		return projectdetaildao.findPM();
 	}
-	
+	@Override
+	public String getNumberOfHourInProject(int project_id) {
+		int result = projectdetaildao.getNumberOfHourInProject(project_id);
+		char a = '"';
+		return "{"+ a+"number_of_hours"+a+":"+result+"}";
+	}
 }

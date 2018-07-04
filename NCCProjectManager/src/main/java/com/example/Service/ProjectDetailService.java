@@ -10,4 +10,5 @@ public interface ProjectDetailService {
 	public String getLogTimeSheetNumber();
 	public String getUserNumber();
 	public List<UserDTOProjectDetail> findPM();
+	public String getNumberOfHourInProject(int project_id);
 }
