@@ -13,4 +13,6 @@ import com.example.Entity.UserDTOProjectDetail;
 public interface ProjectDetailDao  {
 	public List<Project> getProjectDetail(int project_id);
 	public List<UserDTOProjectDetail> findByProjectID(int project_id);
+	public List<UserDTOProjectDetail> findPM(); 
+	
 }

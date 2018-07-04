@@ -16,4 +16,10 @@ public interface ProjectDao {
 	public List<Project> findAll();
 	
 	public List<Project> getProjectByIndex(int intValue);
+
+	List<Project> getProjectByStatus(String status);
+
+	List<Project> findProjectOfUser(int userId);
+	
+
 }

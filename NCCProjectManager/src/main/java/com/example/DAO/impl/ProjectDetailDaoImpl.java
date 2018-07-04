@@ -1,22 +1,22 @@
 package com.example.DAO.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 import org.hibernate.query.Query;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-
-
 import com.example.DAO.ProjectDetailDao;
+import com.example.DAO.UserDao;
 import com.example.Entity.Project;
 import com.example.Entity.Relation;
-
-
+import com.example.Entity.User;
 import com.example.Entity.UserDTOProjectDetail;
+import com.example.Entity.UserInfo;
 
 
 @Repository
@@ -26,8 +26,13 @@ public class ProjectDetailDaoImpl implements ProjectDetailDao {
 
 	@PersistenceContext
     private EntityManager entityManager;
-
-
+	@Autowired
+	private UserDao userdao;
+//	@Autowired
+//	private JpaRepository<UserInfo, Integer> repo;
+	;
+	
+	
 	@SuppressWarnings("unchecked")
 	public List<Project> getProjectDetail(int project_id){
 		//Session session = factory.openSession();
@@ -54,6 +59,33 @@ public class ProjectDetailDaoImpl implements ProjectDetailDao {
 				}
 				return userlist;
 			}
+		}
+	}
+
+	
+	@SuppressWarnings("unchecked")
+	public List<UserInfo> getPM(){
+		char a='"';
+		String qr = "select ui from UserInfo ui where ui.job='PM'";
+		Query<UserInfo> queryInfo =  (Query<UserInfo>) entityManager.createQuery(qr);
+		List<UserInfo> info = queryInfo.list();
+		return info;
+	}
+	@Override
+	public List<UserDTOProjectDetail> findPM() {
+		// 
+		List<UserInfo> info = this.getPM();
+		if(info.isEmpty())	return null;
+		else {
+			List<User> users = new ArrayList<User>();
+			for(int i =0;i<info.size();i++) {
+				users.add(userdao.findById(info.get(i).getUserId()));
+			}
+			List<UserDTOProjectDetail> userdetail = new ArrayList<UserDTOProjectDetail>();
+			for(int i =0;i<users.size();i++) {
+				userdetail.add(new UserDTOProjectDetail(users.get(i).getId(),users.get(i).getUsername()));
+			}
+			return userdetail;
 		}
 	}
 

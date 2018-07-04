@@ -38,6 +38,7 @@ public class UserDaoImpl implements UserDao{
 		Session session = this.sessionFactory.getCurrentSession();
 		return session.createQuery("FROM User", User.class).getResultList();
 	}
+
 	/*@Override
 	public Set<Project> getProjectOfUser(int id) {
 		Session session = this.sessionFactory.getCurrentSession();

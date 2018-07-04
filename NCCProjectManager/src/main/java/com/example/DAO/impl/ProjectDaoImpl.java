@@ -52,7 +52,8 @@ public class ProjectDaoImpl implements ProjectDao {
 		Session session = this.sessionFactory.getCurrentSession();
 	    return session.createQuery("FROM Project", Project.class).getResultList();
 	}
-
+	
+	@Override
 	public List<Project> findProjectOfUser(int userId) {
 		Session session = this.sessionFactory.getCurrentSession();
 		@SuppressWarnings("unchecked")
@@ -73,5 +74,17 @@ public class ProjectDaoImpl implements ProjectDao {
 		
 		return list;
 	}
+
+	@Override
+	public List<Project> getProjectByStatus( String status) {
+		// TODO Auto-generated method stub
+		Session session = this.sessionFactory.getCurrentSession();
+		String query = "select * from project p where p.status='"+status+"'";
+		@SuppressWarnings("unchecked")
+		List<Project> result = session.createNativeQuery(query).getResultList();
+		
+		return result;
+	}
+
 
 }

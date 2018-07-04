@@ -119,6 +119,7 @@ INSERT INTO `ncc`.`user` (`role`, `username`, `password`) VALUES ('ROLE_USER', '
 INSERT INTO `ncc`.`user` (`role`, `username`, `password`) VALUES ('ROLE_USER', 'user5@gmail.com', '12345678');
 INSERT INTO `ncc`.`user` (`role`, `username`, `password`) VALUES ('ROLE_USER', 'user6@gmail.com', '12345678');
 INSERT INTO `ncc`.`user` (`role`, `username`, `password`) VALUES ('ROLE_USER', 'user7@gmail.com', '12345678');
+INSERT INTO `ncc`.`user` (`role`, `username`, `password`) VALUES ('ROLE_PM', 'pm3@gmail.com', '12345678');
 
 INSERT INTO `ncc`.`project` (`project_id`, `projectName`, `customer`, `PM`, `technology`, `description`, `status`, `notes`) VALUES ('1', 'Change the world ', 'Donald Trump', 'user1@gmail.com', 'Java', 'make america great again', 'running', 'make asdasda');
 INSERT INTO `ncc`.`project` (`project_id`, `projectName`, `customer`, `PM`, `technology`, `description`, `status`, `notes`) VALUES ('2', 'Impossible mission', 'Nam sida', 'user2@gmail.com', 'C++', 'giup anh Thien kiem nguoi yeu', 'failed', 'too hard');
@@ -142,3 +143,5 @@ INSERT INTO `ncc`.`user_info` (`user_id`, `job`) VALUES ('5', 'Tester');
 INSERT INTO `ncc`.`user_info` (`user_id`, `job`) VALUES ('6', 'HR');
 INSERT INTO `ncc`.`user_info` (`user_id`, `job`) VALUES ('7', 'DEv');
 INSERT INTO `ncc`.`user_info` (`user_id`, `job`) VALUES ('8', 'Tester');
+INSERT INTO `ncc`.`user_info` (`user_id`, `job`) VALUES ('1', 'CEO');
+INSERT INTO `ncc`.`user_info` (`user_id`, `job`) VALUES ('9', 'PM');
