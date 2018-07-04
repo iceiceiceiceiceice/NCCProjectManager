@@ -15,11 +15,13 @@ public interface ProjectDao {
 	
 	public List<Project> findAll();
 	
-	public List<Project> getProjectByIndex(int intValue);
+	public List<Project> getProjectByIndex(int intValue, String status);
 
 	public List<Project> getProjectByStatus(String status);
 
 	public List<Project> findProjectOfUser(int userId);
+	
+	public List<Project> searhProjectByName(String field, String name, String intValue);
 	
 
 }

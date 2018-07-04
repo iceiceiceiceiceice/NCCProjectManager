@@ -1,5 +1,6 @@
 package com.example.Controller;
 
+import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -89,6 +90,14 @@ public class UserController {
 
 	}
 
+	@PostMapping(value= ("/user-filter"))
+	@ResponseBody
+	public List<User> searchUser(@RequestBody HashMap<String, String> Hmap)
+	{
+		
+		return userService.searchUser(Hmap.get("field"), Hmap.get("name"), Hmap.get("index_of_page"));
+		
+	}
 
 
 }

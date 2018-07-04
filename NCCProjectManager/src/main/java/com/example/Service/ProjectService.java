@@ -17,8 +17,9 @@ public interface ProjectService {
 	
 	public List<Project> findProjectOfUserByUserId(int user_id);
 	
-	public List<Project> getProjectByIndex(int intValue);
+	public List<Project> getProjectByIndex(int intValue, String status);
 	
 	public List<Project> getProjectByStatus(String status);
+	public List<Project> searhProjectByName(String field, String name, String intValue);
 	
 }

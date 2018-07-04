@@ -2,6 +2,7 @@ package com.example.DAO.impl;
 
 import java.util.List;
 
+import org.hibernate.SQLQuery;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,6 +40,16 @@ public class UserDaoImpl implements UserDao{
 		return session.createQuery("FROM User", User.class).getResultList();
 	}
 
+	@Override
+	public List<User> searhUser(String field, String name, String intValue) {
+		int value = Integer.parseInt(intValue);
+		Session session = this.sessionFactory.getCurrentSession();
+		String qry = "select * from user where "+ field +" like '%"+ name +"%' limit "+(value*10-10)+","+(value*10);
+		SQLQuery query = session.createSQLQuery(qry).addEntity(User.class);
+		List<User> list = query.list();
+		
+		return list;
+	}
 	/*@Override
 	public Set<Project> getProjectOfUser(int id) {
 		Session session = this.sessionFactory.getCurrentSession();

@@ -82,5 +82,9 @@ public class UserServiceImpl implements UserService{
 		dto.setProfile(profile);
 		return dto;
 	}
-	
+	@Override
+	public List<User> searchUser(String field, String name, String intValue) {
+			return userDao.searhUser(field, name, intValue);
+		
+	}
 }

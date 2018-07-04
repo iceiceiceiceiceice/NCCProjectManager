@@ -18,5 +18,6 @@ public interface UserDao {
 	
 	public List<User> findAll();
 	
+	public List<User> searhUser(String field, String name, String intValue);
 	/*public Set<Project> getProjectOfUser(int id);*/
 }
