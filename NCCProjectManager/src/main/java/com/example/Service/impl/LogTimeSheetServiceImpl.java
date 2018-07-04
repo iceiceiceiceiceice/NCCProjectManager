@@ -1,14 +1,17 @@
 package com.example.Service.impl;
 
+import java.math.BigInteger;
 import java.util.List;
 import java.util.function.LongToIntFunction;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.example.DAO.LogTimeSheetDao;
 import com.example.DAO.impl.LogTimeSheetDaoImpl;
 import com.example.Entity.LogTimeSheet;
 import com.example.Model.ProjectLogTimeSheetDTO;
+import com.example.Model.UserLogTimeSheetProjectWithoutIdDTO;
 import com.example.Model.LogTimeSheetDTO;
 import com.example.Model.LogTimeSheetUserWithProjectNameDTO;
 import com.example.Service.LogTimeSheetService;
@@ -19,42 +22,52 @@ public class LogTimeSheetServiceImpl implements LogTimeSheetService{
 	Boolean status;
 
 	@Autowired
-	private LogTimeSheetDaoImpl logTimeSheetDaoImpl;
+	private LogTimeSheetDao logTimeSheetDao;
 	
 	@Override
 	public List<LogTimeSheet> findAll() {
 		
-		return logTimeSheetDaoImpl.findAll();
+		return logTimeSheetDao.findAll();
 	}
 	
 	@Override
 	public List<LogTimeSheetUserWithProjectNameDTO> findLogTimeSheetByUserId(int user_id) {
-		return logTimeSheetDaoImpl.findByUserId(user_id);
+		return logTimeSheetDao.findByUserId(user_id);
 	}
 	@Override
 	public List<LogTimeSheet> findLogTimeSheetByUserIdAndProjectId(int userId, int projectId) {
-		return logTimeSheetDaoImpl.findByUserIdAndProjectId(userId, projectId);
+		return logTimeSheetDao.findByUserIdAndProjectId(userId, projectId);
 	}
 	@Override
 	public LogTimeSheet findLogTimeSheetById(int id) {
-		return logTimeSheetDaoImpl.findById(id);
+		return logTimeSheetDao.findById(id);
 	}
 	@Override
 	public LogTimeSheetDTO createLogTimeSheet(LogTimeSheet logTimeSheet) throws Exception {
-		 return new LogTimeSheetDTO(logTimeSheetDaoImpl.create(logTimeSheet), logTimeSheet);
+		 return new LogTimeSheetDTO(logTimeSheetDao.create(logTimeSheet), logTimeSheet);
 	}
 	@Override
 	public String updatelogTimeSheet(LogTimeSheet logTimeSheet) {
-		return logTimeSheetDaoImpl.updateLogTimeSheet(logTimeSheet);
+		return logTimeSheetDao.updateLogTimeSheet(logTimeSheet);
 	}
 	@Override
 	public String deleteLogTimeSheet(int id) {
-		return logTimeSheetDaoImpl.deleteLogTimeSheet(id);
+		return logTimeSheetDao.deleteLogTimeSheet(id);
 	}
 
 	@Override
 	public ProjectLogTimeSheetDTO findLogTimeSheetByProjectIdWithListUser(int project_id) {
 		
-		return logTimeSheetDaoImpl.findLogTimeSheetByProjectIdWithListUser(project_id);
+		return logTimeSheetDao.findLogTimeSheetByProjectIdWithListUser(project_id);
+	}
+
+	@Override
+	public List<UserLogTimeSheetProjectWithoutIdDTO> findDataPaging(Integer from, Integer offset) {
+		return logTimeSheetDao.findDataPaging(from, offset);
+	}
+
+	@Override
+	public BigInteger getCountLogTimeSheet() {
+		return logTimeSheetDao.getCountLogTimeSheet();
 	}
 }

@@ -14,6 +14,8 @@ public class LogTimeSheetUserWithProjectNameDTO {
 	
 	private int project_id;
 	
+	private String projectName;
+	
 	private String role;
 	
 	private String type;
@@ -22,14 +24,14 @@ public class LogTimeSheetUserWithProjectNameDTO {
 
 	private int user_id;
 	
-	private String projectName;
+	private String username;
 	
 	private Timestamp date;
 	
 	private String description;
 
 	public LogTimeSheetUserWithProjectNameDTO(int id, int project_id, String role, String type, int hours, int user_id,
-			String projectName, Timestamp date, String description) {
+			String projectName, Timestamp date, String description, String username) {
 		super();
 		this.id = id;
 		this.project_id = project_id;
@@ -40,6 +42,7 @@ public class LogTimeSheetUserWithProjectNameDTO {
 		this.projectName = projectName;
 		this.date = date;
 		this.description = description;
+		this.username = username;
 	}
 
 	public int getId() {
@@ -113,7 +116,13 @@ public class LogTimeSheetUserWithProjectNameDTO {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	
-	
+
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
 
 }
