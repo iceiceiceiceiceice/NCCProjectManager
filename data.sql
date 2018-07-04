@@ -1,4 +1,4 @@
-
+use ncc;
 INSERT INTO `project` (`project_id`, `projectName`, `customer`, `PM`, `technology`, `description`, `status`, `notes`) VALUES ('1', 'Change the world ', 'Donald Trump', 'pm1@gmail.com', 'Java', 'make america great again', 'running', 'make asdasda');
 INSERT INTO `project` (`project_id`, `projectName`, `customer`, `PM`, `technology`, `description`, `status`, `notes`) VALUES ('2', 'Impossible mission', 'Nam sida', 'pm2@gmail.com', 'C++', 'giup anh Thien kiem nguoi yeu', 'failed', 'too hard');
 INSERT INTO `project` (`project_id`, `projectName`, `customer`, `PM`, `technology`, `description`, `status`, `notes`) VALUES ('3', 'Nothing more', 'Obama', 'pm3@gmail.com', 'Python', 'make the world become better place', 'success', 'too easy');
@@ -42,3 +42,155 @@ insert into `ncc`.`project` (project_id, projectName, customer, PM, technology, 
 insert into `ncc`.`project` (project_id, projectName, customer, PM, technology, status, description, notes) values (41, 'Cheech & Chong: Still Smokin''', 'Lock Piechnik', 'pm8@gmail.com', 'Ruby/rail', 'failed', 'Enhanced exuding neural-net', 'Reduced impactful emulation');
 insert into `ncc`.`project` (project_id, projectName, customer, PM, technology, status, description, notes) values (42, 'Ear, The (Ucho)', 'Sonny Bortoli', 'pm7@gmail.com', 'Java', 'success', 'Profit-focused neutral protocol', 'Adaptive disintermediate local area network');
 insert into `ncc`.`project` (project_id, projectName, customer, PM, technology, status, description, notes) values (43, 'One I Love, The', 'Eli Lown', 'pm6@gmail.com', 'Python ', 'success', 'Distributed clear-thinking data-warehouse', 'Virtual holistic help-desk');
+
+
+
+INSERT INTO `ncc`.`user` (`id`, `role`, `username`, `password`) VALUES ('1', 'ROLE_ADMIN', 'admin@gmail.com', '12345678');
+INSERT INTO `ncc`.`user` (`role`, `username`, `password`) VALUES ('ROLE_PM', 'pm1@gmail.com', '12345678');
+INSERT INTO `ncc`.`user` (`role`, `username`, `password`) VALUES ('ROLE_PM', 'pm2@gmail.com', '12345678');
+INSERT INTO `ncc`.`user` (`role`, `username`, `password`) VALUES ('ROLE_USER', 'user3@gmail.com', '12345678');
+INSERT INTO `ncc`.`user` (`role`, `username`, `password`) VALUES ('ROLE_USER', 'user4@gmail.com', '12345678');
+INSERT INTO `ncc`.`user` (`role`, `username`, `password`) VALUES ('ROLE_USER', 'user5@gmail.com', '12345678');
+INSERT INTO `ncc`.`user` (`role`, `username`, `password`) VALUES ('ROLE_USER', 'user6@gmail.com', '12345678');
+INSERT INTO `ncc`.`user` (`role`, `username`, `password`) VALUES ('ROLE_USER', 'user7@gmail.com', '12345678');
+INSERT INTO `ncc`.`user` (`role`, `username`, `password`) VALUES ('ROLE_PM', 'pm3@gmail.com', '12345678');
+INSERT INTO `ncc`.`user` (`id`, `role`, `username`, `password`) VALUES ('10', 'ROLE_PM', 'pm4@gmail.com', '12345678');
+INSERT INTO `ncc`.`user` (`role`, `username`, `password`) VALUES ('ROLE_PM', 'pm5@gmail.com', '12345678');
+INSERT INTO `ncc`.`user` (`role`, `username`, `password`) VALUES ('ROLE_PM', 'pm6@gmail.com', '12345678');
+INSERT INTO `ncc`.`user` (`role`, `username`, `password`) VALUES ('ROLE_PM', 'pm7@gmail.com', '12345678');
+INSERT INTO `ncc`.`user` (`role`, `username`, `password`) VALUES ('ROLE_PM', 'pm8@gmail.com', '12345678');
+insert into user (id, username, role, password) values (15, 'hpawfoot0@engadget.com', 'ROLE_USER', 12345678);
+insert into user (id, username, role, password) values (16, 'rcharles1@arizona.edu', 'ROLE_USER', 12345678);
+insert into user (id, username, role, password) values (17, 'mhasney2@nytimes.com', 'ROLE_USER', 12345678);
+insert into user (id, username, role, password) values (18, 'msleford3@unicef.org', 'ROLE_USER', 12345678);
+insert into user (id, username, role, password) values (19, 'jbellwood4@goodreads.com', 'ROLE_USER', 12345678);
+insert into user (id, username, role, password) values (20, 'jondrak5@macromedia.com', 'ROLE_USER', 12345678);
+insert into user (id, username, role, password) values (21, 'rthacke6@china.com.cn', 'ROLE_USER', 12345678);
+insert into user (id, username, role, password) values (22, 'aspon7@tiny.cc', 'ROLE_USER', 12345678);
+insert into user (id, username, role, password) values (23, 'gkobu8@scientificamerican.com', 'ROLE_USER', 12345678);
+insert into user (id, username, role, password) values (24, 'agladwish9@state.tx.us', 'ROLE_USER', 12345678);
+insert into user (id, username, role, password) values (25, 'vdornina@nba.com', 'ROLE_USER', 12345678);
+insert into user (id, username, role, password) values (26, 'dfyndonb@google.com.au', 'ROLE_USER', 12345678);
+insert into user (id, username, role, password) values (27, 'kkelsowc@bloglines.com', 'ROLE_USER', 12345678);
+insert into user (id, username, role, password) values (28, 'bcooped@blog.com', 'ROLE_USER', 12345678);
+insert into user (id, username, role, password) values (29, 'lthomlinsone@hibu.com', 'ROLE_USER', 12345678);
+insert into user (id, username, role, password) values (30, 'asegrottf@spiegel.de', 'ROLE_USER', 12345678);
+insert into user (id, username, role, password) values (31, 'arosig@wufoo.com', 'ROLE_USER', 12345678);
+insert into user (id, username, role, password) values (32, 'spreisth@dailymotion.com', 'ROLE_USER', 12345678);
+insert into user (id, username, role, password) values (33, 'jspottiswoodi@bbb.org', 'ROLE_USER', 12345678);
+insert into user (id, username, role, password) values (34, 'abartosj@wp.com', 'ROLE_USER', 12345678);
+insert into user (id, username, role, password) values (35, 'mshierk@cam.ac.uk', 'ROLE_USER', 12345678);
+insert into user (id, username, role, password) values (36, 'sshoweringl@cmu.edu', 'ROLE_USER', 12345678);
+insert into user (id, username, role, password) values (37, 'egoodissonm@sciencedirect.com', 'ROLE_USER', 12345678);
+insert into user (id, username, role, password) values (38, 'chabbesn@ed.gov', 'ROLE_USER', 12345678);
+insert into user (id, username, role, password) values (39, 'mcuvleyo@hostgator.com', 'ROLE_USER', 12345678);
+insert into user (id, username, role, password) values (40, 'apottsp@google.cn', 'ROLE_USER', 12345678);
+insert into user (id, username, role, password) values (41, 'hlubmanq@edublogs.org', 'ROLE_USER', 12345678);
+insert into user (id, username, role, password) values (42, 'detchinghamr@abc.net.au', 'ROLE_USER', 12345678);
+insert into user (id, username, role, password) values (43, 'aheskeys@accuweather.com', 'ROLE_USER', 12345678);
+insert into user (id, username, role, password) values (44, 'wsemont@cargocollective.com', 'ROLE_USER', 12345678);
+insert into user (id, username, role, password) values (45, 'cneilu@a8.net', 'ROLE_USER', 12345678);
+insert into user (id, username, role, password) values (46, 'rakredv@skyrock.com', 'ROLE_USER', 12345678);
+insert into user (id, username, role, password) values (47, 'gprestwichw@biblegateway.com', 'ROLE_USER', 12345678);
+insert into user (id, username, role, password) values (48, 'lsmallbonex@skype.com', 'ROLE_USER', 12345678);
+insert into user (id, username, role, password) values (49, 'dmoresidey@yandex.ru', 'ROLE_USER', 12345678);
+insert into user (id, username, role, password) values (50, 'asimonazziz@twitter.com', 'ROLE_USER', 12345678);
+insert into user (id, username, role, password) values (51, 'ayendall10@qq.com', 'ROLE_USER', 12345678);
+insert into user (id, username, role, password) values (52, 'dsondland11@nasa.gov', 'ROLE_USER', 12345678);
+insert into user (id, username, role, password) values (53, 'fdailly12@mtv.com', 'ROLE_USER', 12345678);
+insert into user (id, username, role, password) values (54, 'ygoby13@google.es', 'ROLE_USER', 12345678);
+insert into user (id, username, role, password) values (55, 'nsilver14@google.ru', 'ROLE_USER', 12345678);
+insert into user (id, username, role, password) values (56, 'hdeerr15@npr.org', 'ROLE_USER', 12345678);
+insert into user (id, username, role, password) values (57, 'glodder16@economist.com', 'ROLE_USER', 12345678);
+insert into user (id, username, role, password) values (58, 'cseer17@shareasale.com', 'ROLE_USER', 12345678);
+insert into user (id, username, role, password) values (59, 'rreignolds18@w3.org', 'ROLE_USER', 12345678);
+insert into user (id, username, role, password) values (60, 'abibby19@washingtonpost.com', 'ROLE_USER', 12345678);
+insert into user (id, username, role, password) values (61, 'achristene1a@globo.com', 'ROLE_USER', 12345678);
+insert into user (id, username, role, password) values (62, 'msquelch1b@naver.com', 'ROLE_USER', 12345678);
+insert into user (id, username, role, password) values (63, 'cpaddeley1c@webmd.com', 'ROLE_USER', 12345678);
+insert into user (id, username, role, password) values (64, 'mthackham1d@who.int', 'ROLE_USER', 12345678);
+
+
+
+
+INSERT INTO `ncc`.`user_info` (`user_id`, `job`) VALUES ('2', 'PM');
+INSERT INTO `ncc`.`user_info` (`user_id`, `job`) VALUES ('3', 'PM');
+INSERT INTO `ncc`.`user_info` (`user_id`, `job`) VALUES ('4', 'DEV');
+INSERT INTO `ncc`.`user_info` (`user_id`, `job`) VALUES ('5', 'Tester');
+INSERT INTO `ncc`.`user_info` (`user_id`, `job`) VALUES ('6', 'HR');
+INSERT INTO `ncc`.`user_info` (`user_id`, `job`) VALUES ('7', 'DEv');
+INSERT INTO `ncc`.`user_info` (`user_id`, `job`) VALUES ('8', 'Tester');
+INSERT INTO `ncc`.`user_info` (`user_id`, `job`) VALUES ('1', 'CEO');
+INSERT INTO `ncc`.`user_info` (`user_id`, `job`) VALUES ('9', 'PM');
+INSERT INTO `ncc`.`user_info` (`user_id`, `job`) VALUES ('10', 'PM');
+INSERT INTO `ncc`.`user_info` (`user_id`, `job`) VALUES ('11', 'PM');
+INSERT INTO `ncc`.`user_info` (`user_id`, `job`) VALUES ('12', 'PM');
+INSERT INTO `ncc`.`user_info` (`user_id`, `job`) VALUES ('13', 'PM');
+INSERT INTO `ncc`.`user_info` (`user_id`, `job`) VALUES ('14', 'PM');
+insert into user_info (id, job) values (15, 'HR');
+insert into user_info (id, job) values (16, 'Tester');
+insert into user_info (id, job) values (17, 'Tester');
+insert into user_info (id, job) values (18, 'DEV');
+insert into user_info (id, job) values (19, 'DEV');
+insert into user_info (id, job) values (20, 'QA');
+insert into user_info (id, job) values (21, 'HR');
+insert into user_info (id, job) values (22, 'DEV');
+insert into user_info (id, job) values (23, 'DEV');
+insert into user_info (id, job) values (24, 'Account');
+insert into user_info (id, job) values (25, 'Account');
+insert into user_info (id, job) values (26, 'DEV');
+insert into user_info (id, job) values (27, 'HR');
+insert into user_info (id, job) values (28, 'Tester');
+insert into user_info (id, job) values (29, 'HR');
+insert into user_info (id, job) values (30, 'Tester');
+insert into user_info (id, job) values (31, 'QA');
+insert into user_info (id, job) values (32, 'DEV');
+insert into user_info (id, job) values (33, 'Account');
+insert into user_info (id, job) values (34, 'HR');
+insert into user_info (id, job) values (35, 'Account');
+insert into user_info (id, job) values (36, 'DEV');
+insert into user_info (id, job) values (37, 'HR');
+insert into user_info (id, job) values (38, 'Account');
+insert into user_info (id, job) values (39, 'DEV');
+insert into user_info (id, job) values (40, 'Tester');
+insert into user_info (id, job) values (41, 'Tester');
+insert into user_info (id, job) values (42, 'Account');
+insert into user_info (id, job) values (43, 'DEV');
+insert into user_info (id, job) values (44, 'HR');
+insert into user_info (id, job) values (45, 'QA');
+insert into user_info (id, job) values (46, 'QA');
+insert into user_info (id, job) values (47, 'Tester');
+insert into user_info (id, job) values (48, 'DEV');
+insert into user_info (id, job) values (49, 'Account');
+insert into user_info (id, job) values (50, 'DEV');
+insert into user_info (id, job) values (51, 'DEV');
+insert into user_info (id, job) values (52, 'QA');
+insert into user_info (id, job) values (53, 'HR');
+insert into user_info (id, job) values (54, 'QA');
+insert into user_info (id, job) values (55, 'HR');
+insert into user_info (id, job) values (56, 'QA');
+insert into user_info (id, job) values (57, 'Account');
+insert into user_info (id, job) values (58, 'HR');
+insert into user_info (id, job) values (59, 'DEV');
+insert into user_info (id, job) values (60, 'Account');
+insert into user_info (id, job) values (61, 'DEV');
+insert into user_info (id, job) values (62, 'HR');
+insert into user_info (id, job) values (63, 'HR');
+insert into user_info (id, job) values (64, 'Tester');
+
+
+
+
+
+INSERT INTO `ncc`.`relation` (`user_id`, `project_id`) VALUES ('2', '1');
+INSERT INTO `ncc`.`relation` (`user_id`, `project_id`) VALUES ('6', '1');
+INSERT INTO `ncc`.`relation` (`user_id`, `project_id`) VALUES ('4', '1');
+INSERT INTO `ncc`.`relation` (`user_id`, `project_id`) VALUES ('5', '1');
+INSERT INTO `ncc`.`relation` (`user_id`, `project_id`) VALUES ('3', '2');
+INSERT INTO `ncc`.`relation` (`user_id`, `project_id`) VALUES ('7', '2');
+INSERT INTO `ncc`.`relation` (`user_id`, `project_id`) VALUES ('5', '2');
+INSERT INTO `ncc`.`relation` (`user_id`, `project_id`) VALUES ('8', '2');
+
+
+
+INSERT INTO `log_time_sheet` VALUES (1,1,'DEV','task',8,4,'t built the nuclear rocket','2018-06-18 00:00:00'),(2,2,'Tester','task',8,8,'too many bug','2018-06-28 00:00:00');

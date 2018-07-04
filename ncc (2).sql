@@ -111,37 +111,8 @@ SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 
 
-INSERT INTO `ncc`.`user` (`id`, `role`, `username`, `password`) VALUES ('1', 'ROLE_ADMIN', 'admin@gmail.com', '12345678');
-INSERT INTO `ncc`.`user` (`role`, `username`, `password`) VALUES ('ROLE_PM', 'pm1@gmail.com', '12345678');
-INSERT INTO `ncc`.`user` (`role`, `username`, `password`) VALUES ('ROLE_PM', 'pm2@gmail.com', '12345678');
-INSERT INTO `ncc`.`user` (`role`, `username`, `password`) VALUES ('ROLE_USER', 'user3@gmail.com', '12345678');
-INSERT INTO `ncc`.`user` (`role`, `username`, `password`) VALUES ('ROLE_USER', 'user4@gmail.com', '12345678');
-INSERT INTO `ncc`.`user` (`role`, `username`, `password`) VALUES ('ROLE_USER', 'user5@gmail.com', '12345678');
-INSERT INTO `ncc`.`user` (`role`, `username`, `password`) VALUES ('ROLE_USER', 'user6@gmail.com', '12345678');
-INSERT INTO `ncc`.`user` (`role`, `username`, `password`) VALUES ('ROLE_USER', 'user7@gmail.com', '12345678');
-INSERT INTO `ncc`.`user` (`role`, `username`, `password`) VALUES ('ROLE_PM', 'pm3@gmail.com', '12345678');
 
-INSERT INTO `ncc`.`project` (`project_id`, `projectName`, `customer`, `PM`, `technology`, `description`, `status`, `notes`) VALUES ('1', 'Change the world ', 'Donald Trump', 'user1@gmail.com', 'Java', 'make america great again', 'running', 'make asdasda');
-INSERT INTO `ncc`.`project` (`project_id`, `projectName`, `customer`, `PM`, `technology`, `description`, `status`, `notes`) VALUES ('2', 'Impossible mission', 'Nam sida', 'user2@gmail.com', 'C++', 'giup anh Thien kiem nguoi yeu', 'failed', 'too hard');
 
-INSERT INTO `ncc`.`relation` (`user_id`, `project_id`) VALUES ('2', '1');
-INSERT INTO `ncc`.`relation` (`user_id`, `project_id`) VALUES ('6', '1');
-INSERT INTO `ncc`.`relation` (`user_id`, `project_id`) VALUES ('4', '1');
-INSERT INTO `ncc`.`relation` (`user_id`, `project_id`) VALUES ('5', '1');
-INSERT INTO `ncc`.`relation` (`user_id`, `project_id`) VALUES ('3', '2');
-INSERT INTO `ncc`.`relation` (`user_id`, `project_id`) VALUES ('7', '2');
-INSERT INTO `ncc`.`relation` (`user_id`, `project_id`) VALUES ('5', '2');
-INSERT INTO `ncc`.`relation` (`user_id`, `project_id`) VALUES ('8', '2');
 
-INSERT INTO `ncc`.`log_time_sheet` (`id`, `project_id`, `role`, `type`, `hours`, `user_id`, `description`, `date`) VALUES ('1', '1', 'DEV', 'task', '8', '4', 't built the nuclear rocket', '2018/6/18');
-INSERT INTO `ncc`.`log_time_sheet` (`project_id`, `role`, `type`, `hours`, `user_id`, `description`, `date`) VALUES ('2', 'Tester', 'task', '8', '8', 'too many bug', '2018/6/28');
 
-INSERT INTO `ncc`.`user_info` (`user_id`, `job`) VALUES ('2', 'PM');
-INSERT INTO `ncc`.`user_info` (`user_id`, `job`) VALUES ('3', 'PM');
-INSERT INTO `ncc`.`user_info` (`user_id`, `job`) VALUES ('4', 'DEV');
-INSERT INTO `ncc`.`user_info` (`user_id`, `job`) VALUES ('5', 'Tester');
-INSERT INTO `ncc`.`user_info` (`user_id`, `job`) VALUES ('6', 'HR');
-INSERT INTO `ncc`.`user_info` (`user_id`, `job`) VALUES ('7', 'DEv');
-INSERT INTO `ncc`.`user_info` (`user_id`, `job`) VALUES ('8', 'Tester');
-INSERT INTO `ncc`.`user_info` (`user_id`, `job`) VALUES ('1', 'CEO');
-INSERT INTO `ncc`.`user_info` (`user_id`, `job`) VALUES ('9', 'PM');
+
