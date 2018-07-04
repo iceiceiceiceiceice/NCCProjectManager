@@ -45,6 +45,7 @@ public class LogTimeSheetController {
 	public List<LogTimeSheet> getAllLogTimeSheetOfAllUser() {
 		return logTimeSheetService.findAll();
 	}
+	
 	@CrossOrigin
 	@PostMapping("/user")
 	public List<LogTimeSheetUserWithProjectNameDTO> getAllLogTimeSheetOfOneUser(@RequestBody Map<String, Integer> map){
