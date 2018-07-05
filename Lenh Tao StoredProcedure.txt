@@ -70,3 +70,44 @@ BEGIN
     EXECUTE STMT; 
     DEALLOCATE PREPARE STMT;
 END; $$
+
+
+
+
+use ncc;
+DELIMITER $$
+CREATE PROCEDURE `filter_user`(in field varchar(40), in giatri varchar(40),in index_of_page int, in page_size int)
+BEGIN
+   
+    declare xx int ;
+        set xx = (index_of_page-1)*page_size;
+    if (field = 'job') then
+        SET @Sql = CONCAT("SELECT u.id, u.username, u.role, ui.job FROM user u INNER JOIN user_info ui ON  u.id = ui.user_id  where ui.", field, " like CONCAT('%','" ,giatri,"','%') limit ", xx ,",",page_size);
+    
+    else 
+        SET @Sql = CONCAT("SELECT u.id, u.username, u.role, ui.job FROM user u INNER JOIN user_info ui ON  u.id = ui.user_id  where u.", field, " like CONCAT('%','" ,giatri,"','%') limit ", xx ,",",page_size);
+    end if;
+ 
+    
+    PREPARE STMT FROM @Sql; 
+    EXECUTE STMT; 
+    DEALLOCATE PREPARE STMT;
+END; $$
+
+use ncc;
+DELIMITER $$
+CREATE PROCEDURE `user_filter_count_all`(in field varchar(40), in giatri varchar(40))
+BEGIN
+   
+    if (field = 'job') then
+        SET @Sql = CONCAT("SELECT count(u.id) FROM user u INNER JOIN user_info ui ON  u.id = ui.user_id  where ui.", field, " like CONCAT('%','" ,giatri,"','%')");
+    
+    else 
+        SET @Sql = CONCAT("SELECT count(u.id) FROM user u INNER JOIN user_info ui ON  u.id = ui.user_id  where u.", field, " like CONCAT('%','" ,giatri,"','%')");
+    end if;
+ 
+    
+    PREPARE STMT FROM @Sql; 
+    EXECUTE STMT; 
+    DEALLOCATE PREPARE STMT;
+END; $$
