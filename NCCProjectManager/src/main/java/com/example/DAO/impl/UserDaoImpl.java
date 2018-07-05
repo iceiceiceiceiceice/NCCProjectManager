@@ -75,10 +75,6 @@ public class UserDaoImpl implements UserDao{
 		Session session = this.sessionFactory.getCurrentSession();
 		return session.get(User.class, id).getProjects();
 	}*/
-<<<<<<< HEAD
-
-
-=======
 	@SuppressWarnings({ "unchecked", "deprecation" })
 	@Override
 	public List<UserFullInfoDTO> filterUser(String field, String value, int index_of_page, int pageSize) {
@@ -98,5 +94,4 @@ public class UserDaoImpl implements UserDao{
 				.setParameter(2, value)
 				.getSingleResult();
 	}
->>>>>>> 85ee77eacf3bee1bc88df2ee62286c53748f82c0
 }

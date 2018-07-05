@@ -21,10 +21,7 @@ public interface UserDao {
 	public List<User> findAll();
 	
 	public List<User> searhUser(String field, String name, String intValue);
-<<<<<<< HEAD
-=======
-	
+
 	public List<UserFullInfoDTO> filterUser(String field,String value,int index_of_page,int pageSize);
 	public BigInteger countFilterUser(String field,String value);
->>>>>>> 85ee77eacf3bee1bc88df2ee62286c53748f82c0
 }
