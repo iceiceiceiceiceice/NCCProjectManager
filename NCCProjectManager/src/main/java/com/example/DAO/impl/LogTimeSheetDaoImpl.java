@@ -139,7 +139,7 @@ public class LogTimeSheetDaoImpl implements LogTimeSheetDao{
 	public List<UserLogTimeSheetProjectWithoutIdDTO> findDataPaging(Integer from, Integer offset) {
 		@SuppressWarnings( "unchecked")
 		List<UserLogTimeSheetProjectWithoutIdDTO> resultList = getSession().createNativeQuery("CALL getDataPagingLogTimeSheet(?1, ?2)")
-											.setParameter(1, from)
+											.setParameter(1, from*offset - offset)
 											.setParameter(2, offset).setResultTransformer(new AliasToBeanResultTransformer(UserLogTimeSheetProjectWithoutIdDTO.class))
 											.getResultList();
 		
