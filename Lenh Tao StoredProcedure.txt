@@ -30,13 +30,13 @@ CREATE PROCEDURE `filter`(in field varchar(40), in giatri varchar(40),in index_o
 BEGIN
    
     declare xx int ;
-        set xx = (index_of_page-1)*15;
+        set xx = (index_of_page-1)*page_size;
     if (field = 'projectName') then
         SET @Sql = CONCAT("SELECT log.id , log.role , log.type , log.hours , log.date , p.projectName , log.description , u.username FROM log_time_sheet log INNER JOIN project p ON  log.project_id = p.project_id INNER JOIN user u ON u.id = log.user_id where p.", field, " like CONCAT('%','" ,giatri,"','%') limit ", xx ,",",page_size);
     elseif (field = 'username') then
         SET @Sql = CONCAT("SELECT log.id , log.role , log.type , log.hours , log.date , p.projectName , log.description , u.username FROM log_time_sheet log INNER JOIN project p ON  log.project_id = p.project_id INNER JOIN user u ON u.id = log.user_id where u.", field, " like CONCAT('%','" ,giatri,"','%') limit ", xx ,",",page_size);
 	 elseif (field = '') then
-        SET @Sql = CONCAT("SELECT log.id, log.role, log.type, log.hours, log.date, p.projectName, log.description, u.username FROM log_time_sheet log INNER JOIN project p ON  log.project_id = p.project_id INNER JOIN user u ON u.id = log.user_id LIMIT ", xx ,",15");
+        SET @Sql = CONCAT("SELECT log.id, log.role, log.type, log.hours, log.date, p.projectName, log.description, u.username FROM log_time_sheet log INNER JOIN project p ON  log.project_id = p.project_id INNER JOIN user u ON u.id = log.user_id limit ", xx ,",",page_size);
     else 
         SET @Sql = CONCAT("SELECT log.id , log.role , log.type , log.hours , log.date , p.projectName , log.description , u.username FROM log_time_sheet log INNER JOIN project p ON  log.project_id = p.project_id INNER JOIN user u ON u.id = log.user_id where log.", field, " like CONCAT('%','" ,giatri,"','%') limit ", xx ,",",page_size);
     end if;
