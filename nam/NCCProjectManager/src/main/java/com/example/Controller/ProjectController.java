@@ -6,7 +6,10 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,21 +18,20 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.example.Entity.Project;
 import com.example.Model.createrProject;
-import com.example.Service.ProjectService;
+import com.example.Service.impl.ProjectServiceImpl;
 @CrossOrigin
 @Controller
 public class ProjectController {
 	@Autowired
+	private ProjectServiceImpl projectService;
 
-	private ProjectService projectService;
-	
 	@PostMapping(value= ("/get-all-projects"))
 	@ResponseBody
 	public List<Project> listProject(@RequestBody HashMap<String, Integer> Hmap)
 	{
-    return projectService.getProjectByIndex(Hmap.get("index_of_page").intValue(),"");
-		
+		return projectService.getProjectByIndex(Hmap.get("index_of_page").intValue());	
 	}
+
 
 	@PostMapping(value=("/end-project"))
 	@ResponseBody
@@ -56,27 +58,7 @@ public class ProjectController {
 		}
 
 	}
-			
-	
-	@PostMapping(value="/get-project")
-	@ResponseBody
-	public List<Project> listProjectByStatus(@RequestBody HashMap<String, Integer> Hmap)
-	{
-		
-		return projectService.getProjectByIndex(Hmap.get("index_of_page").intValue(),"running");
-		
-	}
-	
-	@PostMapping(value= ("/project-filter"))
-	@ResponseBody
-	public List<Project> searchProject(@RequestBody HashMap<String, String> Hmap)
-	{
-		
-		return projectService.searhProjectByName(Hmap.get("field"), Hmap.get("name"), Hmap.get("index_of_page"));
-		
-	}
-	
-	
+
 	@PostMapping(value=("/create-project"))
 	@ResponseBody
 	public Project addToProject(@RequestBody Project project) {
@@ -96,10 +78,4 @@ public class ProjectController {
 		return projectService.findProjectOfUserByUserId(map.get("user_id"));
 	}
 
-	@PostMapping("/count-project-running")
-	@ResponseBody 
-	public int countProjectRunning(@RequestBody Map<String,String> status) {
-		return projectService.getProjectByStatus(status.get("status")).size();
-	}
-	
 }

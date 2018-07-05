@@ -56,7 +56,6 @@ public class ProjectDaoImpl implements ProjectDao {
 		return session.createQuery("FROM Project", Project.class).getResultList();
 	}
 
-	@Override
 	public List<Project> findProjectOfUser(int userId) {
 		Session session = this.sessionFactory.getCurrentSession();
 		@SuppressWarnings("unchecked")
@@ -69,35 +68,9 @@ public class ProjectDaoImpl implements ProjectDao {
 		return p;
 	}
 
-	public List<Project> getProjectByIndex(int intValue,String status) {
+	public List<Project> getProjectByIndex(int intValue) {
 		Session session = this.sessionFactory.getCurrentSession();
-		String qry;
-		if(status.equals("running"))
-			qry = "select * from project where status='"+status+"' limit "+(intValue*10-10)+","+10;
-		else
-			 qry = "select * from project limit "+(intValue*10-10)+","+10;
-		SQLQuery query = session.createSQLQuery(qry).addEntity(Project.class);
-		List<Project> list = query.list();
-
-		return list;
-	}
-
-	@Override
-	public List<Project> getProjectByStatus( String status) {
-		// TODO Auto-generated method stub
-		Session session = this.sessionFactory.getCurrentSession();
-		String query = "select * from project p where p.status='"+status+"'";
-		@SuppressWarnings("unchecked")
-		List<Project> result = session.createNativeQuery(query).getResultList();
-
-		return result;
-	}
-	
-	@Override
-	public List<Project> searhProjectByName(String field, String name, String intValue) {
-		int value = Integer.parseInt(intValue);
-		Session session = this.sessionFactory.getCurrentSession();
-		String qry = "select * from project where "+ field+" like '%"+ name +"%' limit "+(value*10-10)+","+(value*10);
+		String qry = "select * from project limit "+(intValue*10-10)+","+(intValue*10);
 		SQLQuery query = session.createSQLQuery(qry).addEntity(Project.class);
 		List<Project> list = query.list();
 

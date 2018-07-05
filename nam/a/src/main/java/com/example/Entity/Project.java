@@ -39,9 +39,6 @@ public class Project implements Serializable {
 	private String status;
 
 	private String technology;
-	
-	private String notes;
-	
 
 	public Project() {
 	}
@@ -100,14 +97,6 @@ public class Project implements Serializable {
 
 	public void setStatus(String status) {
 		this.status = status;
-	}
-
-	public String getNotes() {
-		return notes;
-	}
-
-	public void setNotes(String notes) {
-		this.notes = notes;
 	}
 
 }
