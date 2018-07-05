@@ -59,7 +59,7 @@ public class UserDaoImpl implements UserDao{
 		@SuppressWarnings("unchecked")
 		List<UserFullInfoDTO> resultList = session.createNativeQuery("CALL getUserDataPaging( ?1, ?2)")
 											.setResultTransformer(new AliasToBeanResultTransformer(UserFullInfoDTO.class))
-											.setParameter(1, from)
+											.setParameter(1, from*offset - offset)
 											.setParameter(2, offset)
 											.getResultList();
 								
