@@ -61,7 +61,7 @@ public class ProjectDaoImpl implements ProjectDao {
 		Session session = this.sessionFactory.getCurrentSession();
 		@SuppressWarnings("unchecked")
 		List<Project> p=  session.createNativeQuery(""
-				+ "SELECT project_id, projectName, customer, PM, technology, description FROM project P WHERE P.project_id IN ("
+				+ "SELECT project_id, projectName, customer, PM, technology, description, status, notes FROM project P WHERE P.project_id IN ("
 				+ "SELECT R.project_id FROM relation R WHERE R.user_id = ?1)").setParameter(1, userId).addEntity(Project.class).getResultList();
 		if(p.isEmpty()) {
 			return null;
