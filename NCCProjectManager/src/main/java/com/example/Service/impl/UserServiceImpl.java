@@ -98,4 +98,14 @@ public class UserServiceImpl implements UserService{
 	public BigInteger getCountUser() {
 		return userDao.getCountUser();
 	}
+
+	@Override
+	public List<UserFullInfoDTO> filterUser(String field, String value, int index_of_page, int pageSize) {
+		return userDao.filterUser(field, value, index_of_page, pageSize);
+	}
+
+	@Override
+	public BigInteger countFilterUser(String field, String value) {
+		return userDao.countFilterUser(field, value);
+	}
 }

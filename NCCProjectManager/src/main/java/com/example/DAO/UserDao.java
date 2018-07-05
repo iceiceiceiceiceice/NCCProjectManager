@@ -1,10 +1,12 @@
 package com.example.DAO;
 
+import java.math.BigInteger;
 import java.util.List;
 import java.util.Set;
 
 import com.example.Entity.Project;
 import com.example.Entity.User;
+import com.example.Model.UserFullInfoDTO;
 
 public interface UserDao {
 	
@@ -19,5 +21,7 @@ public interface UserDao {
 	public List<User> findAll();
 	
 	public List<User> searhUser(String field, String name, String intValue);
-	/*public Set<Project> getProjectOfUser(int id);*/
+	
+	public List<UserFullInfoDTO> filterUser(String field,String value,int index_of_page,int pageSize);
+	public BigInteger countFilterUser(String field,String value);
 }

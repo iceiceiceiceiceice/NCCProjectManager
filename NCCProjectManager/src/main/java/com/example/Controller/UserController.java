@@ -25,6 +25,7 @@ import com.example.Entity.User;
 import com.example.Model.LoginDTO;
 import com.example.Model.UserDTO;
 import com.example.Model.UserFullInfoDTO;
+import com.example.Model.UserLogTimeSheetProjectWithoutIdDTO;
 import com.example.Service.JwtService;
 import com.example.Service.impl.UserServiceImpl;
 
@@ -113,6 +114,20 @@ public class UserController {
 	@ResponseBody
 	public BigInteger getCountUser() {
 		return userService.getCountUser();
-	} 
+	}
+	
+	
+	@RequestMapping(value="/user/user-filter", method = RequestMethod.POST)
+	@ResponseBody
+	public List<UserFullInfoDTO> getFullLogTimeFilter( @RequestBody Map<String, String> map){
+		return userService.filterUser(map.get("field"),map.get("value"),Integer.parseInt(map.get("index_of_page")),Integer.parseInt(map.get("pageSize")));
+	}
+	
+	
+	@RequestMapping(value = "/user/get-count-filter-user", method = RequestMethod.POST)
+	@ResponseBody
+	public BigInteger countDataPagingFilter(@RequestBody Map<String, String> map){
+		return userService.countFilterUser(map.get("field"),map.get("value"));
+	}
 
 }
