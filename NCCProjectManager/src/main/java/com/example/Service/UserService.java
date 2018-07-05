@@ -1,10 +1,12 @@
 package com.example.Service;
 
+import java.math.BigInteger;
 import java.util.List;
 
 import com.example.Entity.User;
 import com.example.Model.LoginDTO;
 import com.example.Model.UserDTO;
+import com.example.Model.UserFullInfoDTO;
 
 public interface UserService {
 
@@ -25,6 +27,12 @@ public interface UserService {
 	public LoginDTO TokenvsProfile(String token, User profile);
 
 	public List<User> searchUser(String field, String name, String intValue);
+<<<<<<< HEAD
 
     List<UserDTO> findByString(String name);
+=======
+	public List<UserFullInfoDTO> filterUser(String field, String value, int index_of_page, int pageSize);
+	
+	public BigInteger countFilterUser(String field,String value);
+>>>>>>> 85ee77eacf3bee1bc88df2ee62286c53748f82c0
 }
