@@ -20,6 +20,7 @@ public class Relation implements Serializable {
 	private RelationPK id;
 
 	public Relation() {
+		id = new RelationPK();
 	}
 
 	public RelationPK getId() {
@@ -33,6 +34,11 @@ public class Relation implements Serializable {
 	public int getuser_id() {
 		// TODO Auto-generated method stub
 		return id.getUserId();
+	}
+
+	public int getProject_id() {
+		
+		return id.getProjectId();
 	}
 	
 

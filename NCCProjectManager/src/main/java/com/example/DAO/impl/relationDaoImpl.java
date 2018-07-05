@@ -65,4 +65,15 @@ public class relationDaoImpl implements relationDao {
 		List<Relation> result = query.list();
 		return result;
 	}
+	
+
+
+	public void removeUser(int project_id, int getuser_id) {
+		Session session = this.sessionFactory.getCurrentSession();
+		String sql = "DELETE Relation where user_id = :getuser_id AND project_id = :project_id";
+		Query query = session.createQuery(sql);
+		query.setParameter("getuser_id", getuser_id);
+		query.setParameter("project_id", project_id);
+		query.executeUpdate();
+	}
 }
