@@ -14,6 +14,15 @@ BEGIN
     SELECT log.id, log.project_id, log.role, type, hours, projectName, log.date, log.description, u.username FROM log_time_sheet log INNER JOIN project ON  log.project_id = project.project_id INNER JOIN user u ON u.id = log.user_id WHERE log.user_id = user_id;
 END; $$
 
+--getUserDataPaging
+
+DELIMITER $$
+CREATE PROCEDURE getUserDataPaging(start_get int(11), offset int(11))
+BEGIN
+    SELECT u.id, u.username, u.role, ui.job FROM user u INNER JOIN user_info ui ON  u.id = ui.user_id LIMIT start_get, offset;
+END; $$
+
+--
 
 use ncc;
 
