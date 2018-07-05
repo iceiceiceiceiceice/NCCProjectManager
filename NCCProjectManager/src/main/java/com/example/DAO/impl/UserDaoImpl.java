@@ -74,4 +74,6 @@ public class UserDaoImpl implements UserDao{
 		Session session = this.sessionFactory.getCurrentSession();
 		return session.get(User.class, id).getProjects();
 	}*/
+
+
 }

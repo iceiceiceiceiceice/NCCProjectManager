@@ -22,6 +22,5 @@ public interface ProjectDao {
 	public List<Project> findProjectOfUser(int userId);
 	
 	public List<Project> searhProjectByName(String field, String name, String intValue);
-	
 
 }

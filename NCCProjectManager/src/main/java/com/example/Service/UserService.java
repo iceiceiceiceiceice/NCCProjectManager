@@ -25,4 +25,6 @@ public interface UserService {
 	public LoginDTO TokenvsProfile(String token, User profile);
 
 	public List<User> searchUser(String field, String name, String intValue);
+
+    List<UserDTO> findByString(String name);
 }

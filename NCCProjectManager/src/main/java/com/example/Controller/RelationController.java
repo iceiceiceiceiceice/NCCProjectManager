@@ -1,8 +1,10 @@
 package com.example.Controller;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
+import com.example.Model.findUandP;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -92,6 +94,18 @@ public class RelationController {
 		}
 		
 	}
-	
+
+
+	@PostMapping(value = "/find-user-and-project")
+	@ResponseBody
+	public findUandP findUserAndProject(@RequestBody HashMap<String,String> map){
+		String name = map.get("valueString");
+		findUandP find = new findUandP();
+		find.setUser( userService.findByString(name));
+
+		find.setProject(projectService.findByString(name));
+
+		return find;
+	}
 
 }
