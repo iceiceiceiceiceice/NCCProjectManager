@@ -84,7 +84,7 @@ public class LogTimeSheetController {
 	
 	@PostMapping("/log-time-sheet-filter")
 	public List<UserLogTimeSheetProjectWithoutIdDTO> getFullLogTimeFilter( @RequestBody Map<String, String> map){
-		return logTimeSheetService.findDataPagingFilter(map.get("field"),map.get("value"),Integer.parseInt(map.get("index_of_page")));
+		return logTimeSheetService.findDataPagingFilter(map.get("field"),map.get("value"),Integer.parseInt(map.get("index_of_page")),Integer.parseInt(map.get("pageSize")));
 	}
 	
 	@PostMapping("/get-count-filter-log")

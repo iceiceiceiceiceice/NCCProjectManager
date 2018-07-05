@@ -25,7 +25,7 @@ public class ProjectServiceImpl implements ProjectService {
 
 	@Override
 	public void update(Project project) {
-		projectDaoImpl.save(project);
+		projectDaoImpl.update(project);
 		
 	}
 

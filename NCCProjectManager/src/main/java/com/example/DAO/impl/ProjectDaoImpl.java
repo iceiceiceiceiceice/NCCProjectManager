@@ -2,6 +2,8 @@ package com.example.DAO.impl;
 
 import java.util.List;
 
+import javax.management.Query;
+
 import org.hibernate.SQLQuery;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -24,13 +26,14 @@ public class ProjectDaoImpl implements ProjectDao {
 	@Override
 	public void save(Project project) {
 		Session session = this.sessionFactory.getCurrentSession();
+		project.setStatus("running");
 		session.save(project);
 
 	}
 
 	@Override
 	public void update(Project project) {
-		Session session = this.sessionFactory.getCurrentSession();
+		Session session = sessionFactory.getCurrentSession();
 		session.update(project);
 	}
 
@@ -97,7 +100,7 @@ public class ProjectDaoImpl implements ProjectDao {
 		String qry = "select * from project where "+ field+" like '%"+ name +"%' limit "+(value*10-10)+","+(value*10);
 		SQLQuery query = session.createSQLQuery(qry).addEntity(Project.class);
 		List<Project> list = query.list();
-		
+
 		return list;
 	}
 

@@ -14,7 +14,7 @@ public interface ProjectDao {
 	public void delete(final Project project);
 	
 	public List<Project> findAll();
-	
+
 	public List<Project> getProjectByIndex(int intValue, String status);
 
 	public List<Project> getProjectByStatus(String status);

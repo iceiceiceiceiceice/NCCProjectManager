@@ -78,9 +78,8 @@ public class LogTimeSheetServiceImpl implements LogTimeSheetService{
 	}
 
 	@Override
-	public List<UserLogTimeSheetProjectWithoutIdDTO> findDataPagingFilter(String field, String value,
-			int index_of_page) {
-		return logTimeSheetDao.findDataPagingFilter(field, value, index_of_page);
+	public List<UserLogTimeSheetProjectWithoutIdDTO> findDataPagingFilter(String field,String value,int index_of_page,int pageSize) {
+		return logTimeSheetDao.findDataPagingFilter(field, value, index_of_page,pageSize);
 	}
 
 	@Override

@@ -30,6 +30,8 @@ public interface LogTimeSheetDao{
 	public List<UserLogTimeSheetProjectWithoutIdDTO> findDataPaging(Integer from, Integer offset);
 	public BigInteger getCountLogTimeSheet();
 	public BigInteger test(String regx);
-	public List<UserLogTimeSheetProjectWithoutIdDTO> findDataPagingFilter(String field,String value,int index_of_page);
+
+	public List<UserLogTimeSheetProjectWithoutIdDTO> findDataPagingFilter(String field,String value,int index_of_page,int pageSize);
 	public BigInteger countDataPagingFilter(String field,String value);
+
 }

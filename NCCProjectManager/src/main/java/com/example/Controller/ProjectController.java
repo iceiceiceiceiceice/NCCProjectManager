@@ -20,16 +20,43 @@ import com.example.Service.ProjectService;
 @Controller
 public class ProjectController {
 	@Autowired
+
 	private ProjectService projectService;
 	
 	@PostMapping(value= ("/get-all-projects"))
 	@ResponseBody
 	public List<Project> listProject(@RequestBody HashMap<String, Integer> Hmap)
 	{
-		
-		return projectService.getProjectByIndex(Hmap.get("index_of_page").intValue(),"");
+    return projectService.getProjectByIndex(Hmap.get("index_of_page").intValue(),"");
 		
 	}
+
+	@PostMapping(value=("/end-project"))
+	@ResponseBody
+	public String endProject(@RequestBody Project project){
+		try {	
+			String status = project.getStatus();
+			String notes = project.getNotes();
+			  project = projectService.findById(project.getproject_id());
+			if(project==null) {
+				
+				return "{\"status\":\"false\"}";  
+			}else {
+				project.setNotes(notes);
+				project.setStatus(status);
+				projectService.update(project);
+
+				return "{\"status\":\"true\"}";
+			}
+
+		} catch (Exception e) {
+
+			return "{\"status\":\"false\"}"; 
+
+		}
+
+	}
+			
 	
 	@PostMapping(value="/get-project")
 	@ResponseBody
@@ -52,22 +79,23 @@ public class ProjectController {
 	
 	@PostMapping(value=("/create-project"))
 	@ResponseBody
-	public createrProject addToProject(@RequestBody Project project) {
-		
+	public Project addToProject(@RequestBody Project project) {
+
 		projectService.save(project);
-		
+
 		createrProject cP =  new createrProject();
 		cP.setStatus(true);
 		cP.setProjectInfo(project);
-		return cP;
+		return project;
+
 	}
-	
+
 	@RequestMapping(value="/project/user", method = RequestMethod.POST)
 	@ResponseBody
 	public List<Project> getProjectOfUserByUserId(@RequestBody Map<String, Integer> map){
 		return projectService.findProjectOfUserByUserId(map.get("user_id"));
 	}
-	
+
 	@PostMapping("/count-project-running")
 	@ResponseBody 
 	public int countProjectRunning(@RequestBody Map<String,String> status) {

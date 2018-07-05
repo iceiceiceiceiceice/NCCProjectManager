@@ -164,13 +164,14 @@ public class LogTimeSheetDaoImpl implements LogTimeSheetDao{
 	}
 	
 	@Override
-	public List<UserLogTimeSheetProjectWithoutIdDTO> findDataPagingFilter(String field,String value,int index_of_page) {
+	public List<UserLogTimeSheetProjectWithoutIdDTO> findDataPagingFilter(String field,String value,int index_of_page,int pageSize) {
 		@SuppressWarnings( "unchecked")
-		List<UserLogTimeSheetProjectWithoutIdDTO> resultList = getSession().createNativeQuery("CALL filter(?1, ?2 ,?3)")
+		List<UserLogTimeSheetProjectWithoutIdDTO> resultList = getSession().createNativeQuery("CALL filter(?1, ?2 ,?3,?4)")
 											.setParameter(1, field)
 											.setParameter(2, value)
-											.setParameter(3, index_of_page).
-											setResultTransformer(new AliasToBeanResultTransformer(UserLogTimeSheetProjectWithoutIdDTO.class))
+											.setParameter(3, index_of_page)
+											.setParameter(4, pageSize)
+											.setResultTransformer(new AliasToBeanResultTransformer(UserLogTimeSheetProjectWithoutIdDTO.class))
 											.getResultList();
 		
 		return resultList;
