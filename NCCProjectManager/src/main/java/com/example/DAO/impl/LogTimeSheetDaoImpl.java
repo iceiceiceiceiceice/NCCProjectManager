@@ -175,4 +175,14 @@ public class LogTimeSheetDaoImpl implements LogTimeSheetDao{
 		
 		return resultList;
 	}
+	
+	@Override
+	public BigInteger countDataPagingFilter(String field,String value) {
+		@SuppressWarnings( "unchecked")
+		BigInteger countResultList = (BigInteger)getSession().createNativeQuery("CALL filter_count_all(?1, ?2 )")
+											.setParameter(1, field)
+											.setParameter(2, value).getSingleResult();
+		
+		return countResultList;
+	}
 }

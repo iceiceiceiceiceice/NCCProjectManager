@@ -82,4 +82,9 @@ public class LogTimeSheetServiceImpl implements LogTimeSheetService{
 			int index_of_page) {
 		return logTimeSheetDao.findDataPagingFilter(field, value, index_of_page);
 	}
+
+	@Override
+	public BigInteger countDataPagingFilter(String field, String value) {
+		return logTimeSheetDao.countDataPagingFilter(field, value);
+	}
 }
