@@ -20,7 +20,7 @@ DELIMITER $$
 CREATE PROCEDURE getUserDataPaging(start_get int(11), offset int(11))
 BEGIN
     SELECT u.id, u.username, u.role, ui.job FROM user u INNER JOIN user_info ui ON  u.id = ui.user_id LIMIT start_get, offset;
-END
+END; $$
 
 --
 
