@@ -72,13 +72,18 @@ public class LogTimeSheetController {
 		return logTimeSheetService.deleteLogTimeSheet(id);
 	}
 	
-	/*@GetMapping("/user/{user_id}/project/{project_id}")
+	@GetMapping("/user/{user_id}/project/{project_id}")
 	public List<LogTimeSheet> getLogTimeSheetOfOneProjectOfOneUser(@PathVariable int user_id, @PathVariable int project_id){
 		return logTimeSheetService.findLogTimeSheetByUserIdAndProjectId(user_id, project_id);
-	}*/
+	}
 	
 	@PostMapping("/user/project")
 	public ProjectLogTimeSheetDTO getLogTimeSheetByProjectIdWithListUser( @RequestBody Map<String, Integer> map){
 		return logTimeSheetService.findLogTimeSheetByProjectIdWithListUser(map.get("project_id"));
+	}
+	
+	@PostMapping("/log-time-sheet-filter")
+	public List<UserLogTimeSheetProjectWithoutIdDTO> getFullLogTimeFilter( @RequestBody Map<String, String> map){
+		return logTimeSheetService.findDataPagingFilter(map.get("field"),map.get("value"),Integer.parseInt(map.get("index_of_page")));
 	}
 }

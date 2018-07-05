@@ -101,38 +101,38 @@ public class LogTimeSheetDaoImpl implements LogTimeSheetDao{
 
 	@Override
 	public ProjectLogTimeSheetDTO findLogTimeSheetByProjectIdWithListUser(int project_id) {
-//		@SuppressWarnings("unchecked")
-//		List<LogTimeSheet> listLogTime=  findAll();
-//		List<Project> projects = pDao.findAll();
-//		List<User> users = uDao.findAll();
-//		Project projectResult = new Project();
-//		for(int i=0;i<projects.size();i++) {
-//			if(projects.get(i).getproject_id()==project_id) {
-//				projectResult = projects.get(i);
-//			}
-//		}
-//		
-//		List<LogTimeSheetUsername> listLogTimeTemp = new ArrayList<>();
-//		for(int j=0;j<listLogTime.size();j++) {
-//			if(listLogTime.get(j).getProject_id() == project_id ) {
-//				String username = "";
-//				for(User user : users) {
-//			        if(user.getId() ==  listLogTime.get(j).getUser_id()) {
-//			        	username = user.getUsername();
-//			        }
-//			    }
-//				//int id, int project_id, String role, String type, int hours, int user_id,String username
-//				listLogTimeTemp.add(new LogTimeSheetUsername(listLogTime.get(j).getId(),
-//						listLogTime.get(j).getProject_id(),
-//						listLogTime.get(j).getRole(),
-//						listLogTime.get(j).getType(),
-//						listLogTime.get(j).getHours(),
-//						listLogTime.get(j).getUser_id(),username));
-//			}
-//		}
-//		ProjectLogTimeSheetDTO result = new ProjectLogTimeSheetDTO(project_id,projectResult.getProjectName(),listLogTimeTemp);
-//		return result;
-		return null;
+		@SuppressWarnings("unchecked")
+		List<LogTimeSheet> listLogTime=  findAll();
+		List<Project> projects = pDao.findAll();
+		List<User> users = uDao.findAll();
+		Project projectResult = new Project();
+		for(int i=0;i<projects.size();i++) {
+			if(projects.get(i).getproject_id()==project_id) {
+				projectResult = projects.get(i);
+			}
+		}
+		
+		List<LogTimeSheetUsername> listLogTimeTemp = new ArrayList<>();
+		for(int j=0;j<listLogTime.size();j++) {
+			if(listLogTime.get(j).getProject_id() == project_id ) {
+				String username = "";
+				for(User user : users) {
+			        if(user.getId() ==  listLogTime.get(j).getUser_id()) {
+			        	username = user.getUsername();
+			        }
+			    }
+				//int id, int project_id, String role, String type, int hours, int user_id,String username
+				listLogTimeTemp.add(new LogTimeSheetUsername(listLogTime.get(j).getId(),
+						listLogTime.get(j).getProject_id(),
+						listLogTime.get(j).getRole(),
+						listLogTime.get(j).getType(),
+						listLogTime.get(j).getHours(),
+						listLogTime.get(j).getUser_id(),username
+						,listLogTime.get(j).getDate(),listLogTime.get(j).getDescription()));
+			}
+		}
+		ProjectLogTimeSheetDTO result = new ProjectLogTimeSheetDTO(project_id,projectResult.getProjectName(),listLogTimeTemp);
+		return result;
 	}
 
 	@Override
@@ -163,5 +163,16 @@ public class LogTimeSheetDaoImpl implements LogTimeSheetDao{
 		return kq;
 	}
 	
-
+	@Override
+	public List<UserLogTimeSheetProjectWithoutIdDTO> findDataPagingFilter(String field,String value,int index_of_page) {
+		@SuppressWarnings( "unchecked")
+		List<UserLogTimeSheetProjectWithoutIdDTO> resultList = getSession().createNativeQuery("CALL filter(?1, ?2 ,?3)")
+											.setParameter(1, field)
+											.setParameter(2, value)
+											.setParameter(3, index_of_page).
+											setResultTransformer(new AliasToBeanResultTransformer(UserLogTimeSheetProjectWithoutIdDTO.class))
+											.getResultList();
+		
+		return resultList;
+	}
 }
