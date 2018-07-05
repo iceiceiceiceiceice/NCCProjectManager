@@ -48,3 +48,28 @@ BEGIN
     EXECUTE STMT; 
     DEALLOCATE PREPARE STMT;
 END; $$
+
+
+--
+
+
+use ncc;
+DELIMITER $$
+CREATE PROCEDURE `filter_count_all`(in field varchar(40), in giatri varchar(40))
+BEGIN
+   
+    if (field = 'projectName') then
+        SET @Sql = CONCAT("SELECT count(log.id) FROM log_time_sheet log INNER JOIN project p ON  log.project_id = p.project_id INNER JOIN user u ON u.id = log.user_id where p.", field, " like CONCAT('%','" ,giatri,"','%') ");
+    elseif (field = 'username') then
+        SET @Sql = CONCAT("SELECT count(log.id) FROM log_time_sheet log INNER JOIN project p ON  log.project_id = p.project_id INNER JOIN user u ON u.id = log.user_id where u.", field, " like CONCAT('%','" ,giatri,"','%')");
+	 elseif (field = '') then
+        SET @Sql = CONCAT("SELECT count(log.id) FROM log_time_sheet log INNER JOIN project p ON  log.project_id = p.project_id INNER JOIN user u ON u.id = log.user_id ");
+    else 
+        SET @Sql = CONCAT("SELECT count(log.id) FROM log_time_sheet log INNER JOIN project p ON  log.project_id = p.project_id INNER JOIN user u ON u.id = log.user_id where log.", field, " like CONCAT('%','" ,giatri,"','%')");
+    end if;
+ 
+    
+    PREPARE STMT FROM @Sql; 
+    EXECUTE STMT; 
+    DEALLOCATE PREPARE STMT;
+END; $$
