@@ -14,14 +14,12 @@ public interface ProjectDao {
 	public void delete(final Project project);
 	
 	public List<Project> findAll();
-
-	public List<Project> getProjectByIndex(int intValue, String status);
-
-	public List<Project> getProjectByStatus(String status);
-
-	public List<Project> findProjectOfUser(int userId);
 	
-	public List<Project> searhProjectByName(String field, String name, String intValue);
+	public List<Project> getProjectByIndex(int intValue);
+
+	List<Project> getProjectByStatus(String status);
+
+	List<Project> findProjectOfUser(int userId);
 	
 
 }

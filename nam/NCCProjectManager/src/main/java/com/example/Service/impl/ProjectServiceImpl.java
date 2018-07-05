@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.example.DAO.ProjectDao;
+import com.example.DAO.impl.ProjectDaoImpl;
 import com.example.Entity.Project;
 import com.example.Service.ProjectService;
 
@@ -14,7 +14,7 @@ public class ProjectServiceImpl implements ProjectService {
 	
 	 
 	@Autowired
-	private ProjectDao projectDaoImpl;
+	private ProjectDaoImpl projectDaoImpl;
 	
 	
 	@Override
@@ -56,20 +56,8 @@ public class ProjectServiceImpl implements ProjectService {
 	}
 
 
-	public List<Project> getProjectByIndex(int intValue,String status) {
-		return projectDaoImpl.getProjectByIndex( intValue,status);
+	public List<Project> getProjectByIndex(int intValue) {
+		return projectDaoImpl.getProjectByIndex( intValue);
 	}
 
-	@Override
-	public List<Project> getProjectByStatus(String status) {
-		return projectDaoImpl.getProjectByStatus(status);
-	}
-
-	
-	@Override
-	public List<Project> searhProjectByName(String field, String name, String intValue) {
-		return projectDaoImpl.searhProjectByName(field , name, intValue);
-	}
-
-	
 }
