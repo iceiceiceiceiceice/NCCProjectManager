@@ -23,4 +23,5 @@ public interface LogTimeSheetService {
 	public BigInteger getCountLogTimeSheet();
 	public BigInteger test(String regx);
 	List<UserLogTimeSheetProjectWithoutIdDTO> findDataPagingFilter(String field,String value,int index_of_page);
+	BigInteger countDataPagingFilter(String field,String value);
 }
