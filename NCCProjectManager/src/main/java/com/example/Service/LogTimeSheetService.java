@@ -1,9 +1,11 @@
 package com.example.Service;
 
+import java.math.BigInteger;
 import java.util.List;
 
 import com.example.Entity.LogTimeSheet;
 import com.example.Model.ProjectLogTimeSheetDTO;
+import com.example.Model.UserLogTimeSheetProjectWithoutIdDTO;
 import com.example.Model.LogTimeSheetDTO;
 import com.example.Model.LogTimeSheetUserWithProjectNameDTO;
 
@@ -17,4 +19,9 @@ public interface LogTimeSheetService {
 	public String updatelogTimeSheet(LogTimeSheet logTimeSheet);
 	public String deleteLogTimeSheet(int id);
 	public ProjectLogTimeSheetDTO findLogTimeSheetByProjectIdWithListUser(int project_id);
+	public List<UserLogTimeSheetProjectWithoutIdDTO> findDataPaging(Integer from, Integer offset);
+	public BigInteger getCountLogTimeSheet();
+	public BigInteger test(String regx);
+	List<UserLogTimeSheetProjectWithoutIdDTO> findDataPagingFilter(String field,String value,int index_of_page);
+	BigInteger countDataPagingFilter(String field,String value);
 }

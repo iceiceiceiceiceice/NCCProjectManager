@@ -1,22 +1,27 @@
 package com.example.DAO.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 import org.hibernate.query.Query;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-
-
+import com.example.DAO.LogTimeSheetDao;
+import com.example.DAO.ProjectDao;
 import com.example.DAO.ProjectDetailDao;
+import com.example.DAO.UserDao;
+import com.example.DAO.relationDao;
+import com.example.Entity.LogTimeSheet;
 import com.example.Entity.Project;
 import com.example.Entity.Relation;
-
-
+import com.example.Entity.RelationPK;
+import com.example.Entity.User;
 import com.example.Entity.UserDTOProjectDetail;
+import com.example.Entity.UserInfo;
 
 
 @Repository
@@ -26,8 +31,15 @@ public class ProjectDetailDaoImpl implements ProjectDetailDao {
 
 	@PersistenceContext
     private EntityManager entityManager;
-
-
+	@Autowired
+	private UserDao userdao;
+	@Autowired
+	private LogTimeSheetDao logtimesheetdao;
+	@Autowired
+	private relationDao relationdao;
+	@Autowired
+	private ProjectDao projectdao;
+	
 	@SuppressWarnings("unchecked")
 	public List<Project> getProjectDetail(int project_id){
 		//Session session = factory.openSession();
@@ -57,6 +69,64 @@ public class ProjectDetailDaoImpl implements ProjectDetailDao {
 		}
 	}
 
+	
+	@SuppressWarnings("unchecked")
+	public List<UserInfo> getPM(){
+		//char a='"';
+		String qr = "select ui from UserInfo ui where ui.job='PM'";
+		Query<UserInfo> queryInfo =  (Query<UserInfo>) entityManager.createQuery(qr);
+		List<UserInfo> info = queryInfo.list();
+		return info;
+	}
+	@Override
+	public List<UserDTOProjectDetail> findPM() {
+		// 
+		List<UserInfo> info = this.getPM();
+		if(info.isEmpty())	return null;
+		else {
+			List<User> users = new ArrayList<User>();
+			for(int i =0;i<info.size();i++) {
+				users.add(userdao.findById(info.get(i).getUserId()));
+			}
+			List<UserDTOProjectDetail> userdetail = new ArrayList<UserDTOProjectDetail>();
+			for(int i =0;i<users.size();i++) {
+				userdetail.add(new UserDTOProjectDetail(users.get(i).getId(),users.get(i).getUsername()));
+			}
+			return userdetail;
+		}
+	}
+	@Override
+	public int getNumberOfHourInProject(int project_id) {
+		List<LogTimeSheet> listlog = logtimesheetdao.findAll();
+		int numberofhourinproject = 0;
+		for(int i =0; i <listlog.size();i++) {
+			if(listlog.get(i).getProject_id()==project_id) {
+				numberofhourinproject+=listlog.get(i).getHours();
+			}
+		}
+		return numberofhourinproject;
+	}
+	@Override
+	public List<User> getmultiuser(){
+		List<Integer> listrela =  relationdao.findmultiprojectuser();
+		if(listrela.isEmpty()) return null;
+		else {
+			for(int i = 0; i < listrela.size();i++) {
+				List<Relation> rela_i = relationdao.findByUserId(listrela.get(i).intValue());
+				int count_run_project = 0 ;
+				for(int j = 0 ; j < rela_i.size();j++) {
+					if(projectdao.findById(rela_i.get(j).getId().getProjectId()).getStatus().matches("running")) count_run_project++;
+				}
+				if(count_run_project<2) listrela.remove(i);
+			}
+			
+			List<User> users = new ArrayList<User>();
+			for(int i =0 ;i < listrela.size();i++) {
+				users.add(userdao.findById(listrela.get(i).intValue()));
+			}
+			return users;
+		}
+	}
 
 
 

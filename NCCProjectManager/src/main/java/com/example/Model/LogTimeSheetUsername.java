@@ -1,5 +1,6 @@
 package com.example.Model;
 
+import java.sql.Timestamp;
 
 public class LogTimeSheetUsername {
 	private int id;
@@ -15,6 +16,10 @@ public class LogTimeSheetUsername {
 	private int user_id;
 	
 	private String username;
+	
+	private Timestamp date;
+	
+	private String description;
 	
 	public LogTimeSheetUsername() {
 		
@@ -49,7 +54,7 @@ public class LogTimeSheetUsername {
 	}
 
 	public LogTimeSheetUsername(int id, int project_id, String role, String type, int hours, int user_id,
-			String username) {
+			String username, Timestamp date, String description) {
 		super();
 		this.id = id;
 		this.project_id = project_id;
@@ -58,6 +63,8 @@ public class LogTimeSheetUsername {
 		this.hours = hours;
 		this.user_id = user_id;
 		this.username = username;
+		this.date = date;
+		this.description = description;
 	}
 
 	public void setType(String type) {
@@ -87,4 +94,22 @@ public class LogTimeSheetUsername {
 	public void setUsername(String username) {
 		this.username = username;
 	}
+
+	public Timestamp getDate() {
+		return date;
+	}
+
+	public void setDate(Timestamp date) {
+		this.date = date;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+	
+	
 }

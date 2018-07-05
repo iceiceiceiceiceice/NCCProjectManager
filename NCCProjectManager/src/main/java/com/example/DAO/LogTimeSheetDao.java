@@ -1,5 +1,6 @@
 package com.example.DAO;
 
+import java.math.BigInteger;
 import java.util.List;
 
 import org.hibernate.HibernateException;
@@ -7,6 +8,7 @@ import org.hibernate.HibernateException;
 import com.example.Entity.LogTimeSheet;
 import com.example.Model.LogTimeSheetUserWithProjectNameDTO;
 import com.example.Model.ProjectLogTimeSheetDTO;
+import com.example.Model.UserLogTimeSheetProjectWithoutIdDTO;
 
 
 public interface LogTimeSheetDao{
@@ -25,4 +27,9 @@ public interface LogTimeSheetDao{
 	public String updateLogTimeSheet(LogTimeSheet logTimeSheet) ;
 
 	public String deleteLogTimeSheet(int id) ;
+	public List<UserLogTimeSheetProjectWithoutIdDTO> findDataPaging(Integer from, Integer offset);
+	public BigInteger getCountLogTimeSheet();
+	public BigInteger test(String regx);
+	List<UserLogTimeSheetProjectWithoutIdDTO> findDataPagingFilter(String field,String value,int index_of_page);
+	BigInteger countDataPagingFilter(String field,String value);
 }

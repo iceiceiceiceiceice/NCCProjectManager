@@ -10,11 +10,26 @@ public class ProjectDetailResponse {
 		
 	}
 	
-	public ProjectDetailResponse(Project project, List<UserDTOProjectDetail> list_user) {
 	
+
+	public ProjectDetailResponse(Project project, List<UserDTOProjectDetail> list_user, int number) {
+		super();
 		this.project = project;
 		this.list_user = list_user;
+		this.number = number;
 	}
+
+
+
+	public int getNumber() {
+		return number;
+	}
+
+	public void setNumber(int number) {
+		this.number = number;
+	}
+
+
 
 	public Project getProject() {
 		return project;

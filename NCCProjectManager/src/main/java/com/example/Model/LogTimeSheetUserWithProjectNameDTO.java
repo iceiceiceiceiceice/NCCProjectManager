@@ -1,5 +1,7 @@
 package com.example.Model;
 
+import java.sql.Timestamp;
+
 import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -12,6 +14,8 @@ public class LogTimeSheetUserWithProjectNameDTO {
 	
 	private int project_id;
 	
+	private String projectName;
+	
 	private String role;
 	
 	private String type;
@@ -20,10 +24,20 @@ public class LogTimeSheetUserWithProjectNameDTO {
 
 	private int user_id;
 	
-	private String projectName;
+	private String username;
+	
+	private Timestamp date;
+	
+	private String description;
+	
+	
+
+	public LogTimeSheetUserWithProjectNameDTO() {
+		super();
+	}
 
 	public LogTimeSheetUserWithProjectNameDTO(int id, int project_id, String role, String type, int hours, int user_id,
-			String projectName) {
+			String projectName, Timestamp date, String description, String username) {
 		super();
 		this.id = id;
 		this.project_id = project_id;
@@ -32,6 +46,9 @@ public class LogTimeSheetUserWithProjectNameDTO {
 		this.hours = hours;
 		this.user_id = user_id;
 		this.projectName = projectName;
+		this.date = date;
+		this.description = description;
+		this.username = username;
 	}
 
 	public int getId() {
@@ -48,6 +65,14 @@ public class LogTimeSheetUserWithProjectNameDTO {
 
 	public void setProject_id(int project_id) {
 		this.project_id = project_id;
+	}
+
+	public String getProjectName() {
+		return projectName;
+	}
+
+	public void setProjectName(String projectName) {
+		this.projectName = projectName;
 	}
 
 	public String getRole() {
@@ -82,14 +107,29 @@ public class LogTimeSheetUserWithProjectNameDTO {
 		this.user_id = user_id;
 	}
 
-	public String getProjectName() {
-		return projectName;
+	public String getUsername() {
+		return username;
 	}
 
-	public void setProjectName(String projectName) {
-		this.projectName = projectName;
+	public void setUsername(String username) {
+		this.username = username;
 	}
-	
-	
 
+	public Timestamp getDate() {
+		return date;
+	}
+
+	public void setDate(Timestamp date) {
+		this.date = date;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	
 }

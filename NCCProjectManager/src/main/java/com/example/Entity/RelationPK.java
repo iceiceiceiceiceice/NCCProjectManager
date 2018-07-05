@@ -7,6 +7,7 @@ import javax.persistence.*;
  * The primary key class for the relation database table.
  * 
  */
+
 @Embeddable
 @Table(name="relation")
 public class RelationPK implements Serializable {
@@ -14,10 +15,10 @@ public class RelationPK implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Column(name="user_id", insertable=false, updatable=false)
-	private int userId;
+	public int userId;
 
 	@Column(name="project_id", insertable=false, updatable=false)
-	private int projectId;
+	public int projectId;
 
 	public RelationPK() {
 	}
