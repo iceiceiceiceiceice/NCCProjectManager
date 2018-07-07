@@ -75,7 +75,11 @@ public class ProjectController {
 		return projectService.searhProjectByName(Hmap.get("field"), Hmap.get("name"), Hmap.get("index_of_page"));
 		
 	}
-	
+	@PostMapping(value= ("/get-project-filter-number"))
+	@ResponseBody
+	public String getProjectFilterNumber(@RequestBody HashMap<String, String> Hmap) {
+		return projectService.getNumberProjectByName(Hmap.get("field"), Hmap.get("name"), Hmap.get("index_of_page"));
+	}
 	
 	@PostMapping(value=("/create-project"))
 	@ResponseBody

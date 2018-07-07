@@ -21,5 +21,5 @@ public interface ProjectService {
 	
 	public List<Project> getProjectByStatus(String status);
 	public List<Project> searhProjectByName(String field, String name, String intValue);
-	
+	public String getNumberProjectByName(String field, String name, String intValue);
 }

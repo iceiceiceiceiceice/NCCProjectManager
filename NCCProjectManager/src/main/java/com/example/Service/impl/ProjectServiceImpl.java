@@ -71,5 +71,14 @@ public class ProjectServiceImpl implements ProjectService {
 		return projectDaoImpl.searhProjectByName(field , name, intValue);
 	}
 
+	@Override
+	public String getNumberProjectByName(String field, String name, String intValue) {
+		// TODO Auto-generated method stub
+		
+		int a = projectDaoImpl.getNumberProjectByName(field, name, intValue);
+		char b = '"';
+		return  "{"+b+"number"+b+":"+a+"}";
+	}
+
 	
 }

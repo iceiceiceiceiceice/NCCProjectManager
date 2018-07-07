@@ -104,4 +104,15 @@ public class ProjectDaoImpl implements ProjectDao {
 		return list;
 	}
 
+	@Override
+	public int getNumberProjectByName(String field, String name, String intValue) {
+		int value = Integer.parseInt(intValue);
+		Session session = this.sessionFactory.getCurrentSession();
+		String qry = "select * from project where "+ field+" like '%"+ name +"%'";
+		SQLQuery query = session.createSQLQuery(qry).addEntity(Project.class);
+		List<Project> list = query.list();
+
+		return list.size();
+	}
+
 }
