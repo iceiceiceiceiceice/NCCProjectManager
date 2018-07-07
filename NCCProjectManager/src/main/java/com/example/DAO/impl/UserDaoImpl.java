@@ -14,6 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.example.DAO.*;
 import com.example.Entity.*;
 import com.example.Model.UserFullInfoDTO;
+import com.example.Model.UserLogTimeSheetProjectWithoutIdDTO;
 
 
 @Repository
@@ -74,4 +75,23 @@ public class UserDaoImpl implements UserDao{
 		Session session = this.sessionFactory.getCurrentSession();
 		return session.get(User.class, id).getProjects();
 	}*/
+	@SuppressWarnings({ "unchecked", "deprecation" })
+	@Override
+	public List<UserFullInfoDTO> filterUser(String field, String value, int index_of_page, int pageSize) {
+		
+		return sessionFactory.getCurrentSession().createNativeQuery("CALL filter_user(?1, ?2 ,?3,?4)")
+				.setParameter(1, field)
+				.setParameter(2, value)
+				.setParameter(3, index_of_page)
+				.setParameter(4, pageSize)
+				.setResultTransformer(new AliasToBeanResultTransformer(UserFullInfoDTO.class))
+				.getResultList();
+	}
+	@Override
+	public BigInteger countFilterUser(String field, String value) {
+		return (BigInteger)sessionFactory.getCurrentSession().createNativeQuery("CALL user_filter_count_all(?1, ?2 )")
+				.setParameter(1, field)
+				.setParameter(2, value)
+				.getSingleResult();
+	}
 }

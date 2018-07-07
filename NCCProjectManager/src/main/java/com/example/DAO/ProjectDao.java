@@ -22,7 +22,10 @@ public interface ProjectDao {
 	public List<Project> findProjectOfUser(int userId);
 	
 	public List<Project> searhProjectByName(String field, String name, String intValue);
+<<<<<<< HEAD
 	
 	public int getNumberProjectByName(String field, String name, String intValue);
+=======
+>>>>>>> 17a917ec61c81230e0c2b00a805c66a63ca7ae51
 
 }
