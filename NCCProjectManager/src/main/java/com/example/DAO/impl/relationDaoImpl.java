@@ -32,6 +32,7 @@ public class relationDaoImpl implements relationDao {
 		a.setId(relation);
 		Session session = this.sessionFactory.getCurrentSession();
 		session.save(a);
+		session.close();
 	}
 	@Override
 	public List<Relation> findall(){
@@ -75,5 +76,6 @@ public class relationDaoImpl implements relationDao {
 		query.setParameter("getuser_id", getuser_id);
 		query.setParameter("project_id", project_id);
 		query.executeUpdate();
+		session.close();
 	}
 }
