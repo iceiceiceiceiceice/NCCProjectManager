@@ -9,6 +9,7 @@ import com.example.Entity.Project;
 import com.example.Entity.User;
 //import com.example.Entity.User;
 import com.example.Entity.UserDTOProjectDetail;
+import com.example.Model.UserJoinMultiProjectDTO;
 
 
 public interface ProjectDetailDao  {
@@ -16,5 +17,5 @@ public interface ProjectDetailDao  {
 	public List<UserDTOProjectDetail> findByProjectID(int project_id);
 	public List<UserDTOProjectDetail> findPM(); 
 	public int getNumberOfHourInProject(int project_id);
-	public List<UserDTOProjectDetail> getmultiuser();
+	public List<UserJoinMultiProjectDTO> getmultiuser();
 }

@@ -189,6 +189,9 @@ INSERT INTO `ncc`.`relation` (`user_id`, `project_id`) VALUES ('3', '2');
 INSERT INTO `ncc`.`relation` (`user_id`, `project_id`) VALUES ('7', '2');
 INSERT INTO `ncc`.`relation` (`user_id`, `project_id`) VALUES ('5', '2');
 INSERT INTO `ncc`.`relation` (`user_id`, `project_id`) VALUES ('8', '2');
+INSERT INTO `ncc`.`relation` (`user_id`, `project_id`) VALUES ('4', '2');
+INSERT INTO `ncc`.`relation` (`user_id`, `project_id`) VALUES ('4', '3');
+INSERT INTO `ncc`.`relation` (`user_id`, `project_id`) VALUES ('5', '3');
 
 
 
