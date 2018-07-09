@@ -107,10 +107,11 @@ public class ProjectDetailDaoImpl implements ProjectDetailDao {
 		return numberofhourinproject;
 	}
 	@Override
-	public List<User> getmultiuser(){
+	public List<UserDTOProjectDetail> getmultiuser(){
 		List<Integer> listrela =  relationdao.findmultiprojectuser();
 		if(listrela.isEmpty()) return null;
 		else {
+			ArrayList arr = new ArrayList();
 			for(int i = 0; i < listrela.size();i++) {
 				List<Relation> rela_i = relationdao.findByUserId(listrela.get(i).intValue());
 				int count_run_project = 0 ;
@@ -118,13 +119,21 @@ public class ProjectDetailDaoImpl implements ProjectDetailDao {
 					if(projectdao.findById(rela_i.get(j).getId().getProjectId()).getStatus().matches("running")) count_run_project++;
 				}
 				if(count_run_project<2) listrela.remove(i);
+				else {
+					arr.add(count_run_project);
+				}
 			}
 			
 			List<User> users = new ArrayList<User>();
 			for(int i =0 ;i < listrela.size();i++) {
 				users.add(userdao.findById(listrela.get(i).intValue()));
 			}
-			return users;
+			List<UserDTOProjectDetail> listuser = new ArrayList<UserDTOProjectDetail>();
+			for(int i =0 ; i < users.size();i++) {
+				listuser.add(new UserDTOProjectDetail(users.get(i).getId(),users.get(i).getUsername()));
+			}
+			
+			return listuser;
 		}
 	}
 

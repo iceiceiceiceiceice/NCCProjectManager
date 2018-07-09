@@ -16,5 +16,5 @@ public interface ProjectDetailDao  {
 	public List<UserDTOProjectDetail> findByProjectID(int project_id);
 	public List<UserDTOProjectDetail> findPM(); 
 	public int getNumberOfHourInProject(int project_id);
-	public List<User> getmultiuser();
+	public List<UserDTOProjectDetail> getmultiuser();
 }

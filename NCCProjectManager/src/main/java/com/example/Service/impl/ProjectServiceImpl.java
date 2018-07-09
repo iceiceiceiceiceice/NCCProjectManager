@@ -73,7 +73,7 @@ public class ProjectServiceImpl implements ProjectService {
 	}
 
 	@Override
-<<<<<<< HEAD
+
 	public String getNumberProjectByName(String field, String name, String intValue) {
 		// TODO Auto-generated method stub
 		
@@ -83,11 +83,11 @@ public class ProjectServiceImpl implements ProjectService {
 	}
 
 	
-=======
+
 	public List<Project> findByString(String name) {
 		return projectDaoImpl.searhProjectByName("projectName",name,"1");
 	}
 
 
->>>>>>> 17a917ec61c81230e0c2b00a805c66a63ca7ae51
+
 }

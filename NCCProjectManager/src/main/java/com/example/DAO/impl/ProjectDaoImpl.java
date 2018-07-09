@@ -2,8 +2,6 @@ package com.example.DAO.impl;
 
 import java.util.List;
 
-import javax.management.Query;
-
 import org.hibernate.SQLQuery;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -104,7 +102,7 @@ public class ProjectDaoImpl implements ProjectDao {
 		return list;
 	}
 
-<<<<<<< HEAD
+
 	@Override
 	public int getNumberProjectByName(String field, String name, String intValue) {
 		int value = Integer.parseInt(intValue);
@@ -115,7 +113,6 @@ public class ProjectDaoImpl implements ProjectDao {
 
 		return list.size();
 	}
-=======
->>>>>>> 17a917ec61c81230e0c2b00a805c66a63ca7ae51
+
 
 }
