@@ -1,5 +1,6 @@
 package com.example.Service.impl;
 
+import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.List;
 import java.util.function.LongToIntFunction;
@@ -85,5 +86,10 @@ public class LogTimeSheetServiceImpl implements LogTimeSheetService{
 	@Override
 	public BigInteger countDataPagingFilter(String field, String value) {
 		return logTimeSheetDao.countDataPagingFilter(field, value);
+	}
+
+	@Override
+	public BigDecimal countHoursLogtimesheet() {
+		return logTimeSheetDao.countHoursLogtimesheet();
 	}
 }

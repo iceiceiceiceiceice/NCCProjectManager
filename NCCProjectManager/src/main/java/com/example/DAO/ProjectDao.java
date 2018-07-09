@@ -23,4 +23,7 @@ public interface ProjectDao {
 	
 	public List<Project> searhProjectByName(String field, String name, String intValue);
 
+	
+	public int getNumberProjectByName(String field, String name, String intValue);
+
 }

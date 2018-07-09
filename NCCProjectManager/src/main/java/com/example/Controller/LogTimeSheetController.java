@@ -1,5 +1,6 @@
 package com.example.Controller;
 
+import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.List;
 import java.util.Map;
@@ -90,5 +91,10 @@ public class LogTimeSheetController {
 	@PostMapping("/get-count-filter-log")
 	public BigInteger countDataPagingFilter(@RequestBody Map<String, String> map){
 		return logTimeSheetService.countDataPagingFilter(map.get("field"),map.get("value"));
+	}
+	
+	@GetMapping("/get-sum-hours")
+	public BigDecimal countDataPagingFilter(){
+		return logTimeSheetService.countHoursLogtimesheet();
 	}
 }

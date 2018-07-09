@@ -60,10 +60,10 @@ public class ProjectController {
 	
 	@PostMapping(value="/get-project")
 	@ResponseBody
-	public List<Project> listProjectByStatus(@RequestBody HashMap<String, Integer> Hmap)
+	public List<Project> listProjectByStatus()
 	{
 		
-		return projectService.getProjectByIndex(Hmap.get("index_of_page").intValue(),"running");
+		return projectService.getProjectByIndex(1,"running");
 		
 	}
 	
@@ -75,7 +75,11 @@ public class ProjectController {
 		return projectService.searhProjectByName(Hmap.get("field"), Hmap.get("name"), Hmap.get("index_of_page"));
 		
 	}
-	
+	@PostMapping(value= ("/get-project-filter-number"))
+	@ResponseBody
+	public String getProjectFilterNumber(@RequestBody HashMap<String, String> Hmap) {
+		return projectService.getNumberProjectByName(Hmap.get("field"), Hmap.get("name"), Hmap.get("index_of_page"));
+	}
 	
 	@PostMapping(value=("/create-project"))
 	@ResponseBody
@@ -98,8 +102,11 @@ public class ProjectController {
 
 	@PostMapping("/count-project-running")
 	@ResponseBody 
-	public int countProjectRunning(@RequestBody Map<String,String> status) {
-		return projectService.getProjectByStatus(status.get("status")).size();
-	}
+	public String countProjectRunning(@RequestBody Map<String,String> status) {
+		char a = '"';
+		String result = "{"+a+"number"+a+":"+a+projectService.getProjectByStatus(status.get("status")).size()+a+"}";
+		return result;
+	}	
+
 	
 }
