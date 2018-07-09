@@ -106,10 +106,7 @@ public class ProjectController {
 		char a = '"';
 		String result = "{"+a+"number"+a+":"+a+projectService.getProjectByStatus(status.get("status")).size()+a+"}";
 		return result;
-<<<<<<< HEAD
-	}
-=======
 	}	
->>>>>>> 34ef34d8736af72896bdd9787318baf0a339a914
+
 	
 }
