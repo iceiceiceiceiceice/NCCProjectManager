@@ -22,6 +22,7 @@ import com.example.Entity.RelationPK;
 import com.example.Entity.User;
 import com.example.Entity.UserDTOProjectDetail;
 import com.example.Entity.UserInfo;
+import com.example.Model.UserJoinMultiProjectDTO;
 
 
 @Repository
@@ -107,33 +108,53 @@ public class ProjectDetailDaoImpl implements ProjectDetailDao {
 		return numberofhourinproject;
 	}
 	@Override
-	public List<UserDTOProjectDetail> getmultiuser(){
+	public List<UserJoinMultiProjectDTO> getmultiuser(){
 		List<Integer> listrela =  relationdao.findmultiprojectuser();
 		if(listrela.isEmpty()) return null;
 		else {
-			ArrayList arr = new ArrayList();
+//			ArrayList arr = new ArrayList();
+//			for(int i = 0; i < listrela.size();i++) {
+//				List<Relation> rela_i = relationdao.findByUserId(listrela.get(i).intValue());
+//				int count_run_project = 0 ;
+//				for(int j = 0 ; j < rela_i.size();j++) {
+//					if(projectdao.findById(rela_i.get(j).getId().getProjectId()).getStatus().matches("running")) count_run_project++;
+//				}
+//				if(count_run_project<2) listrela.remove(i);
+//				else {
+//					arr.add(count_run_project);
+//				}
+//			}
+//			if(listrela.isEmpty()) {
+//				return null;
+//			}
+//			else {
+//				List<User> users = new ArrayList<User>();
+//				for(int i =0 ;i < listrela.size();i++) {
+//					users.add(userdao.findById(listrela.get(i).intValue()));
+//				}
+//				List<UserDTOProjectDetail> listuser = new ArrayList<UserDTOProjectDetail>();
+//				for(int i =0 ; i < users.size();i++) {
+//					listuser.add(new UserDTOProjectDetail(users.get(i).getId(),users.get(i).getUsername()));
+//				}
+//				List<UserJoinMultiProjectDTO> lastresult = new ArrayList<UserJoinMultiProjectDTO>();
+//				for(int i =0 ; i < users.size();i++) {
+//					lastresult.add(new UserJoinMultiProjectDTO(listuser.get(i), (int) arr.get(i)));
+//				}
+//				return lastresult;
+//			}
+			List<UserJoinMultiProjectDTO> result = new ArrayList<UserJoinMultiProjectDTO>();
 			for(int i = 0; i < listrela.size();i++) {
 				List<Relation> rela_i = relationdao.findByUserId(listrela.get(i).intValue());
 				int count_run_project = 0 ;
 				for(int j = 0 ; j < rela_i.size();j++) {
-					if(projectdao.findById(rela_i.get(j).getId().getProjectId()).getStatus().matches("running")) count_run_project++;
+					if(projectdao.findById(rela_i.get(j).getId().getProjectId())!=null) count_run_project ++;
 				}
-				if(count_run_project<2) listrela.remove(i);
-				else {
-					arr.add(count_run_project);
-				}
+				User user = userdao.findById(listrela.get(i).intValue());
+				UserDTOProjectDetail userDTO = new UserDTOProjectDetail(user.getId(),user.getUsername());
+				UserJoinMultiProjectDTO user_i = new UserJoinMultiProjectDTO(userDTO,count_run_project);
+				result.add(user_i);
 			}
-			
-			List<User> users = new ArrayList<User>();
-			for(int i =0 ;i < listrela.size();i++) {
-				users.add(userdao.findById(listrela.get(i).intValue()));
-			}
-			List<UserDTOProjectDetail> listuser = new ArrayList<UserDTOProjectDetail>();
-			for(int i =0 ; i < users.size();i++) {
-				listuser.add(new UserDTOProjectDetail(users.get(i).getId(),users.get(i).getUsername()));
-			}
-			
-			return listuser;
+			return result;
 		}
 	}
 

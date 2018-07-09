@@ -26,7 +26,7 @@ public class ProjectDaoImpl implements ProjectDao {
 		Session session = this.sessionFactory.getCurrentSession();
 		project.setStatus("running");
 		session.save(project);
-
+	
 	}
 
 	@Override
@@ -95,7 +95,7 @@ public class ProjectDaoImpl implements ProjectDao {
 	public List<Project> searhProjectByName(String field, String name, String intValue) {
 		int value = Integer.parseInt(intValue);
 		Session session = this.sessionFactory.getCurrentSession();
-		String qry = "select * from project where "+ field+" like '%"+ name +"%' limit "+(value*10-10)+","+(value*10);
+		String qry = "select * from project where "+ field+" like '%"+ name +"%' limit "+(value*10-10)+","+10;
 		SQLQuery query = session.createSQLQuery(qry).addEntity(Project.class);
 		List<Project> list = query.list();
 

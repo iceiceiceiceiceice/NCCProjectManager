@@ -44,7 +44,7 @@ public class relationDaoImpl implements relationDao {
 	public List<Integer> findmultiprojectuser(){
 		EntityManager em = sessionFactory.createEntityManager();
 		@SuppressWarnings("unchecked")
-		Query<Integer> query=(Query<Integer>) em.createQuery("select r.id.userId from Relation r group by r.id.userId having count(r.id.userId) > 1 ");
+		Query<Integer> query=(Query<Integer>) em.createQuery("select r.id.userId from Relation r group by r.id.userId  ");
 		return query.getResultList();
 	}
 	@SuppressWarnings( "unchecked" )

@@ -17,6 +17,7 @@ import com.example.Entity.ProjectDetailResponse;
 import com.example.Entity.User;
 //import com.example.Entity.User;
 import com.example.Entity.UserDTOProjectDetail;
+import com.example.Model.UserJoinMultiProjectDTO;
 import com.example.Service.ProjectDetailService;
 
 
@@ -61,7 +62,7 @@ public class ProjectDetailController {
 		return projectdetailservice.getNumberOfHourInProject(project_id.get("project_id"));
 	}
 	@GetMapping("/user-multi-project")
-	public List<UserDTOProjectDetail> getmultiuser(){
+	public List<UserJoinMultiProjectDTO> getmultiuser(){
 		return projectdao.getmultiuser();
 	}
 	@PostMapping("/project-detail-user-list")

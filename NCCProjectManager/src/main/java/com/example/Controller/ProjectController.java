@@ -60,10 +60,10 @@ public class ProjectController {
 	
 	@PostMapping(value="/get-project")
 	@ResponseBody
-	public List<Project> listProjectByStatus(@RequestBody HashMap<String, Integer> Hmap)
+	public List<Project> listProjectByStatus()
 	{
 		
-		return projectService.getProjectByIndex(Hmap.get("index_of_page").intValue(),"running");
+		return projectService.getProjectByIndex(1,"running");
 		
 	}
 	
