@@ -26,27 +26,27 @@ public class UserDaoImpl implements UserDao{
 	public void save(final User user) {
 		Session session = this.sessionFactory.getCurrentSession();
 		session.save(user);
-		session.close();
+//		session.close();
 	}
 	public void update(final User user) {
 		Session session = this.sessionFactory.getCurrentSession();
 		session.update(user);
-		session.close();
+//		session.close();
 	}
 	public User findById(final int id) {
 		Session session = this.sessionFactory.getCurrentSession();
-		session.close();
+//		session.close();
 		return session.get(User.class, id);
 		
 	}
 	public void delete(final User user) {
 		Session session = this.sessionFactory.getCurrentSession();
 		session.remove(user);
-		session.close();
+//		session.close();
 	}
 	public List<User> findAll() {
 		Session session = this.sessionFactory.getCurrentSession();
-		session.close();
+//		session.close();
 		return session.createQuery("FROM User", User.class).getResultList();
 	}
 
@@ -57,7 +57,7 @@ public class UserDaoImpl implements UserDao{
 		String qry = "select * from user where "+ field +" like '%"+ name +"%' limit "+(value*10-10)+","+(value*10);
 		SQLQuery query = session.createSQLQuery(qry).addEntity(User.class);
 		List<User> list = query.list();
-		session.close();
+//		session.close();
 		return list;
 	}
 	
@@ -69,12 +69,12 @@ public class UserDaoImpl implements UserDao{
 											.setParameter(1, from*offset - offset)
 											.setParameter(2, offset)
 											.getResultList();
-		session.close();						
+//		session.close();						
 		return resultList;
 	}
 	public BigInteger getCountUser() {
 		Session session = this.sessionFactory.getCurrentSession();
-		session.close();
+//		session.close();
 		return (BigInteger) session.createNativeQuery("SELECT COUNT(id) FROM user").getSingleResult();
 	}
 	/*@Override
@@ -93,7 +93,7 @@ public class UserDaoImpl implements UserDao{
 				.setParameter(4, pageSize)
 				.setResultTransformer(new AliasToBeanResultTransformer(UserFullInfoDTO.class))
 				.getResultList();
-		a.close();
+//		a.close();
 		return b;
 	}
 	@Override
@@ -103,7 +103,7 @@ public class UserDaoImpl implements UserDao{
 				.setParameter(1, field)
 				.setParameter(2, value)
 				.getSingleResult();
-		a.close();
+//		a.close();
 		return b;
 	}
 }
