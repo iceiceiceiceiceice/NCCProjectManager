@@ -50,7 +50,7 @@ public class LogTimeSheetDaoImpl implements LogTimeSheetDao{
 	public List<LogTimeSheet> findAll() {
 		Session a = getSession();
 		List<LogTimeSheet> result = a.createQuery("FROM log_time_sheet").getResultList();
-		a.close();
+	
 		return result;
 	}
 
@@ -62,7 +62,7 @@ public class LogTimeSheetDaoImpl implements LogTimeSheetDao{
 		List<LogTimeSheetUserWithProjectNameDTO> listResult = a
 				.createNativeQuery("CALL findLogTimeSheetByUserId(?1)")
 				.setParameter(1, user_id).setResultTransformer(new AliasToBeanResultTransformer(LogTimeSheetUserWithProjectNameDTO.class)).getResultList();
-		a.close();
+	
 		return listResult;
 	}
 	@Override
@@ -70,7 +70,7 @@ public class LogTimeSheetDaoImpl implements LogTimeSheetDao{
 		try {
 			Session a = getSession();
 			a.save(logTimeSheet);
-			a.close();
+		
 			return true;
 		}catch (HibernateException e) {
 			throw new Exception("Saving the log time sheet failed, a cay", e);
@@ -84,41 +84,45 @@ public class LogTimeSheetDaoImpl implements LogTimeSheetDao{
 		LogTimeSheet b =  (LogTimeSheet) a
 				.createNativeQuery("SELECT id, project_id, role, type, hours, user_id FROM log_time_sheet   WHERE id = ?1")
 				.setParameter(1, id).addEntity(LogTimeSheet.class).getSingleResult();
-		a.close();
+		
 		return b;
 	}
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<LogTimeSheet> findByUserIdAndProjectId(int userId, int projectId) {
-		@SuppressWarnings("unchecked")
+		
 		Session a = getSession();
 		List<LogTimeSheet> listResult=   a
 				.createNativeQuery("SELECT id, project_id, role, type, hours, user_id FROM log_time_sheet   WHERE user_id =?1 AND project_id = ?2")
 				.setParameter(1, userId).setParameter(2, projectId).addEntity(LogTimeSheet.class).getResultList();
 		if(listResult.isEmpty()) {
-			a.close();
+			
 			return null;
 		}
-		a.close();
+		
 		return listResult;
 	}
 	@Override
 	public String updateLogTimeSheet(LogTimeSheet logTimeSheet) {
 			Session a=getSession();
 			a.update("log_time_sheet",logTimeSheet);
-			a.close();
+			
 			return RESULT_OK;
 		
 	}
 	@Override
 	public String deleteLogTimeSheet(int id) {
-		 getSession().delete(findById(id));
+		Session a = getSession();
+		 a.delete(findById(id));
+		
 		 return RESULT_OK;
 	}
 	
 
 	@Override
+	
 	public ProjectLogTimeSheetDTO findLogTimeSheetByProjectIdWithListUser(int project_id) {
-		@SuppressWarnings("unchecked")
+		
 		List<LogTimeSheet> listLogTime=  findAll();
 		List<Project> projects = pDao.findAll();
 		List<User> users = uDao.findAll();
@@ -154,18 +158,21 @@ public class LogTimeSheetDaoImpl implements LogTimeSheetDao{
 
 	@Override
 	public List<UserLogTimeSheetProjectWithoutIdDTO> findDataPaging(Integer from, Integer offset) {
+		Session a = getSession();
 		@SuppressWarnings( "unchecked")
-		List<UserLogTimeSheetProjectWithoutIdDTO> resultList = getSession().createNativeQuery("CALL getDataPagingLogTimeSheet(?1, ?2)")
+		List<UserLogTimeSheetProjectWithoutIdDTO> resultList = a.createNativeQuery("CALL getDataPagingLogTimeSheet(?1, ?2)")
 											.setParameter(1, from*offset - offset)
 											.setParameter(2, offset).setResultTransformer(new AliasToBeanResultTransformer(UserLogTimeSheetProjectWithoutIdDTO.class))
 											.getResultList();
-		
+	
 		return resultList;
 	}
 
 	@Override
 	public BigInteger getCountLogTimeSheet() {
-		BigInteger count = (BigInteger) getSession().createNativeQuery("SELECT COUNT(id) FROM log_time_sheet").getSingleResult();
+		Session a = getSession();
+		BigInteger count = (BigInteger) a.createNativeQuery("SELECT COUNT(id) FROM log_time_sheet").getSingleResult();
+		
 		return count;
 	}
 
@@ -173,40 +180,45 @@ public class LogTimeSheetDaoImpl implements LogTimeSheetDao{
 	public BigInteger test(String regx) {
 		String text = "%" + regx + "%";
 		System.out.println("MMMM: "+text);
-		BigInteger kq = (BigInteger) getSession().createNativeQuery("SELECT count(id) FROM ncc.log_time_sheet where (:field) like ?2")
+		Session a = getSession();
+		BigInteger kq = (BigInteger) a.createNativeQuery("SELECT count(id) FROM ncc.log_time_sheet where (:field) like ?2")
 				.setParameter("field", "role")	
 				.setParameter(2, text)
 					.getSingleResult();
+		
 		return kq;
 	}
 	
 	@Override
 	public List<UserLogTimeSheetProjectWithoutIdDTO> findDataPagingFilter(String field,String value,int index_of_page,int pageSize) {
+		Session a = getSession();
 		@SuppressWarnings( "unchecked")
-		List<UserLogTimeSheetProjectWithoutIdDTO> resultList = getSession().createNativeQuery("CALL filter(?1, ?2 ,?3,?4)")
+		List<UserLogTimeSheetProjectWithoutIdDTO> resultList = a.createNativeQuery("CALL filter(?1, ?2 ,?3,?4)")
 											.setParameter(1, field)
 											.setParameter(2, value)
 											.setParameter(3, index_of_page)
 											.setParameter(4, pageSize)
 											.setResultTransformer(new AliasToBeanResultTransformer(UserLogTimeSheetProjectWithoutIdDTO.class))
 											.getResultList();
-		
+	
 		return resultList;
 	}
 	
 	@Override
 	public BigInteger countDataPagingFilter(String field,String value) {
-		@SuppressWarnings( "unchecked")
-		BigInteger countResultList = (BigInteger)getSession().createNativeQuery("CALL filter_count_all(?1, ?2 )")
+		Session a = getSession();
+		BigInteger countResultList = (BigInteger)a.createNativeQuery("CALL filter_count_all(?1, ?2 )")
 											.setParameter(1, field)
 											.setParameter(2, value).getSingleResult();
-		
+	
 		return countResultList;
 	}
 
 	@Override
 	public BigDecimal countHoursLogtimesheet() {
-		BigDecimal count = (BigDecimal) getSession().createNativeQuery("SELECT sum(hours) FROM log_time_sheet").getSingleResult();
+		Session a = getSession();
+		BigDecimal count = (BigDecimal) a.createNativeQuery("SELECT sum(hours) FROM log_time_sheet").getSingleResult();
+		
 		return count;
 	}
 }
