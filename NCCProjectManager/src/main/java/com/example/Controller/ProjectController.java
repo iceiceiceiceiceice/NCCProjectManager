@@ -102,8 +102,14 @@ public class ProjectController {
 
 	@PostMapping("/count-project-running")
 	@ResponseBody 
-	public int countProjectRunning(@RequestBody Map<String,String> status) {
-		return projectService.getProjectByStatus(status.get("status")).size();
+	public String countProjectRunning(@RequestBody Map<String,String> status) {
+		char a = '"';
+		String result = "{"+a+"number"+a+":"+a+projectService.getProjectByStatus(status.get("status")).size()+a+"}";
+		return result;
+<<<<<<< HEAD
 	}
+=======
+	}	
+>>>>>>> 34ef34d8736af72896bdd9787318baf0a339a914
 	
 }
