@@ -50,7 +50,6 @@ public class LogTimeSheetDaoImpl implements LogTimeSheetDao{
 	public List<LogTimeSheet> findAll() {
 		Session a = getSession();
 		List<LogTimeSheet> result = a.createQuery("FROM log_time_sheet").getResultList();
-	
 		return result;
 	}
 
@@ -62,7 +61,6 @@ public class LogTimeSheetDaoImpl implements LogTimeSheetDao{
 		List<LogTimeSheetUserWithProjectNameDTO> listResult = a
 				.createNativeQuery("CALL findLogTimeSheetByUserId(?1)")
 				.setParameter(1, user_id).setResultTransformer(new AliasToBeanResultTransformer(LogTimeSheetUserWithProjectNameDTO.class)).getResultList();
-	
 		return listResult;
 	}
 	@Override
@@ -70,7 +68,7 @@ public class LogTimeSheetDaoImpl implements LogTimeSheetDao{
 		try {
 			Session a = getSession();
 			a.save(logTimeSheet);
-		
+
 			return true;
 		}catch (HibernateException e) {
 			throw new Exception("Saving the log time sheet failed, a cay", e);
@@ -84,7 +82,7 @@ public class LogTimeSheetDaoImpl implements LogTimeSheetDao{
 		LogTimeSheet b =  (LogTimeSheet) a
 				.createNativeQuery("SELECT id, project_id, role, type, hours, user_id FROM log_time_sheet   WHERE id = ?1")
 				.setParameter(1, id).addEntity(LogTimeSheet.class).getSingleResult();
-		
+
 		return b;
 	}
 	@SuppressWarnings("unchecked")
@@ -99,7 +97,7 @@ public class LogTimeSheetDaoImpl implements LogTimeSheetDao{
 			
 			return null;
 		}
-		
+
 		return listResult;
 	}
 	@Override
