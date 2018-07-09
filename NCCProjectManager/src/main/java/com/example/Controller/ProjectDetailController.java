@@ -68,13 +68,17 @@ public class ProjectDetailController {
 	@PostMapping("/project-detail-user-list")
 	public ProjectDetailResponse getProjectDetailUserList(@RequestBody Map<String,Integer> map){
 		List<UserDTOProjectDetail> listuser = projectdao.findByProjectID(map.get("project_id"));
-		int size = listuser.size();
-		if(size < 10||size == 10) {
-			return new ProjectDetailResponse(null,listuser,size);
+		if(listuser.isEmpty()) {
+			return new ProjectDetailResponse(null,null,0);
 		}
 		else {
-			return new ProjectDetailResponse(null,listuser.subList((map.get("index_of_page")-1)*10, map.get("index_of_page")*10),size);
+			int size = listuser.size();
+			if(size < 10||size == 10) {
+				return new ProjectDetailResponse(null,listuser,size);
+			}
+			else {
+				return new ProjectDetailResponse(null,listuser.subList((map.get("index_of_page")-1)*10, map.get("index_of_page")*10),size);
+			}
 		}
-
 	}
 }

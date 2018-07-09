@@ -47,6 +47,7 @@ public class ProjectDetailDaoImpl implements ProjectDetailDao {
 		String hql = "SELECT p FROM Project p WHERE p.id = "+project_id;
 		Query<Project> query = (Query<Project>) entityManager.createQuery(hql);
 		List<Project> result =  query.list();
+	
 		return result;
 	}
 
