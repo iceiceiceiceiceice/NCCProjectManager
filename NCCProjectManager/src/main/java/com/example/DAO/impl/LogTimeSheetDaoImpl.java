@@ -1,4 +1,5 @@
 package com.example.DAO.impl;
+import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.sql.Timestamp;
 import java.util.ArrayList;
@@ -185,5 +186,11 @@ public class LogTimeSheetDaoImpl implements LogTimeSheetDao{
 											.setParameter(2, value).getSingleResult();
 		
 		return countResultList;
+	}
+
+	@Override
+	public BigDecimal countHoursLogtimesheet() {
+		BigDecimal count = (BigDecimal) getSession().createNativeQuery("SELECT sum(hours) FROM log_time_sheet").getSingleResult();
+		return count;
 	}
 }
