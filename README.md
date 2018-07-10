@@ -7,4 +7,5 @@ start-up instruction
         1. npm install 
         2. ng build
         3. ng serve --open
+- change the password and user to access mysql database NCCProjectManager/NCCProjectManager/src/main/resources/application.properties
 - run NCCProjectManager/src/main/java/com/example/NccManagerApplication.java to deploy server.
