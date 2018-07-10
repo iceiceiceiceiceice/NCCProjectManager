@@ -196,3 +196,27 @@ INSERT INTO `ncc`.`relation` (`user_id`, `project_id`) VALUES ('5', '3');
 
 
 INSERT INTO `log_time_sheet` VALUES (1,1,'DEV','task',8,4,'t built the nuclear rocket','2018-06-18 00:00:00'),(2,2,'Tester','task',8,8,'too many bug','2018-06-28 00:00:00');
+
+DELIMITER $$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `insertPM`()
+BEGIN
+ DECLARE done INT DEFAULT FALSE;
+ DECLARE b,c INT;
+  DECLARE cur1 CURSOR FOR 
+	SELECT u.id,p.project_id FROM project p JOIN user u ON u.username = p.PM where p.project_id >3 ;
+  DECLARE CONTINUE HANDLER FOR NOT FOUND SET done = TRUE;
+  OPEN cur1;
+ 
+  read_loop: LOOP
+  FETCH cur1 into b,c;
+  IF done THEN LEAVE read_loop;
+    END IF;
+    INSERT INTO relation VALUES (b,c);
+  END LOOP;
+  
+  close cur1;
+ 
+END$$
+DELIMITER;
+use ncc;
+call ncc.insertPM();
