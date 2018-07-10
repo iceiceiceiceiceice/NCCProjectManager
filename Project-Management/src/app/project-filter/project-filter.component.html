@@ -3,7 +3,7 @@
     <div class="container-fluid">
         <ol class="breadcrumb">
             <li class="breadcrumb-item">
-                My Dashboard
+              <a routerLink="/my-dashboard"> My Dashboard</a>
             </li>
             <li class="breadcrumb-item">
                 <a routerLink="/create-project"> Create Project</a>
@@ -15,14 +15,7 @@
                 <a routerLink="/add-user">Add user to the project</a>
             </li>
             <li class="breadcrumb-item active">
-
-                <a routerLink="/get-all-project">All Project</a>
-
-                <a routerLink="/view-all-notes">View all notes</a>
-
-            </li>
-            <li class="breadcrumb-item active">
-                <a routerLink="/view-all-users">View all users</a>
+               All Project
             </li>
         </ol>
         <div class="card add-user">
@@ -30,8 +23,53 @@
                 <h3>Project Management</h3>
             </div>
             <div class="card-body">
-                <div class="row justify-content-around">
-
+            <!--    <div class="row justify-content-around">  -->
+                    <!-- <form #formProjectFilter="ngForm" (ngSubmit)="onSubmit(formProjectFilter,1);">
+                        <div class="form-group">
+                            <div class="form-row">
+                                <div class="col-md-4 form-control-sm">
+                                    <label for="name-field">Field</label>
+                                
+                                </div>
+                                <div class="col-md-4 form-control-sm">
+                                    <label for="name-PM">Value</label>
+                            
+                                    
+                                </div>
+                            
+                            </div>
+                            <div class="form-row">
+                                    <div class="col-md-4 form-control-sm">
+                                        <select 
+                                            class="custom-select" 
+                                            id="name-field"
+                                            [(ngModel)]="selectField" 
+                                            name="field"
+                                            >
+                                            <option 
+                                                *ngFor="let item of fields"
+                                                [value]="item"
+                                            >
+                                                {{item}}
+                                            </option>
+                                        </select>
+                    
+                                    </div>
+                                <div class="col-md-4 form-control-sm">
+                                    <input 
+                                        class="form-control" 
+                                        id="name" 
+                                        placeholder="Enter Filter value"
+                                        name="name"
+                                        #txtNameProject="ngModel"
+                                        ngModel
+                                        required
+                                    >
+                                </div>
+                                <button class="btn btn-primary" type="submit">filter</button>
+                            </div>
+                        </div>
+                    </form> -->
                     <table class="table table-bordered table-hover table-sm">
                         <thead>
                             <tr>
@@ -41,7 +79,10 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr *ngFor = "let list of listProjects">
+                            <tr *ngFor = "let list of listProjects|paginate: {
+                                itemsPerPage: numberItemsPage,
+                                currentPage: p,
+                                totalItems: maxpage }">
                                 <td id="{{list[1].project_id}}"></td>
                                 <td>{{list[1].projectName}}</td>
                                 <td>
@@ -72,17 +113,11 @@
                             </tr>
                         </tbody>
                     </table>
-                    <nav aria-label="Page navigation example">
-                            <ul class="pagination">
-                              <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-                              <li class="page-item"><a class="page-link" href="#">1</a></li>
-                              <li class="page-item"><a class="page-link" href="#">2</a></li>
-                              <li class="page-item"><a class="page-link" href="#">3</a></li>
-                              <li class="page-item"><a class="page-link" href="#">Next</a></li>
-                            </ul>
-                          </nav>
-
-                </div>
+                    <pagination-controls
+                        (pageChange)="pageChanged(p=$event)"
+                        autoHide="false">
+                    </pagination-controls>
+               <!-- </div> -->
             </div>
         </div>
     </div>

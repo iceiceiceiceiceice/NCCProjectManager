@@ -8,7 +8,7 @@ body {
 }
 
 body.sticky-footer {
-    margin-bottom: 56px;            
+    margin-bottom: 56px;
 }
 
 
@@ -36,7 +36,7 @@ a{
 .z-1 {
     z-index: 1;
 }
- 
+
 .content-wrapper {
     overflow-x: hidden;
     background: white;
@@ -63,7 +63,7 @@ table tbody {
 table tbody tr{
     counter-increment: no;
 }
-table tbody tr td:first-child:before{ 
+table tbody tr td:first-child:before{
     content: counter(no);
 }
 table thead {

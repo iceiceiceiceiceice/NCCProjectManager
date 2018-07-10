@@ -16,6 +16,10 @@ import { UserNotesComponent } from '../app/user/user-notes/user-notes.component'
 import { UserDashboardComponent } from '../app/user/user-dashboard/user-dashboard.component';
 import { UserCreateNoteComponent } from '../app/user/user-create-note/user-create-note.component';
 import { UserProjectDetailComponent } from '../app/user/user-project-detail/user-project-detail.component';
+import { GetAllProjectComponent } from './get-all-project/get-all-project.component';
+import {ViewAllNotesComponent} from './view-all-notes/view-all-notes.component';
+import {ViewAllUsersComponent} from './view-all-users/view-all-users.component';
+import { ProjectFilterComponent } from './project-filter/project-filter.component';
 
 const routes: Routes = [
     { path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -33,7 +37,16 @@ const routes: Routes = [
     { path: 'user/user-projects', component: UserProjectsComponent },
     { path: 'user/user-notes', component: UserNotesComponent },
     { path: 'user/user-create-note', component: UserCreateNoteComponent },
-    { path: 'user/user-project-detail/:id', component: UserProjectDetailComponent }
+    { path: 'user/user-project-detail/:id', component: UserProjectDetailComponent },
+    { path: 'project-filter', component: ProjectFilterComponent},
+    { path: 'view-all-notes', component: ViewAllNotesComponent},
+    { path: 'view-all-users', component: ViewAllUsersComponent},
+
+    { path: 'get-all-project', component: GetAllProjectComponent},
+    { path: 'view-all-notes', component: ViewAllNotesComponent},
+
+
+
 ];
 @NgModule({
     exports: [ RouterModule ],
