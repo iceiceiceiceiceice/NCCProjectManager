@@ -33,12 +33,12 @@ public class Project implements Serializable {
 
 	@Column(name = "PM")
 	private String pm;
-
+	
 	private String projectName;
 
 	private String status;
-
-	private String technology;
+	@Column(name = "tech_id")
+	private int technology;
 	
 	private String notes;
 	
@@ -86,11 +86,11 @@ public class Project implements Serializable {
 		this.projectName = projectName;
 	}
 
-	public String getTechnology() {
+	public int getTechnology() {
 		return this.technology;
 	}
 
-	public void setTechnology(String technology) {
+	public void setTechnology(int technology) {
 		this.technology = technology;
 	}
 
