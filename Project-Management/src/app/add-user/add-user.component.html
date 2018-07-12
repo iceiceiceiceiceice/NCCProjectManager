@@ -34,13 +34,13 @@
                     <div class="form-group">
                         <div class="form-control-sm">
                             <label for="select-project">Select the project name:</label>
-                            <select 
-                                class="custom-select" 
+                            <select
+                                class="custom-select"
                                 id="select-project"
-                                [(ngModel)]="selectProject" 
+                                [(ngModel)]="selectProject"
                                 name="project_ID"
                             >
-                                <option 
+                                <option
                                     *ngFor="let item of listProjects"
                                     [value]="item[1].project_id"
                                 >
@@ -50,13 +50,13 @@
                         </div>
                         <div class="form-control-sm">
                             <label for="name-user">Select user: </label>
-                            <select 
-                                class="custom-select" 
+                            <select
+                                class="custom-select"
                                 id="select-user"
-                                [(ngModel)]="selectUser" 
+                                [(ngModel)]="selectUser"
                                 name="user_ID"
                             >
-                                <option 
+                                <option
                                     *ngFor="let item of listUsers"
                                     [value]="item.id"
                                 >
@@ -66,9 +66,9 @@
                         </div>
                         <div class="form-control-sm">
                             <label for="role">Roles</label>
-                            <input 
-                                class="form-control" 
-                                id="role" 
+                            <input
+                                class="form-control"
+                                id="role"
                                 placeholder="Enter role"
                                 name="role"
                                 #txtRole="ngModel"
@@ -86,8 +86,8 @@
                                 <a class="btn btn-secondary" routerLink="/my-dashboard">Cancel</a>
                             </div>
                             <div class="col-6 text-left">
-                                <button 
-                                    class="btn btn-primary" 
+                                <button
+                                    class="btn btn-primary"
                                     type="submit"
                                     [disabled]="formAddUser.invalid"
                                 >Add</button>

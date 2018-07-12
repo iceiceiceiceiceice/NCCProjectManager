@@ -29,7 +29,7 @@ export class AddUserComponent implements OnInit {
             })
             .catch(error => console.log(error))
     }
-    
+
     selectProject: number;
     selectUser: number;
 
