@@ -28,7 +28,7 @@ public class ProjectController {
 	@ResponseBody
 	public List<Project> listProject(@RequestBody HashMap<String, Integer> Hmap)
 	{
-    return projectService.getProjectByIndex(Hmap.get("index_of_page").intValue(),"");
+		return projectService.getProjectByIndex(Hmap.get("index_of_page").intValue(),"");
 		
 	}
 

@@ -60,7 +60,7 @@ public class ProjectDetailDaoImpl implements ProjectDetailDao {
 		else {
 			Query<UserDTOProjectDetail> query2 = (Query<UserDTOProjectDetail>) entityManager.createQuery("SELECT u FROM UserDTOProjectDetail u WHERE u.id = "+ rela.get(0).getuser_id());
 			List<UserDTOProjectDetail> userlist = query2.list();
-			if(rela.size()<2) return null;
+			if(rela.size()<2) return userlist;
 			else {
 				for(int i = 1;i<rela.size();i++) {
 					query2 = (Query<UserDTOProjectDetail>) entityManager.createQuery("SELECT u FROM UserDTOProjectDetail u WHERE u.id = "+ rela.get(i).getuser_id());
