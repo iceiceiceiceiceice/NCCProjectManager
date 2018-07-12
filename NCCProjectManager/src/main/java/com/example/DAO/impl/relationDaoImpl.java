@@ -32,6 +32,7 @@ public class relationDaoImpl implements relationDao {
 		a.setId(relation);
 		Session session = this.sessionFactory.getCurrentSession();
 		session.save(a);
+//		session.close();
 	}
 	@Override
 	public List<Relation> findall(){
@@ -44,7 +45,7 @@ public class relationDaoImpl implements relationDao {
 	public List<Integer> findmultiprojectuser(){
 		EntityManager em = sessionFactory.createEntityManager();
 		@SuppressWarnings("unchecked")
-		Query<Integer> query=(Query<Integer>) em.createQuery("select r.id.userId from Relation r group by r.id.userId having count(r.id.userId) > 1 ");
+		Query<Integer> query=(Query<Integer>) em.createQuery("select r.id.userId from Relation r group by r.id.userId  ");
 		return query.getResultList();
 	}
 	@SuppressWarnings( "unchecked" )
@@ -64,5 +65,17 @@ public class relationDaoImpl implements relationDao {
 		Query<Relation> query = (Query<Relation>) em.createQuery("select r from RelationPK r where r.id.projectId = :project_id").setParameter("projec_id", project_id);
 		List<Relation> result = query.list();
 		return result;
+	}
+	
+
+
+	public void removeUser(int project_id, int getuser_id) {
+		Session session = this.sessionFactory.getCurrentSession();
+		String sql = "DELETE Relation where user_id = :getuser_id AND project_id = :project_id";
+		Query query = session.createQuery(sql);
+		query.setParameter("getuser_id", getuser_id);
+		query.setParameter("project_id", project_id);
+		query.executeUpdate();
+//		session.close();
 	}
 }

@@ -20,6 +20,12 @@ import { UserDashboardComponent } from './user/user-dashboard/user-dashboard.com
 import { UserCreateNoteComponent } from './user/user-create-note/user-create-note.component';
 import { NoteProjectComponent } from './note-project/note-project.component';
 import { UserProjectDetailComponent } from './user/user-project-detail/user-project-detail.component';
+import { GetAllProjectComponent } from './get-all-project/get-all-project.component';
+import { ViewAllNotesComponent } from './view-all-notes/view-all-notes.component';
+import {NgxPaginationModule} from 'ngx-pagination';
+import { ViewAllUsersComponent } from './view-all-users/view-all-users.component';
+import { ProjectFilterComponent } from './project-filter/project-filter.component';
+
 @NgModule({
     declarations: [
         AppComponent,
@@ -38,13 +44,19 @@ import { UserProjectDetailComponent } from './user/user-project-detail/user-proj
         UserDashboardComponent,
         UserCreateNoteComponent,
         NoteProjectComponent,
-        UserProjectDetailComponent
+        UserProjectDetailComponent,
+        ViewAllUsersComponent,
+        GetAllProjectComponent,
+        ViewAllNotesComponent,
+        ProjectFilterComponent
+
     ],
     imports: [
         BrowserModule,
         AppRoutingModule,
         HttpModule,
-        FormsModule
+        FormsModule,
+        NgxPaginationModule
     ],
     providers: [],
     bootstrap: [AppComponent]

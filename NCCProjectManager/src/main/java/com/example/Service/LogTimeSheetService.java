@@ -1,5 +1,6 @@
 package com.example.Service;
 
+import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.List;
 
@@ -22,6 +23,7 @@ public interface LogTimeSheetService {
 	public List<UserLogTimeSheetProjectWithoutIdDTO> findDataPaging(Integer from, Integer offset);
 	public BigInteger getCountLogTimeSheet();
 	public BigInteger test(String regx);
-	List<UserLogTimeSheetProjectWithoutIdDTO> findDataPagingFilter(String field,String value,int index_of_page);
-	BigInteger countDataPagingFilter(String field,String value);
+	public List<UserLogTimeSheetProjectWithoutIdDTO> findDataPagingFilter(String field,String value,int index_of_page,int pageSize);
+	public BigInteger countDataPagingFilter(String field,String value);
+	public BigDecimal countHoursLogtimesheet();
 }

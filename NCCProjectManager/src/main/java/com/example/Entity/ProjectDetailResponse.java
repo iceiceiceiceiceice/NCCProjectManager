@@ -9,9 +9,6 @@ public class ProjectDetailResponse {
 	public ProjectDetailResponse() {
 		
 	}
-	
-	
-
 	public ProjectDetailResponse(Project project, List<UserDTOProjectDetail> list_user, int number) {
 		super();
 		this.project = project;

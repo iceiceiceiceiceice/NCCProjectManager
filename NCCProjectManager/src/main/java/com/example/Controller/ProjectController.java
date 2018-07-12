@@ -7,6 +7,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,7 +28,7 @@ public class ProjectController {
 	@ResponseBody
 	public List<Project> listProject(@RequestBody HashMap<String, Integer> Hmap)
 	{
-    return projectService.getProjectByIndex(Hmap.get("index_of_page").intValue(),"");
+		return projectService.getProjectByIndex(Hmap.get("index_of_page").intValue(),"");
 		
 	}
 
@@ -57,13 +58,18 @@ public class ProjectController {
 
 	}
 			
+	@GetMapping(value="/getAll")
+	@ResponseBody
+	public List<Project> getAll(){
+		return projectService.findAll();
+	}
 	
 	@PostMapping(value="/get-project")
 	@ResponseBody
-	public List<Project> listProjectByStatus(@RequestBody HashMap<String, Integer> Hmap)
+	public List<Project> listProjectByStatus()
 	{
 		
-		return projectService.getProjectByIndex(Hmap.get("index_of_page").intValue(),"running");
+		return projectService.getProjectByIndex(1,"running");
 		
 	}
 	
@@ -75,18 +81,22 @@ public class ProjectController {
 		return projectService.searhProjectByName(Hmap.get("field"), Hmap.get("name"), Hmap.get("index_of_page"));
 		
 	}
-	
+	@PostMapping(value= ("/get-project-filter-number"))
+	@ResponseBody
+	public String getProjectFilterNumber(@RequestBody HashMap<String, String> Hmap) {
+		return projectService.getNumberProjectByName(Hmap.get("field"), Hmap.get("name"), Hmap.get("index_of_page"));
+	}
 	
 	@PostMapping(value=("/create-project"))
 	@ResponseBody
-	public Project addToProject(@RequestBody Project project) {
+	public createrProject addToProject(@RequestBody Project project) {
 
 		projectService.save(project);
 
 		createrProject cP =  new createrProject();
 		cP.setStatus(true);
 		cP.setProjectInfo(project);
-		return project;
+		return cP;
 
 	}
 
@@ -98,8 +108,11 @@ public class ProjectController {
 
 	@PostMapping("/count-project-running")
 	@ResponseBody 
-	public int countProjectRunning(@RequestBody Map<String,String> status) {
-		return projectService.getProjectByStatus(status.get("status")).size();
-	}
+	public String countProjectRunning(@RequestBody Map<String,String> status) {
+		char a = '"';
+		String result = "{"+a+"number"+a+":"+a+projectService.getProjectByStatus(status.get("status")).size()+a+"}";
+		return result;
+	}	
+
 	
 }

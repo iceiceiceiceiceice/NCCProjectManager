@@ -17,6 +17,7 @@ import com.example.Entity.ProjectDetailResponse;
 import com.example.Entity.User;
 //import com.example.Entity.User;
 import com.example.Entity.UserDTOProjectDetail;
+import com.example.Model.UserJoinMultiProjectDTO;
 import com.example.Service.ProjectDetailService;
 
 
@@ -61,7 +62,23 @@ public class ProjectDetailController {
 		return projectdetailservice.getNumberOfHourInProject(project_id.get("project_id"));
 	}
 	@GetMapping("/user-multi-project")
-	public List<User> getmultiuser(){
+	public List<UserJoinMultiProjectDTO> getmultiuser(){
 		return projectdao.getmultiuser();
+	}
+	@PostMapping("/project-detail-user-list")
+	public ProjectDetailResponse getProjectDetailUserList(@RequestBody Map<String,Integer> map){
+		List<UserDTOProjectDetail> listuser = projectdao.findByProjectID(map.get("project_id"));
+		if(listuser.isEmpty()) {
+			return new ProjectDetailResponse(null,null,0);
+		}
+		else {
+			int size = listuser.size();
+			if(size < 10||size == 10) {
+				return new ProjectDetailResponse(null,listuser,size);
+			}
+			else {
+				return new ProjectDetailResponse(null,listuser.subList((map.get("index_of_page")-1)*10, map.get("index_of_page")*10),size);
+			}
+		}
 	}
 }

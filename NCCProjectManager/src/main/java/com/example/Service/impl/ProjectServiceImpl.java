@@ -2,6 +2,7 @@ package com.example.Service.impl;
 
 import java.util.List;
 
+import com.example.Model.UserDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -71,5 +72,22 @@ public class ProjectServiceImpl implements ProjectService {
 		return projectDaoImpl.searhProjectByName(field , name, intValue);
 	}
 
+	@Override
+
+	public String getNumberProjectByName(String field, String name, String intValue) {
+		// TODO Auto-generated method stub
+		
+		int a = projectDaoImpl.getNumberProjectByName(field, name, intValue);
+		char b = '"';
+		return  "{"+b+"number"+b+":"+a+"}";
+	}
+
 	
+
+	public List<Project> findByString(String name) {
+		return projectDaoImpl.searhProjectByName("projectName",name,"1");
+	}
+
+
+
 }

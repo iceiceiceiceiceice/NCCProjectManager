@@ -1,9 +1,11 @@
-# NCCProjectManager
-##1.Thành viên trong nhóm :D
-### Thắng đẹp trai <img src="https://upanh.vn-zoom.org/images/2018/06/27/20160906_203022.jpg" witdh="200px" height="200px"/>
-###  .   ____          _            __ _ _
-### /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
-###( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
-### \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
-###  '  |____| .__|_| |_|_| |_\__, | / / / /
-### =========|_|==============|___/=/_/_/_/
+start-up instruction 
+- log in mysql server then run code in the .sql files follow this order:
+        1.database.sql
+        2.data.sql
+        3.Lenh Tao StoredProcedure.sql
+- to deploy client, open command line window in folder Project-Management then run these commands by order :(you must have installed nodejs and angular@cli before take this step)
+        1. npm install 
+        2. ng build
+        3. ng serve --open
+- change the password and user to access mysql database NCCProjectManager/NCCProjectManager/src/main/resources/application.properties
+- run NCCProjectManager/src/main/java/com/example/NccManagerApplication.java to deploy server.
