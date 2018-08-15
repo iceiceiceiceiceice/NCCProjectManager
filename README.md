@@ -1,3 +1,6 @@
+Origin fronftend code can be downloaded at the link below:
+https://github.com/nguyenloc96/Project-Management
+
 start-up instruction 
 - log in mysql server then run code in the .sql files follow this order:
         1.database.sql
