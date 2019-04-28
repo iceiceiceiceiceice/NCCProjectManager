@@ -1,6 +1,8 @@
 package com.example.Config;
 
 import java.util.Properties;
+
+import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -50,4 +52,5 @@ public class BeanConfig {
     HibernateTransactionManager transactionManager = new HibernateTransactionManager(sessionFactory);
     return transactionManager;
   }
+  
 }

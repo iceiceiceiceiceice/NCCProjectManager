@@ -1,4 +1,4 @@
-
+use ncc
 
 DELIMITER $$
 CREATE PROCEDURE getDataPagingLogTimeSheet(start_get int(11), offset int(11))
@@ -24,7 +24,7 @@ END; $$
 
 
 
-use ncc;
+
 DELIMITER $$
 CREATE PROCEDURE `filter`(in field varchar(40), in giatri varchar(40),in index_of_page int, in page_size int)
 BEGIN
@@ -74,7 +74,7 @@ END; $$
 
 
 
-use ncc;
+
 DELIMITER $$
 CREATE PROCEDURE `filter_user`(in field varchar(40), in giatri varchar(40),in index_of_page int, in page_size int)
 BEGIN
@@ -94,7 +94,7 @@ BEGIN
     DEALLOCATE PREPARE STMT;
 END; $$
 
-use ncc;
+
 DELIMITER $$
 CREATE PROCEDURE `user_filter_count_all`(in field varchar(40), in giatri varchar(40))
 BEGIN

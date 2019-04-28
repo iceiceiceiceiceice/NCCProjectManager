@@ -18,7 +18,7 @@ import com.example.DAO.relationDao;
 import com.example.Entity.LogTimeSheet;
 import com.example.Entity.Project;
 import com.example.Entity.Relation;
-import com.example.Entity.RelationPK;
+
 import com.example.Entity.User;
 import com.example.Entity.UserDTOProjectDetail;
 import com.example.Entity.UserInfo;
@@ -26,7 +26,6 @@ import com.example.Model.UserJoinMultiProjectDTO;
 
 
 @Repository
-
 public class ProjectDetailDaoImpl implements ProjectDetailDao {
 
 
